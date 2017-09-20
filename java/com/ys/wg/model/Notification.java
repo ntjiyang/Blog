@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Notification {
 	
-	private int id;				//Í¨Öªid
-	private int user_id;		//ÓÃ»§id
-	private Date time;			//Ê±¼ä
-	private String title;		//Í¨ÖªÃû³Æ
-	private String content;		//ÄÚÈİ
-	private int status;			//ÉóºË×´Ì¬
-	private int admin_id;		//¹ÜÀíÔ±id
+	private int id;							//Í¨é€šçŸ¥id
+	private int userId;						//ç”¨æˆ·id
+	private Date notificationTime;			//æ—¶é—´
+	private String notificationTitle;		//Í¨Öªæ ‡é¢˜
+	private String notificationContent;		//å†…å®¹
+	private int status;						//å®¡æ ¸çŠ¶æ€
+	private int adminId;					//ç®¡ç†å‘˜id
 	
 	
 	public int getId() {
@@ -19,29 +19,29 @@ public class Notification {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public Date getTime() {
-		return time;
+	public Date getNotificationTime() {
+		return notificationTime;
 	}
-	public void setTime(Date time) {
-		this.time = time;
+	public void setNotificationTime(Date notificationTime) {
+		this.notificationTime = notificationTime;
 	}
-	public String getTitle() {
-		return title;
+	public String getNotificationTitle() {
+		return notificationTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setNotificationTitle(String notificationTitle) {
+		this.notificationTitle = notificationTitle;
 	}
-	public String getContent() {
-		return content;
+	public String getNotificationContent() {
+		return notificationContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setNotificationContent(String notificationContent) {
+		this.notificationContent = notificationContent;
 	}
 	public int getStatus() {
 		return status;
@@ -49,13 +49,15 @@ public class Notification {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getAdmin_id() {
-		return admin_id;
+	public int getAdminId() {
+		return adminId;
 	}
-	public void setAdmin_id(int admin_id) {
-		this.admin_id = admin_id;
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
 	}
 	
+	
+
 	
 	
 	

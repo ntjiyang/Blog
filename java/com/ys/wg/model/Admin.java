@@ -2,13 +2,13 @@ package com.ys.wg.model;
 
 public class Admin {
 	
-	private int id;
-	private String name;    		//Ãû×Ö
-	private String password;		//ÃÜÂë
-	private String email;			//ÓÊÏä
-	private String phone;			//µç»°
-	private int power;				//È¨ÏŞ
-	
+	private int id;						//id
+	private String adminName;    		//ç®¡ç†å‘˜åå­—
+	private String password;			//å¯†ç 
+	private String adminEmail;			//é‚®ç®±
+	private String adminPhone;			//ç”µè¯
+	private int    adminPower;			//æƒé™
+
 	
 	public int getId() {
 		return id;
@@ -16,40 +16,36 @@ public class Admin {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getAdminName() {
+		return adminName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
 	}
-	public String getPassword() {
+	public String getAdminPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdminPassword(String Password) {
+		this.password = Password;
 	}
-	public String getEmail() {
-		return email;
+	public String getAdminEmail() {
+		return adminEmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
 	}
-	public String getPhone() {
-		return phone;
+	public String getAdminPhone() {
+		return adminPhone;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setAdminPhone(String adminPhone) {
+		this.adminPhone = adminPhone;
 	}
-	public int getPower() {
-		return power;
+	public int getAdminPower() {
+		return adminPower;
 	}
-	public void setPower(int power) {
-		this.power = power;
-	}
-	
-	
-	
-	
-	
+	public void setAdminPower(int adminPower) {
+		this.adminPower = adminPower;
+	}		
+
 
 }

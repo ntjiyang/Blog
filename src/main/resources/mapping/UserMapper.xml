@@ -14,7 +14,7 @@
         <result column="is_delete" property="isDelete" jdbcType="INTEGER"/>
     </resultMap>
 
-    <select id="selectUserById" parameterType="java.lang.Long" resultMap="UserBaseMap">
+    <select id="selectUserById" parameterType="int" resultMap="UserBaseMap">
         SELECT * FROM users
         WHERE id = #{userId}
     </select>

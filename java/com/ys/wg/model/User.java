@@ -1,6 +1,5 @@
 package com.ys.wg.model;
 
-import java.util.Date;
 
 /**
  * Created by Zhangxq on 2016/7/15.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ys.wg.dao.NotificationDao">
+		
+		<resultMap id="NotificationBaseMap" type="com.ys.wg.model.Notification">
+		
+			<id column="id" property="id" jdbcType="INTEGER"/>
+			<result column="user_id" property="userId" jdbcType="INTEGER"/>
+			<result column="time" property="notificationTime" jdbcType="TIMESTAMP"/>
+			<result column="title" property="notificationTitle" jdbcType="VARCHAR"/>
+			<result column="content" property="notificationContent" jdbcType="VARCHAR"/>
+			<result column="status" property="status" jdbcType="INTEGER"/>
+			<result column="admin_id" property="adminId" jdbcType="INTEGER"/>
+		
+		</resultMap>
+		
+
+</mapper>

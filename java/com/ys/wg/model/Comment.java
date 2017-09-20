@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Comment {
 	
-	private int id; 			//ÆÀÂÛid
-	private int blog_id;		//²©¿Íid
-	private Date time;  		//ÆÀÂÛÊ±¼ä
-	private int user_id;		//ÓÃ»§id
-	private int num;			//Â¥Êı
-	private int reply_user_id;	//ÆÀÂÛÓÃ»§id
-	private String content;		//ÆÀÂÛÄÚÈİ
+	private int id; 			//è¯„è®ºid
+	private int blogId;			//åšå®¢id
+	private Date blogTime;  	//å‘å¸ƒæ—¶é—´
+	private int userId;			//ç”¨æˆ·id
+	private int num;			//æ¥¼
+	private int replyUserId;	//å›å¤ç”¨æˆ·ID
+	private String content;		//å›å¤å†…å®¹
 	
 	
 	public int getId() {
@@ -19,23 +19,23 @@ public class Comment {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getBlog_id() {
-		return blog_id;
+	public int getBlogId() {
+		return blogId;
 	}
-	public void setBlog_id(int blog_id) {
-		this.blog_id = blog_id;
+	public void setBlogId(int blogId) {
+		this.blogId = blogId;
 	}
 	public Date getTime() {
-		return time;
+		return blogTime;
 	}
-	public void setTime(Date time) {
-		this.time = time;
+	public void setTime(Date blogTime) {
+		this.blogTime = blogTime;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public int getNum() {
 		return num;
@@ -43,11 +43,11 @@ public class Comment {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public int getReply_user_id() {
-		return reply_user_id;
+	public int getReplyUserId() {
+		return replyUserId;
 	}
-	public void setReply_user_id(int reply_user_id) {
-		this.reply_user_id = reply_user_id;
+	public void setReplyUserId(int replyUserId) {
+		this.replyUserId = replyUserId;
 	}
 	public String getContent() {
 		return content;
@@ -55,6 +55,8 @@ public class Comment {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	
 	
 	
 	

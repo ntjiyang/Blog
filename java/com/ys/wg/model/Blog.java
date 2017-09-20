@@ -5,27 +5,25 @@ import java.util.Date;
 public class Blog {
 	
 	private  int id;		 		//id
-	private  int user_id;			//ÓÃ»§id
-	private  Date time;				//·¢²¼Ê±¼ä
-	private  String title;			//±êÌâ
-	private  String content;		//ÄÚÈİ
-	private  int see_count;			//ä¯ÀÀ´ÎÊı
-	private  String support;		//µãÔŞ
-	private  String type;			//ÀàĞÍ
-	private  int status;			//ÉóºË×´Ì¬
-	
-	
+	private  int userId;			//ç”¨æˆ·id
+	private  Date time;				//æ—¶é—´
+	private  String blogTitle;			//æ ‡é¢˜
+	private  String blogContent;		//å†…å®¹
+	private  int seeCount;			//æµè§ˆæ•°
+	private  String support;		//ç‚¹èµ
+	private  String type;			//ç±»å‹
+	private  int status;			//çŠ¶æ€
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public Date getTime() {
 		return time;
@@ -33,23 +31,24 @@ public class Blog {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	public String getTitle() {
-		return title;
+
+	public String getBlogTitle() {
+		return blogTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBlogTitle(String blogTitle) {
+		this.blogTitle = blogTitle;
 	}
-	public String getContent() {
-		return content;
+	public String getBlogContent() {
+		return blogContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setBlogContent(String blogContent) {
+		this.blogContent = blogContent;
 	}
-	public int getSee_count() {
-		return see_count;
+	public int getSeeCount() {
+		return seeCount;
 	}
-	public void setSee_count(int see_count) {
-		this.see_count = see_count;
+	public void setSeeCount(int seeCount) {
+		this.seeCount = seeCount;
 	}
 	public String getSupport() {
 		return support;
@@ -69,6 +68,8 @@ public class Blog {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+
 	
 	
 	

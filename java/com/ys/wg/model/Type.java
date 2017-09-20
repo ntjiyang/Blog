@@ -3,8 +3,8 @@ package com.ys.wg.model;
 public class Type {
 
 	
-	private int id;			//类型ID
-	private String name;	//类型名称
+	private int id;			//鍗氬ID
+	private String typeName;	//鍗氬绫诲瀷
 	
 	
 	public int getId() {
@@ -13,12 +13,14 @@ public class Type {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	
+	public String getTypeName() {
+		return typeName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
+
 	
 	
 	
