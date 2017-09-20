@@ -11,11 +11,11 @@ public class User {
     private String userName;
     private String userPhone;
     private String userEmail;
-    private String userPwd;
-    private String pwdSalt;
-    private Date createTime;
-    private Date modifyTime;
-    private Short isDelete;
+    private String password;
+    private String headImage;
+    private String follow;
+    private int fans;
+    private int isDelete;
 
     public Long getId() {
         return id;
@@ -49,43 +49,45 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public String getUserPwd() {
-        return userPwd;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getPwdSalt() {
-        return pwdSalt;
-    }
+	public String getHeadImage() {
+		return headImage;
+	}
 
-    public void setPwdSalt(String pwdSalt) {
-        this.pwdSalt = pwdSalt;
-    }
+	public void setHeadImage(String headImage) {
+		this.headImage = headImage;
+	}
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+	public String getFollow() {
+		return follow;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setFollow(String follow) {
+		this.follow = follow;
+	}
 
-    public Date getModifyTime() {
-        return modifyTime;
-    }
+	public int getFans() {
+		return fans;
+	}
 
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
+	public void setFans(int fans) {
+		this.fans = fans;
+	}
 
-    public Short getIsDelete() {
-        return isDelete;
-    }
+	public int getIsDelete() {
+		return isDelete;
+	}
 
-    public void setIsDelete(Short isDelete) {
-        this.isDelete = isDelete;
-    }
+	public void setIsDelete(int isDelete) {
+		this.isDelete = isDelete;
+	}
+
+
 }

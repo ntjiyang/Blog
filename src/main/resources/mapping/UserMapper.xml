@@ -3,30 +3,30 @@
 <mapper namespace="com.ys.wg.dao.UserDao">
 
     <resultMap id="UserBaseMap" type="com.ys.wg.model.User">
-        <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
-        <result column="user_phone" property="userPhone" jdbcType="VARCHAR"/>
-        <result column="user_email" property="userEmail" jdbcType="VARCHAR"/>
-        <result column="user_pwd" property="userPwd" jdbcType="VARCHAR"/>
-        <result column="pwd_salt" property="pwdSalt" jdbcType="VARCHAR"/>
-        <result column="create_time" property="createTime" jdbcType="DATE"/>
-        <result column="modify_time" property="modifyTime" jdbcType="DATE"/>
-        <result column="is_delete" property="isDelete" jdbcType="SMALLINT"></result>
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="userName" jdbcType="VARCHAR"/>
+        <result column="phone" property="userPhone" jdbcType="VARCHAR"/>
+        <result column="email" property="userEmail" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="head_image" property="headImage" jdbcType="VARCHAR"/>
+        <result column="follow" property="follow" jdbcType="VARCHAR"/>
+        <result column="fans" property="fans" jdbcType="INTEGER"/>
+        <result column="is_delete" property="isDelete" jdbcType="INTEGER"/>
     </resultMap>
 
     <select id="selectUserById" parameterType="java.lang.Long" resultMap="UserBaseMap">
-        SELECT * FROM t_user
+        SELECT * FROM users
         WHERE id = #{userId}
     </select>
 
     <select id="selectUserByPhoneOrEmail" resultMap="UserBaseMap">
-        SELECT * FROM t_user
+        SELECT * FROM users
         WHERE user_email = #{emailOrPhone} OR user_phone = #{emailOrPhone}
         AND user_state = #{state}
     </select>
 
     <select id="selectAllUser" resultMap="UserBaseMap">
-        SELECT * FROM t_user
+        SELECT * FROM users
     </select>
 
 </mapper>

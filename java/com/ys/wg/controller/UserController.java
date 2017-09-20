@@ -28,6 +28,6 @@ public class UserController {
         log.info("查询所有用户信息");
         List<User> userList = userService.getAllUser();
         model.addAttribute("userList",userList);
-        return "showUser";
+        return "foreView/showUser";
     }
 }
