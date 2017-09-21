@@ -28,5 +28,17 @@
     <select id="selectAllUser" resultMap="UserBaseMap">
         SELECT * FROM users
     </select>
+    
+    <select id="userLogin" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
+    	SELECT * FROM users WHERE username=#{userName} and password = #{password} and is_delete=0
+    </select>
+    
+    <select id="selectUserByName" parameterType="String" resultMap="UserBaseMap">
+    	SELECT * FROM users WHERE username=#{userName}
+    </select>
+    
+    <insert id="insertUser" parameterType="com.ys.wg.model.User">
+    	INSERT INTO users (username,password,email,phone) VALUES (#{userName},#{password},#{userEmail},#{userPhone})
+    </insert>
 
 </mapper>

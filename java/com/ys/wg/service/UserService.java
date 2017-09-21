@@ -14,4 +14,11 @@ public interface UserService {
     User getUserByPhoneOrEmail(String emailOrPhone, Short state);
 
     User getUserById(int userId);
+
+    //登录
+	User userLogin(User user);
+
+	User selectUserByName(String userName);
+
+	boolean insertUser(User user);
 }
