@@ -31,6 +31,8 @@ public class UserController {
         User u = userService.userLogin(user);
         
         if(u != null){
+        	
+        	model.addAttribute("username", user.getUserName());
         	return "foreView/userHome";
         }else{
         	  return "/index"; 
