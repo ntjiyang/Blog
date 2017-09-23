@@ -13,10 +13,20 @@ public class User {
     private String password;
     private String headImage;
     private String follow;
+    private String userInformation;
     private int fans;
     private int isDelete;
+    
 
-    public Long getId() {
+    public String getUserInformation() {
+		return userInformation;
+	}
+
+	public void setUserInformation(String userInformation) {
+		this.userInformation = userInformation;
+	}
+
+	public Long getId() {
         return id;
     }
 

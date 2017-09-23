@@ -15,4 +15,8 @@
 	</resultMap>
 	
 	
+	<insert id="blogInsert" parameterType="com.ys.wg.model.Blog">
+		INSERT INTO blogs (user_id,title,content)VALUES(#{userId},#{blogTitle},#{blogContent})
+	</insert>
+	
 	</mapper>

@@ -1,5 +1,6 @@
 package com.ys.wg.controller;
 
+import com.ys.wg.model.Blog;
 import com.ys.wg.model.User;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
@@ -56,6 +57,39 @@ public class UserController {
 	return "/index";
 		
 }
+	
+	//根据用户名查询个人信息
+	@RequestMapping("/userSelect")
+	public String userSelect(User user,HttpServletRequest request, Model model){
+		
+		List<User> userlist	 = 	userService.selectUserInforByName(user.getUserName());
+		
+		model.addAttribute("userlist", userlist);
+		
+		return "/updateuser";	//跳转到修改个人资料	
+	}
+	
+	//根据用户名，修改个人信息   密码、头像、个人简介
+	@RequestMapping("/userUpdate")
+	public String userUpdate(User user,HttpServletRequest request, Model model){
+		
+		if(userService.updateUserInfor(user))
+			return "/personal";  //跳转到个人中心
+		
+		return "/updateuser";
+		
+	}
+	
+	//用户(user_id)发布博客
+	@RequestMapping("/blogInsert")
+	public String blogInsert(Blog blog,HttpServletRequest request, Model model){
+		
+		if(userService.blogInsert(blog))
+		return "自身";
+		
+		return "自身";
+	}
+	
 	
 	
 }

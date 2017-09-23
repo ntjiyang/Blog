@@ -12,6 +12,7 @@
         <result column="follow" property="follow" jdbcType="VARCHAR"/>
         <result column="fans" property="fans" jdbcType="INTEGER"/>
         <result column="is_delete" property="isDelete" jdbcType="INTEGER"/>
+        <result column="information" property="userInformation" jdbcType="VARCHAR"/>
     </resultMap>
 
     <select id="selectUserById" parameterType="int" resultMap="UserBaseMap">
@@ -34,11 +35,21 @@
     </select>
     
     <select id="selectUserByName" parameterType="String" resultMap="UserBaseMap">
-    	SELECT * FROM users WHERE username=#{userName}
+    	SELECT username FROM users WHERE username=#{userName}
     </select>
     
     <insert id="insertUser" parameterType="com.ys.wg.model.User">
     	INSERT INTO users (username,password,email,phone) VALUES (#{userName},#{password},#{userEmail},#{userPhone})
     </insert>
+    
+    <select id="selectUserInforByName" parameterType="String" resultMap="UserBaseMap">
+    	SELECT * FROM users WHERE username=#{userName}
+    </select>
+
+	<update id="updateUserInfor" parameterType="com.ys.wg.model.User">
+		UPDATE users SET password = #{password},head_image = #{headImage},information=#{userInformation}
+		WHERE username=#{userName}
+	</update>
+
 
 </mapper>

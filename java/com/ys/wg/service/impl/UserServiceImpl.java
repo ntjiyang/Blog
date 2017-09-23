@@ -1,6 +1,8 @@
 package com.ys.wg.service.impl;
 
+import com.ys.wg.dao.BlogDao;
 import com.ys.wg.dao.UserDao;
+import com.ys.wg.model.Blog;
 import com.ys.wg.model.User;
 import com.ys.wg.service.UserService;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
     
     @Resource
     private UserDao userDao;
+    
+    @Resource
+    private BlogDao blogDao;
 
     public User getUserById(int userId) {
         return userDao.selectUserById(userId);
@@ -46,4 +51,20 @@ public class UserServiceImpl implements UserService {
 		
 		return userDao.insertUser(user);
 	}
+
+	public List<User> selectUserInforByName(String userName) {
+	
+		return userDao.selectUserInforByName(userName);
+	}
+
+	public boolean updateUserInfor(User user) {
+		
+		return userDao.updateUserInfor(user);
+	}
+
+	public boolean blogInsert(Blog blog) {
+		
+		return blogDao.blogInsert(blog);
+	}
+
 }
