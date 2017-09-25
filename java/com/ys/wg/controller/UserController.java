@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +27,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    //用户登录
 	@RequestMapping("/userLogin")
     public String userLogin(User user,HttpServletRequest request, Model model){
     	
@@ -42,6 +43,7 @@ public class UserController {
         }
     }
 	
+	//用户注册
 	@RequestMapping("/userRegister")
 	public String userRegister(User user,HttpServletRequest request, Model model){
 		
@@ -107,7 +109,6 @@ public class UserController {
 	@RequestMapping("/selectNotification")
 	public String selectNotification(Notification notification, Blog blog,HttpServletRequest request, Model model, User user){
 	
-		
 		
 		return "";
 	
