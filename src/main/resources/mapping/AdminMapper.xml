@@ -12,6 +12,8 @@
 		
 	</resultMap>
 
-	
+	 <select id="adminLogin" parameterType="com.ys.wg.model.Admin" resultMap="AdminBaseMap">
+    	SELECT * FROM admins WHERE name=#{adminName} and password = #{password}
+    </select>
 
 </mapper>

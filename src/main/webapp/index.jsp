@@ -39,8 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="login w3layouts agileits">
 			<h2>登 录</h2>
 			<form action="user/userLogin" method="post">
-				<input type="text" name="userName" >
-				<input type="password" name="password" >
+				<input type="text" name="userName" placeholder="用户名" required="">
+				<input type="password" name="password" placeholder="密码" required="">
 			<ul class="tick w3layouts agileits">
 				<li>
 					<input type="checkbox" id="brand1" value="">
@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="submit" value="登 录">
 				</form>
 			</div>
-			<a href="#">记住密码?</a>
+			<a href="#">忘记密码?</a>
 			
 			<div class="clear"></div>
 		</div>
