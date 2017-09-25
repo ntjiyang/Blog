@@ -2,6 +2,7 @@ package com.ys.wg.service;
 
 
 import com.ys.wg.model.Blog;
+import com.ys.wg.model.Comment;
 import com.ys.wg.model.User;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface UserService {
     User getUserById(int userId);
 
     //登录
-	User userLogin(User user);
+    User userLogin(User user);
 	//注册查重
 	User selectUserByName(String userName);
 	//注册
@@ -29,5 +30,7 @@ public interface UserService {
 	boolean updateUserInfor(User user);
 
 	boolean blogInsert(Blog blog);
+
+	boolean insertComment(Comment comment);
 
 }

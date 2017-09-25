@@ -10,8 +10,13 @@
 			<result column="user_id" property="userId" jdbcType="INTEGER"/>
 			<result column="num" property="num" jdbcType="INTEGER"/>
 			<result column="reply_user_id" property="replyUserId" jdbcType="INTEGER"/>
-			<result column="content" property="Content" jdbcType="VARCHAR"/>			
+			<result column="content" property="content" jdbcType="VARCHAR"/>			
 		</resultMap>
 
+<!-- 回复 -->
+		<insert id="insertComment" parameterType="com.ys.wg.model.Comment">
+			INSERT INTO comment (blog_id,user_id,reply_user_id,content) 
+			values (#{blogId},#{userId},#{replyUserId},#{content})
+		</insert>
 
 </mapper>

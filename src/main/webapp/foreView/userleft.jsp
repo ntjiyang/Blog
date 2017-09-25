@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,17 +39,16 @@ $(document).ready(function() {
 
         <div id="side">
     	<div id="sidebar-header">
+    	
         	<div id="header">
-            	<a href="index-2.html"><span id="logo">头像<img src="images/period.png" alt="period" height="8" width="9" /></span></a>
+            	<a href="index-2.html"><span id="logo">${headImage}<img src="images/period.png" alt="period" height="8" width="9" /></span></a>
             </div><!--END header-->
-        
-         
          <center>
-            <b style="font-size: 20px"  >${username}</b>
+            <b style="font-size: 20px" ><a href="">${username}</a></b>
             </center>   
            <span class="border"></span>
            </div><!--END sidebar-header-->
-           
+         
            <div id="sidebar-widgets">
            <div class="widget recentposts">
            	<h3>关注用户列表</h3>
@@ -84,7 +84,7 @@ $(document).ready(function() {
                 <li><span class="date">By <a href="#">Guest</a>, November 15, 2012</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
-            
+          
            </div><!--END widget-->
            
            <div class="widget cats">
