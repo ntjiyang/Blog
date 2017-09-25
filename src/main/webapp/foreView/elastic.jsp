@@ -161,7 +161,7 @@
            
            <div id="sidebar-widgets">
            <div class="widget recentposts">
-           	<h3>RECENT POSTS</h3>
+           	<h3>最新文章</h3>
             	<ul>
             		<li class="thumb"><img src="images/image1.jpg" alt="toons" height="61" width="57" /></li>
                		<li><span class="title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. .</a></span></li>
