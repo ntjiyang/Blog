@@ -108,8 +108,7 @@ public class UserController {
 	//显示通知
 	@RequestMapping("/selectNotification")
 	public String selectNotification(Notification notification, Blog blog,HttpServletRequest request, Model model, User user){
-	
-		
+			
 		return "";
 	
 	}
