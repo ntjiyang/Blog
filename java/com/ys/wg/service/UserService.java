@@ -25,12 +25,14 @@ public interface UserService {
 	//注册
 	boolean insertUser(User user);
 	//显示用户信息
-	List<User> selectUserInforByName(String userName);
+	List<User> selectUserInforByName(User user);
 
-	boolean updateUserInfor(User user);
+	boolean updateUserInfor(String userName,String password, String headImage, String userInformation);
 
 	boolean blogInsert(Blog blog);
 
 	boolean insertComment(Comment comment);
+
+	
 
 }

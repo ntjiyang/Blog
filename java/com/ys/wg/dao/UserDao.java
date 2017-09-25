@@ -26,8 +26,9 @@ public interface UserDao {
 
 	boolean insertUser(User user);
 
-	List<User> selectUserInforByName(String userName);
+	List<User> selectUserInforByName(User user);
 
-	boolean updateUserInfor(User user);
+	boolean updateUserInfor(@Param("userName") String userName,@Param("password") String password, 
+			@Param("headImage") String headImage, @Param("userInformation")String userInformation);
 
 }

@@ -42,11 +42,11 @@
     	INSERT INTO users (username,password,email,phone) VALUES (#{userName},#{password},#{userEmail},#{userPhone})
     </insert>
     
-    <select id="selectUserInforByName" parameterType="String" resultMap="UserBaseMap">
+    <select id="selectUserInforByName" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
     	SELECT * FROM users a,blogs b WHERE a.username LIKE CONCAT(CONCAT('%', #{userName}) , '%') AND a.id=b.user_id
     </select>
 
-	<update id="updateUserInfor" parameterType="com.ys.wg.model.User">
+	<update id="updateUserInfor" parameterType="String" >
 		UPDATE users SET password = #{password},head_image = #{headImage},information=#{userInformation}
 		WHERE username=#{userName}
 	</update>

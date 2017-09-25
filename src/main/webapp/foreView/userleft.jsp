@@ -41,10 +41,10 @@ $(document).ready(function() {
     	<div id="sidebar-header">
     	
         	<div id="header">
-            	<a href="index-2.html"><span id="logo">${headImage}<img src="images/period.png" alt="period" height="8" width="9" /></span></a>
+            	<a href="index-2.html"><span id="logo">头像<img src="images/period.png" alt="period" height="8" width="9" /></span></a>
             </div><!--END header-->
          <center>
-            <b style="font-size: 20px" ><a href="">${username}</a></b>
+            <b style="font-size: 20px" ><a href="user/userSelect?userName=${username}&flag=selectuser" target="main">${username}</a></b>
             </center>   
            <span class="border"></span>
            </div><!--END sidebar-header-->

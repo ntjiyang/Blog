@@ -57,14 +57,14 @@ public class UserServiceImpl implements UserService {
 		return userDao.insertUser(user);
 	}
 
-	public List<User> selectUserInforByName(String userName) {
+	public List<User> selectUserInforByName(User user) {
 	
-		return userDao.selectUserInforByName(userName);
+		return userDao.selectUserInforByName(user);
 	}
 
-	public boolean updateUserInfor(User user) {
+	public boolean updateUserInfor(String userName,String password, String headImage, String userInformation) {
 		
-		return userDao.updateUserInfor(user);
+		return userDao.updateUserInfor(userName,password,headImage,userInformation);
 	}
 
 	public boolean blogInsert(Blog blog) {

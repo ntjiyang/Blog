@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 /**
@@ -36,7 +38,9 @@ public class UserController {
         
         if(u != null){
         	
-        	request.setAttribute("username", user.getUserName());
+        	HttpSession session = request.getSession();
+        	
+        	session.setAttribute("username",u.getUserName());
         	return "foreView/userHome";
         }else{
         	  return "/index"; 
@@ -65,22 +69,31 @@ public class UserController {
 	//根据用户名查询个人信息
 	@RequestMapping("/userSelect")
 	public String userSelect(User user,HttpServletRequest request, Model model){
+		String flag = request.getParameter("flag");
 		
-		List<User> userlist	 = 	userService.selectUserInforByName(user.getUserName());
+		List<User> userlist	 = 	userService.selectUserInforByName(user);
 		
 		model.addAttribute("userlist", userlist);
 		
-		return "/updateuser";	//跳转到修改个人资料	
+		if(flag.equals("selectuser")){
+		
+		return "foreView/personalinfo";	//跳转到个人资料	
+		}else{
+			return "foreView/updateinfo";
+		}
 	}
 	
 	//根据用户名，修改个人信息   密码、头像、个人简介
 	@RequestMapping("/userUpdate")
 	public String userUpdate(User user,HttpServletRequest request, Model model){
 		
-		if(userService.updateUserInfor(user))
-			return "/personal";  //跳转到个人中心
 		
-		return "/updateuser";
+		if(userService.updateUserInfor(user.getUserName(),user.getPassword(),user.getHeadImage(),user.getUserInformation())){
+			
+			return "foreView/main";  //跳转到个人中心
+		}
+		
+		return "foreView/personalinfo";
 		
 	}
 	
