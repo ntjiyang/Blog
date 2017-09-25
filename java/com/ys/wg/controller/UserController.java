@@ -1,6 +1,8 @@
 package com.ys.wg.controller;
 
 import com.ys.wg.model.Blog;
+import com.ys.wg.model.Comment;
+import com.ys.wg.model.Notification;
 import com.ys.wg.model.User;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
@@ -23,11 +25,11 @@ public class UserController {
     public String userLogin(User user,HttpServletRequest request, Model model){
     	
 	
-        User u = userService.userLogin(user);
+        User u =userService.userLogin(user);
         
         if(u != null){
         	
-        	model.addAttribute("username", user.getUserName());
+        	request.setAttribute("username", user.getUserName());
         	return "foreView/userHome";
         }else{
         	  return "/index"; 
@@ -80,10 +82,29 @@ public class UserController {
 		
 		if(userService.blogInsert(blog))
 		return "自身";
+	
 		
 		return "自身";
 	}
 	
+	//添加回复
+	@RequestMapping("/updateComment")
+	public String insertComment(Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
+		
+		if(userService.insertComment(comment))
+		return "";
+		
+		return "";
+	}
 	
+	//显示通知
+	@RequestMapping("/selectNotification")
+	public String selectNotification(Notification notification, Blog blog,HttpServletRequest request, Model model, User user){
+	
+		
+		
+		return "";
+	
+	}
 	
 }
