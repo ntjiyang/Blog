@@ -15,7 +15,11 @@
 		</resultMap>
 		
 		<select id="selectNotification" parameterType="int" resultMap="NotificationBaseMap">
-			SELECT * FORM notification WHERE id=#{id} and status=0
+			SELECT * FROM notification WHERE id=#{id} and status=0
+		</select>
+		
+		<select id="showNotificationByTitle" parameterType="long" resultMap="NotificationBaseMap">
+			SELECT * FROM notification WHERE user_id=#{userId} and status=0
 		</select>
 		
 

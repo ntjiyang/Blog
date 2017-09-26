@@ -11,5 +11,7 @@ public interface NotificationDao {
 
 	List<Notification> selectNotification(int id);
 
+	List<Notification> showNotificationByTitle(Long userId);
+
 	
 }

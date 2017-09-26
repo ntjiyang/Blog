@@ -23,4 +23,9 @@ public class NotificationServiceImpl implements NotificationService {
 		return notificationDao.selectNotification(id);
 	}
 
+	public List<Notification> showNotificatonByTitle(Long userId) {
+		
+		return notificationDao.showNotificationByTitle(userId);
+	}
+
 }

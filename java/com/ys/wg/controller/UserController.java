@@ -1,7 +1,9 @@
 package com.ys.wg.controller;
 
 
+import com.ys.wg.model.Notification;
 import com.ys.wg.model.User;
+import com.ys.wg.service.NotificationService;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -26,13 +28,18 @@ public class UserController {
     private Logger log = Logger.getLogger(UserController.class);
     @Resource
     private UserService userService;
+    
+    @Resource
+    private NotificationService notificationService;
 
     //用户登录
 	@RequestMapping("/userLogin")
-    public String userLogin(User user,HttpServletRequest request, Model model){
+    public String userLogin(User user,HttpServletRequest request, Model model,Notification Notification){
     	
 	
-        User u =userService.userLogin(user);
+        User u = userService.userLogin(user);
+        Long userId = u.getId();
+        List<Notification> ntf = notificationService.showNotificatonByTitle(userId);
         
         if(u != null){
         	
@@ -40,6 +47,8 @@ public class UserController {
         	
         	session.setAttribute("username",u.getUserName());
         	session.setAttribute("id", u.getId());
+        	session.setAttribute("notificationlist", ntf);
+        	
         	return "foreView/userHome";
         }else{
         	  return "/index"; 

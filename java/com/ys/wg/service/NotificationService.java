@@ -8,4 +8,6 @@ public interface NotificationService {
 
 	List<Notification> selectNotification(int id);
 
+	List<Notification> showNotificatonByTitle(Long userId);
+
 }

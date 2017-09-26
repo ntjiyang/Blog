@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class NotificationController {
 	
 	@Resource
 	private NotificationService notificationService;
+	
 	
 		//点击信息标题显示通知详情
 		@RequestMapping("/selectNotification")

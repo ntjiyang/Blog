@@ -64,25 +64,14 @@ $(document).ready(function() {
            
            <div class="widget">
            	<h3>最新通知</h3>
+           	<c:forEach items="${notificationlist}" var="ntfl">
             
             <ul>
-            	<li><span class="title"><a href="#">xxx评论了你</a></span></li>
-                <li><span class="date">By <a href="#">阿希</a>, 11, 15, 2012</span></li>
-            	<li><span class="widget-border"></span></li>
-            
-            	<li><span class="title"><a href="#">Nam liber tempor cum soluta nobis eleifend...</a></span></li>
-                <li><span class="date">By <a href="#">Guest</a>, November 15, 2012</span></li>
-            	<li><span class="widget-border"></span></li>
-            
-            	<li><span class="title"><a href="#">Nam liber tempor cum soluta nobis eleifend...</a></span></li>
-                <li><span class="date">By <a href="#">Guest</a>, November 15, 2012</span></li>
-            	<li><span class="widget-border"></span></li>
-            
-            	<li><span class="title"><a href="#">Nam liber tempor cum soluta nobis eleifend...</a></span></li>
-                <li><span class="date">By <a href="#">Guest</a>, November 15, 2012</span></li>
+            	<li><span class="title"><a href="#">${ntfl.notificationTitle}评论了你</a></span></li>
+                <li><span class="date">By <a href="#">${ntfl.userId}</a>${ntfl.notificationTime}</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
-          
+          </c:forEach>
            </div><!--END widget-->
            
            <div class="widget cats">
