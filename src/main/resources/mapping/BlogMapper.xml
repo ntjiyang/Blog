@@ -19,4 +19,12 @@
 		INSERT INTO blogs (user_id,title,content,type)VALUES(#{userId},#{blogTitle},#{blogContent},#{type})
 	</insert>
 	
+	<select id="selectBlog" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM blogs WHERE user_id=#{userId}
+	</select>
+	
+	<select id="blogSelectByUserId" parameterType="int" resultMap="BlogBaseMap">
+		SELECT * FROM blogs WHERE user_id=#{userId} LIMIT #{start},#{end} ORDER BY id DESC
+	</select>
+	
 	</mapper>

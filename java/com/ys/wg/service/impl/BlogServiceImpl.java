@@ -1,9 +1,12 @@
 package com.ys.wg.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.ys.wg.dao.BlogDao;
 import com.ys.wg.model.Blog;
+import com.ys.wg.model.Page;
 import com.ys.wg.service.BlogService;
 
 public class BlogServiceImpl implements BlogService {
@@ -15,6 +18,20 @@ public class BlogServiceImpl implements BlogService {
 	public boolean blogInsert(Blog blog) {
 		
 		return blogDao.blogInsert(blog);
+	}
+
+	public List<Blog> blogSelectByUserId(Page page, int userId) {
+		
+		int num = this.selectBlog(userId);
+		
+		page.setTotal(num);
+		
+		return blogDao.blogSelectByUserId(page.getStart(),page.getEnd(),userId);
+	}
+
+	private int selectBlog(int userId) {
+		
+		return blogDao.selectBlog(userId);
 	}
 
 }
