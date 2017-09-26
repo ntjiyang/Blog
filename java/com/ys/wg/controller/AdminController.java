@@ -29,7 +29,7 @@ public class AdminController {
 			model.addAttribute("adminname", admin.getAdminName());
 			return "foreView/userHome";
 		} else {
-			return "/index";
+			return "backView/adminLogin";
 		}
 	}
 }

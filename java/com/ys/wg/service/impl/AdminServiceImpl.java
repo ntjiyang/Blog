@@ -17,7 +17,7 @@ public class AdminServiceImpl implements AdminService {
     private AdminDao adminDao;
 	
 	public Admin adminLogin(Admin admin) {
-
+		
 		return adminDao.adminLogin(admin);
 	}
 
