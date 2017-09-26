@@ -1,8 +1,6 @@
 package com.ys.wg.controller;
 
-import com.ys.wg.model.Blog;
-import com.ys.wg.model.Comment;
-import com.ys.wg.model.Notification;
+
 import com.ys.wg.model.User;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
@@ -97,33 +95,5 @@ public class UserController {
 		
 	}
 	
-	//用户(user_id)发布博客
-	@RequestMapping("/blogInsert")
-	public String blogInsert(Blog blog,HttpServletRequest request, Model model){
-		
-		if(userService.blogInsert(blog))
-		return "自身";
-	
-		
-		return "自身";
-	}
-	
-	//添加回复
-	@RequestMapping("/updateComment")
-	public String insertComment(Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
-		
-		if(userService.insertComment(comment))
-		return "";
-		
-		return "";
-	}
-	
-	//显示通知
-	@RequestMapping("/selectNotification")
-	public String selectNotification(Notification notification, Blog blog,HttpServletRequest request, Model model, User user){
-	
-		return "";
-	
-	}
 	
 }

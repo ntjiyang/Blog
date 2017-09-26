@@ -14,5 +14,9 @@
 		
 		</resultMap>
 		
+		<select id="selectNotification" parameterType="int" resultMap="NotificationBaseMap">
+			SELECT * FORM notification WHERE id=#{id} and status=0
+		</select>
+		
 
 </mapper>

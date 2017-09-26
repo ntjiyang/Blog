@@ -1,8 +1,6 @@
 package com.ys.wg.service;
 
 
-import com.ys.wg.model.Blog;
-import com.ys.wg.model.Comment;
 import com.ys.wg.model.User;
 
 import java.util.List;
@@ -26,13 +24,8 @@ public interface UserService {
 	boolean insertUser(User user);
 	//显示用户信息
 	List<User> selectUserInforByName(User user);
-
+	//修改个人信息
 	boolean updateUserInfor(String userName,String password, String headImage, String userInformation);
 
-	boolean blogInsert(Blog blog);
-
-	boolean insertComment(Comment comment);
-
-	
 
 }
