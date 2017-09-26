@@ -422,6 +422,17 @@ a:link {
 	margin: 30px auto;
 }
 
+#sidebar-header #header span#logo1 {
+	font-family: PacificoRegular, Tahoma, Geneva, sans-serif;
+	font-size: 48px;
+	font-style: normal;
+	color: #4f4f4f;
+	display: block;
+	height: 48px;
+	width: 160px;
+	margin: 30px auto;
+}
+
 #sidebar-header #header a {
 	text-decoration: none;
 }
