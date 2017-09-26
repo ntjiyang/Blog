@@ -39,6 +39,7 @@ public class UserController {
         	HttpSession session = request.getSession();
         	
         	session.setAttribute("username",u.getUserName());
+        	session.setAttribute("id", u.getId());
         	return "foreView/userHome";
         }else{
         	  return "/index"; 
@@ -76,6 +77,9 @@ public class UserController {
 		if(flag.equals("selectuser")){
 		
 		return "foreView/personalinfo";	//跳转到个人资料	
+		}else if(flag.equals("selectuserinfo")){
+			return "foreView/userinfo";
+			
 		}else{
 			return "foreView/updateinfo";
 		}
