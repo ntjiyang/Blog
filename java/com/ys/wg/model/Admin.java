@@ -22,11 +22,12 @@ public class Admin {
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
-	public String getAdminPassword() {
+	
+	public String getPassword() {
 		return password;
 	}
-	public void setAdminPassword(String Password) {
-		this.password = Password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getAdminEmail() {
 		return adminEmail;

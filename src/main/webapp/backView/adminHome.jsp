@@ -35,7 +35,7 @@ $(document).ready(function() {
 <body>
 	<div id="wrapper">
 	<iframe name="top" src="backView/top.jsp" style="width:695px;height:105px;float:left" scrolling="no"></iframe>
-	<iframe name="adminright" src="backView/adminright.jsp" style="height:1400px;width:291px;float:right" scrolling="no"></iframe>
+	<iframe name="adminright" src="admin/adminSelect" style="height:1400px;width:291px;float:right" scrolling="no"></iframe>
 	<iframe name="main" src="backView/main.jsp" style="height:1295px;width:695px;float:left"  scrolling="no"></iframe>
 
       

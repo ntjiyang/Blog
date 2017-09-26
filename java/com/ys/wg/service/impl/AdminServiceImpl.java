@@ -1,5 +1,7 @@
 package com.ys.wg.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,16 @@ public class AdminServiceImpl implements AdminService {
 	public Admin adminLogin(Admin admin) {
 		
 		return adminDao.adminLogin(admin);
+	}
+
+	public List<Admin> selectAllAdmin() {
+		
+		return adminDao.selectAllAdmin();
+	}
+
+	public List<Admin> selectAdminInforByName(Admin admin) {
+
+		return adminDao.selectAdminInforByName(admin);
 	}
 
 }

@@ -15,5 +15,16 @@
 	 <select id="adminLogin" parameterType="com.ys.wg.model.Admin" resultMap="AdminBaseMap">
     	SELECT * FROM admins WHERE name=#{adminName} and password = #{password}
     </select>
+    
+    <select id="selectAllAdmin" resultMap="AdminBaseMap">
+        SELECT * FROM admins
+    </select>
+    
+    <select id="selectAdminInforByName" parameterType="com.ys.wg.model.Admin" resultMap="AdminBaseMap">
+    	SELECT * FROM admins 
+    	<if test="adminName!=null">
+			WHERE name LIKE CONCAT(CONCAT('%', #{userName}) , '%')
+		</if>
+    </select>
 
 </mapper>
