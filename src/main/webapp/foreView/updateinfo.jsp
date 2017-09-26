@@ -50,7 +50,7 @@
 <tr>
 	<td>个人简介</td>
 	<td>
-	<textarea id="content" name="content" style=" width:300px; height:100px; resize:none;">${ul.userInformation}</textarea></td>
+	<textarea id="content" name="userInformation" style=" width:300px; height:100px; resize:none;">${ul.userInformation}</textarea></td>
 </tr>
 
 </c:forEach>
