@@ -24,7 +24,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
-
 public class BlogController {
    
 	private Logger log = Logger.getLogger(UserController.class);
@@ -55,7 +54,7 @@ public class BlogController {
 		
 		model.addAttribute("bloglist",blogList);
 		
-		return null;
+		return "";
 		
 	}
     

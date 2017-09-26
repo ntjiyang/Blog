@@ -4,10 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ys.wg.dao.NotificationDao;
 import com.ys.wg.model.Notification;
 import com.ys.wg.service.NotificationService;
 
+@Service
+@Transactional(rollbackFor = Exception.class)
 public class NotificationServiceImpl implements NotificationService {
 	
 	@Resource
