@@ -22,7 +22,7 @@ public class Admin {
 	public void setAdminName(String adminName) {
 		this.adminName = adminName;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}

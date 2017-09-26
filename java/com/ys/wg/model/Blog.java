@@ -7,8 +7,8 @@ public class Blog {
 	private  int id;		 		//id
 	private  int userId;			//用户id
 	private  Date time;				//时间
-	private  String blogTitle;			//标题
-	private  String blogContent;		//内容
+	private  String blogTitle;		//标题
+	private  String blogContent;	//内容
 	private  int seeCount;			//浏览数
 	private  String support;		//点赞
 	private  String type;			//类型

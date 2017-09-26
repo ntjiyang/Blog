@@ -1,10 +1,7 @@
 package com.ys.wg.controller;
 
 import com.ys.wg.model.Blog;
-import com.ys.wg.model.Comment;
-import com.ys.wg.model.Notification;
 import com.ys.wg.model.Page;
-import com.ys.wg.model.User;
 import com.ys.wg.service.BlogService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -50,11 +47,13 @@ public class BlogController {
 		if(page == null)
 			page = new Page();
 		
+		System.out.println(blog.getUserId());
+		
 		List<Blog> blogList = blogService.blogSelectByUserId(page,blog.getUserId());
 		
 		model.addAttribute("bloglist",blogList);
 		
-		return "";
+		return "foreView/main";
 		
 	}
     

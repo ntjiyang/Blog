@@ -31,7 +31,7 @@
     </select>
     
     <select id="userLogin" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
-    	SELECT username FROM users WHERE username=#{userName} and password = #{password} and is_delete=0
+    	SELECT * FROM users WHERE username=#{userName} and password = #{password} and is_delete=0
     </select>
     
     <select id="selectUserByName" parameterType="String" resultMap="UserBaseMap">
