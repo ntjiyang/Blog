@@ -64,7 +64,7 @@ public class UserController {
         	
         	session.setAttribute("username",u.getUserName());
         	session.setAttribute("id", u.getId());
-        	session.setAttribute("notificationlist", ntf);
+        	model.addAttribute("notificationlist", ntf);
         	
         	return "foreView/userHome";
         }else{
