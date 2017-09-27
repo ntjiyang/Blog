@@ -1,8 +1,13 @@
 package com.ys.wg.controller;
 
 
+import com.ys.wg.model.Blog;
+import com.ys.wg.model.Comment;
 import com.ys.wg.model.Notification;
+import com.ys.wg.model.Page;
 import com.ys.wg.model.User;
+import com.ys.wg.service.BlogService;
+import com.ys.wg.service.CommentService;
 import com.ys.wg.service.NotificationService;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
@@ -30,8 +35,20 @@ public class UserController {
     private UserService userService;
     
     @Resource
+	private CommentService commentService;
+    
+    @Resource
     private NotificationService notificationService;
+    
+    @Resource
+    private BlogService blogService;
 
+    
+    /*
+     * 用户模块
+     * 
+     * */
+    
     //用户登录
 	@RequestMapping("/userLogin")
     public String userLogin(User user,HttpServletRequest request, Model model,Notification Notification){
@@ -52,6 +69,7 @@ public class UserController {
         	return "foreView/userHome";
         }else{
         	  return "/index"; 
+        	  
         }
     }
 	
@@ -105,6 +123,72 @@ public class UserController {
 		}
 		
 		return "foreView/personalinfo";
+		
+	}
+	
+	/*
+	 * 通知模块
+	 * */
+	
+	//点击信息标题显示通知详情
+	@RequestMapping("/selectNotification")
+	public String selectNotification(Notification notification,HttpServletRequest request, Model model){
+		
+		List<Notification> notificationList = notificationService.selectNotification(notification.getId());
+		
+		model.addAttribute("notificationlist", notificationList );
+	
+		return "";
+	
+	}
+	
+	/*
+	 * 
+	 * 回复模块
+	 * */
+	
+	//添加回复
+	@RequestMapping("/updateComment")
+	public String insertComment(Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
+		
+		if(commentService.insertComment(comment))
+		return "";
+		
+		return "";
+	}
+	
+
+	/*
+	 * 博客模块
+	 * 
+	 * 
+	 * */
+	
+	//用户(user_id)发布博客
+	@RequestMapping("/blogInsert")
+	public String blogInsert(Blog blog,HttpServletRequest request, Model model){
+		
+		if(blogService.blogInsert(blog))
+		return "自身";
+	
+		
+		return "自身";
+	}
+	
+	//显示用户自己的博客
+	@RequestMapping("/blogSelectByUserId")
+	public String blogSelectByUserId(Page page, Blog blog,HttpServletRequest request, Model model){
+		
+		if(page == null)
+			page = new Page();
+		
+		System.out.println(blog.getUserId());
+		
+		List<Blog> blogList = blogService.blogSelectByUserId(page,blog.getUserId());
+		
+		model.addAttribute("bloglist",blogList);
+		
+		return "foreView/main";
 		
 	}
 	
