@@ -35,9 +35,9 @@ public class UserServiceImpl implements UserService {
         return userDao.selectAllUser();
     }
 
-	public User userLogin(User user) {
+	public User userLogin(String userName, String password) {
 		
-		return userDao.userLogin(user);
+		return userDao.userLogin(userName,password);
 	}
 
 	public User selectUserByName(String userName) {
@@ -50,14 +50,19 @@ public class UserServiceImpl implements UserService {
 		return userDao.insertUser(user);
 	}
 
-	public List<User> selectUserInforByName(User user) {
+	public List<User> selectUserInforByName(String userName) {
 	
-		return userDao.selectUserInforByName(user);
+		return userDao.selectUserInforByName(userName);
 	}
 
 	public boolean updateUserInfor(String userName,String password, String headImage, String userInformation) {
 		
 		return userDao.updateUserInfor(userName,password,headImage,userInformation);
+	}
+
+	public User selectUserInfo(String userName) {
+		
+		return userDao.selectUserInfo(userName);
 	}
 
 

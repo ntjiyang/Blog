@@ -17,15 +17,17 @@ public interface UserService {
     User getUserById(int userId);
 
     //登录
-    User userLogin(User user);
+    User userLogin(String userName,String password);
 	//注册查重
 	User selectUserByName(String userName);
 	//注册
 	boolean insertUser(User user);
 	//显示用户信息
-	List<User> selectUserInforByName(User user);
+	List<User> selectUserInforByName(String userName);
 	//修改个人信息
 	boolean updateUserInfor(String userName,String password, String headImage, String userInformation);
+	//查看个人专页
+	User selectUserInfo(String userName);
 
 
 }

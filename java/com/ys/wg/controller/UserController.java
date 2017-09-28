@@ -52,18 +52,16 @@ public class UserController {
     //用户登录
 	@RequestMapping("/userLogin")
     public String userLogin(User user,HttpServletRequest request, Model model,Notification Notification){
-    	
 	
-        User u = userService.userLogin(user);
-        Long userId = u.getId();
-        List<Notification> ntf = notificationService.showNotificatonByTitle(userId);
-        
+        User u = userService.userLogin(user.getUserName(),user.getPassword());
+   
         if(u != null){
         	
         	HttpSession session = request.getSession();
-        	
+            Long userId = u.getId();
+            List<Notification> ntf = notificationService.showNotificatonByTitle(userId);
         	session.setAttribute("username",u.getUserName());
-        	session.setAttribute("id", u.getId());
+        	session.setAttribute("userid", u.getId());
         	model.addAttribute("notificationlist", ntf);
         	
         	return "foreView/userHome";
@@ -92,12 +90,15 @@ public class UserController {
 		
 }
 	
-	//根据用户名查询个人资料
+	//根据用户名查询个人专页
 	@RequestMapping("/userSelect")
 	public String userSelect(User user,HttpServletRequest request, Model model){
 		String flag = request.getParameter("flag");
-		
-		List<User> userlist	 = 	userService.selectUserInforByName(user);
+	
+		List<User> userlist	 = 	userService.selectUserInforByName(user.getUserName());
+
+		if(userlist.size() == 0)
+			return "foreView/home";
 		
 		model.addAttribute("userlist", userlist);
 		
@@ -112,8 +113,12 @@ public class UserController {
 			
 		}else if(flag.equals("charge")){
 			
-			model.addAttribute("userName",user.getUserName());
-			model.addAttribute("id",user.getId());
+			User u = userService.selectUserInfo(user.getUserName());
+			
+			System.out.println(u.getUserName());
+			System.out.println(u.getId());
+			model.addAttribute("userName",u.getUserName());
+			model.addAttribute("id",u.getId());
 			return "foreView/othershome";
 			
 		}else{
@@ -194,6 +199,9 @@ public class UserController {
 		System.out.println(blog.getUserId());
 		
 		List<Blog> blogList = blogService.blogSelectByUserId(page,blog.getUserId());
+		
+		if(blogList.size() == 0)
+			return "foreView/blank";
 		
 		model.addAttribute("bloglist",blogList);
 		

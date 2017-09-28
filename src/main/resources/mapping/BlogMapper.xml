@@ -24,7 +24,7 @@
 	</select>
 	
 	<select id="blogSelectByUserId" parameterType="int" resultMap="BlogBaseMap">
-		SELECT * FROM blogs WHERE user_id=#{userId} ORDER BY id DESC LIMIT #{start},#{end}
+		SELECT * FROM blogs WHERE user_id=#{userId} ORDER BY id DESC
 	</select>
 	
 	</mapper>

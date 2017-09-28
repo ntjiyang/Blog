@@ -30,7 +30,7 @@
         SELECT * FROM users
     </select>
     
-    <select id="userLogin" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
+    <select id="userLogin" parameterType="String" resultMap="UserBaseMap">
     	SELECT * FROM users WHERE username=#{userName} and password = #{password} and is_delete=0
     </select>
     
@@ -43,7 +43,10 @@
     </insert>
     
     <select id="selectUserInforByName" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
-    	SELECT * FROM users a,blogs b WHERE a.username=#{userName} AND a.id=b.user_id
+    	SELECT * FROM users WHERE username=#{userName}
+    </select>
+    <select id="selectUserInfo" parameterType="String" resultMap="UserBaseMap">
+    	SELECT * FROM users WHERE username=#{userName}
     </select>
 
 	<update id="updateUserInfor" parameterType="String" >
