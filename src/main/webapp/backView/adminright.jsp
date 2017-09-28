@@ -64,7 +64,10 @@
 		<div id="sidebar-widgets">
 			<div class="widget recentposts">
 				<h3>用户列表</h3>
-				<span class="widget-border"></span>
+				<form action="admin/adminSelect" method="post">
+					<input type="text" name="userName" id="search"
+						placeholder="搜索 ..." /><br />
+				</form>
 				<c:forEach items="${userlist}" var="user" varStatus="vst">
 					<ul>
 						<li class="thumb"><img src="images/image2.jpg" alt="toons"
@@ -79,7 +82,10 @@
 
 			<div class="widget">
 				<h3>管理员列表</h3>
-
+				<form action="admin/adminSelect" method="post">
+					<input type="text" name="adminName" id="search"
+						placeholder="搜索 ..." /><br />
+				</form>
 				<ul>
 					<c:forEach items="${adminlist}" var="admin" varStatus="vst">
 						<li><span class="title"><a href="#">${admin.adminName}</a></span></li>

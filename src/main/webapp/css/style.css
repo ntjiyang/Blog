@@ -585,6 +585,17 @@ a:link {
 	margin-right: 0;	
 }
 
+#sidebar-widgets form input#search {
+	width: 230px;
+	height: 40px;
+	border: 0;
+	background: url(../images/sidebar-input.jpg) no-repeat;
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #7c7c7c;
+	font-size: 11px;
+	padding: 0 10px
+}
+
 /*  -----------------------------------------------------------------------------------*/
 
 /*	CONTACT PAGE
