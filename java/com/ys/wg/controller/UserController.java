@@ -92,7 +92,7 @@ public class UserController {
 		
 }
 	
-	//根据用户名查询个人信息
+	//根据用户名查询个人资料
 	@RequestMapping("/userSelect")
 	public String userSelect(User user,HttpServletRequest request, Model model){
 		String flag = request.getParameter("flag");
@@ -104,8 +104,17 @@ public class UserController {
 		if(flag.equals("selectuser")){
 		
 		return "foreView/personalinfo";	//跳转到个人资料	
+		
 		}else if(flag.equals("selectuserinfo")){
+			
+			
 			return "foreView/userinfo";
+			
+		}else if(flag.equals("charge")){
+			
+			model.addAttribute("userName",user.getUserName());
+			model.addAttribute("id",user.getId());
+			return "foreView/othershome";
 			
 		}else{
 			return "foreView/updateinfo";

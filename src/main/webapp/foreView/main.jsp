@@ -45,7 +45,7 @@ $(document).ready(function() {
                     <span class="facebook"><a href="#"></a></span>
                     <div class="meta">
                     	<ul >
-                        	<li class="admin"><a href="user/userSelect?userName=${username}&flag=selectuserinfo">${username}</a></li>
+                        	<li class="admin"><a href="user/userSelect?userName=${bl.userId}&flag=selectuserinfo">${bl.userId}</a></li>
                             <li class="date">${bl.time}</li>
                             <li class="comments"><a href="#">${bl.seeCount}</a></li>
                         </ul>

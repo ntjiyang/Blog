@@ -42,7 +42,7 @@ $(document).ready(function() {
        
 
  <ul>
-                <li><a href="" >主页</a></li> 
+                    <li><a href="foreView/home.jsp">主页</a></li> 
                 <li><a href="foreView/post.jsp">关于</a>
                 	<ul>
                     	<li><a href="foreView/post.jsp" target="main">样本页</a></li>

@@ -43,7 +43,7 @@
     </insert>
     
     <select id="selectUserInforByName" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
-    	SELECT * FROM users a,blogs b WHERE a.username LIKE CONCAT(CONCAT('%', #{userName}) , '%') AND a.id=b.user_id
+    	SELECT * FROM users a,blogs b WHERE a.username=#{userName} AND a.id=b.user_id
     </select>
 
 	<update id="updateUserInfor" parameterType="String" >

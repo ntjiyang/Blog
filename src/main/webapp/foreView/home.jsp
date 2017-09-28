@@ -37,7 +37,7 @@ $(document).ready(function() {
        
 
  <ul>
-                <li><a href="user/blogSelectByUserId?userId=${id}" target="main">主页</a></li> 
+                <li><a href="foreView/home.jsp">主页</a></li> 
                 <li><a href="foreView/post.jsp">关于</a>
                 	<ul>
                     	<li><a href="foreView/post.jsp" target="main">样本页</a></li>
@@ -59,8 +59,8 @@ $(document).ready(function() {
             </div><!--END header-->
             <span class="border"></span>
             
-            <form action="#" method="post">
-            	<input type="text" name="search" id="search" placeholder="Search ..." /><br />
+            <form action="user/userSelect?flag=charge" method="post">
+            	<input type="text" name="userName" id="search" placeholder="Search ..." /><br />
             </form>
             
            <span class="border"></span>
