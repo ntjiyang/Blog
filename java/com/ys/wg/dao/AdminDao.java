@@ -11,7 +11,7 @@ public interface AdminDao {
 
 	Admin adminLogin(Admin admin);
 	
-	List<Admin> selectAllAdmin();
+	int selectAdminNumByName(Admin admin);
 	
 	List<Admin> selectAdminInforByName(Admin admin);
 

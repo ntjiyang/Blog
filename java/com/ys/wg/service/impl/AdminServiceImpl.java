@@ -16,16 +16,16 @@ import com.ys.wg.service.AdminService;
 public class AdminServiceImpl implements AdminService {
 
 	@Resource
-    private AdminDao adminDao;
-	
+	private AdminDao adminDao;
+
 	public Admin adminLogin(Admin admin) {
-		
+
 		return adminDao.adminLogin(admin);
 	}
 
-	public List<Admin> selectAllAdmin() {
-		
-		return adminDao.selectAllAdmin();
+	public int selectAdminNumByName(Admin admin) {
+
+		return adminDao.selectAdminNumByName(admin);
 	}
 
 	public List<Admin> selectAdminInforByName(Admin admin) {

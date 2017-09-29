@@ -16,8 +16,11 @@
     	SELECT * FROM admins WHERE name=#{adminName} and password = #{password}
     </select>
     
-    <select id="selectAllAdmin" resultMap="AdminBaseMap">
-        SELECT * FROM admins
+    <select id="selectAdminNumByName" parameterType="com.ys.wg.model.Admin" resultType="int">
+        SELECT count(*) FROM admins
+        <if test="adminName!=null">
+			WHERE name LIKE CONCAT(CONCAT('%', #{adminName}) , '%')
+		</if>
     </select>
     
     <select id="selectAdminInforByName" parameterType="com.ys.wg.model.Admin" resultMap="AdminBaseMap">
