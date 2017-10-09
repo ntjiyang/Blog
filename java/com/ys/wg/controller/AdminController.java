@@ -50,7 +50,7 @@ public class AdminController {
 	public String adminSelect(User user, Admin admin, Page page,
 			HttpServletRequest request, Model model) {
 
-		List<User> userlist = userService.selectUserInforByName(user);
+		List<User> userlist = userService.selectUserInforListByName(user);
 		List<Admin> adminlist = adminService.selectAdminInforByName(admin);
 
 		model.addAttribute("userlist", userlist);

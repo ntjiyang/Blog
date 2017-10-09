@@ -55,15 +55,18 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectUserNumByName(user);
 	}
 
-	public List<User> selectUserInforByName(User user) {
-
+	public List<User> selectUserInforListByName(User user) {
 		int total = this.selectUserNumByName(user);
 		user.setTotal(total);
 		user.count();
 
-		List<User> userlist = userDao.selectUserInforByName(user);
+		List<User> userlist = userDao.selectUserInforListByName(user);
 		
 		return userlist;
+	}
+
+	public List<User> selectUserInforByName(String userName) {
+		return userDao.selectUserInforByName(userName);
 	}
 
 	public boolean updateUserInfor(String userName, String password,
