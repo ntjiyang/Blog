@@ -553,6 +553,21 @@ a:link {
 	line-height: 22px;
 }
 
+#sidebar-widgets .widget ul span.number {
+	color: #fff;
+	display: block;
+	font-size: 11px;
+	background: #393939;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+	text-align:center;
+	border-radius: 5px;
+	vertical-align: middle;
+	float: left;
+	margin-left: 5px;
+}
+
 #sidebar-widgets .widget ul li span.number {
 	color: #fff;
 	display: block;

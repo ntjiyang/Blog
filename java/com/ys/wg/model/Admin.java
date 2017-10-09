@@ -21,12 +21,15 @@ public class Admin {
 
 		totalPage = total % pageSize > 0 ? total / pageSize + 1 : total
 				/ pageSize;
-		if (currentPage < 1) {
-			currentPage = 1;
-		}
+		
 		if (currentPage > totalPage) {
 			currentPage = totalPage;
 		}
+		
+		if (currentPage < 1) {
+			currentPage = 1;
+		}
+		
 		start = (currentPage - 1) * pageSize;
 		end = pageSize;
 	}

@@ -30,7 +30,13 @@ public class AdminServiceImpl implements AdminService {
 
 	public List<Admin> selectAdminInforByName(Admin admin) {
 
-		return adminDao.selectAdminInforByName(admin);
+		int total = this.selectAdminNumByName(admin);
+		admin.setTotal(total);
+		admin.count();
+
+		List<Admin> votelist = adminDao.selectAdminInforByName(admin);
+		
+		return votelist;
 	}
 
 }

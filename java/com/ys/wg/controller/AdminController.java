@@ -1,5 +1,6 @@
 package com.ys.wg.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,19 +49,13 @@ public class AdminController {
 	@RequestMapping("/adminSelect")
 	public String adminSelect(User user, Admin admin, Page page,
 			HttpServletRequest request, Model model) {
-		
-		if (page == null) {
-			page = new Page();
-		}
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("page", page);
-		map.put("admin", admin);
 
 		List<Admin> adminlist = adminService.selectAdminInforByName(admin);
 		List<User> userlist = userService.getAllUser();
 
 		model.addAttribute("adminlist", adminlist);
 		model.addAttribute("userlist", userlist);
+		model.addAttribute("admin", admin);
 
 		return "backView/adminright";
 	}

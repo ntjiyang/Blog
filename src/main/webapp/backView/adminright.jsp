@@ -65,8 +65,7 @@
 			<div class="widget recentposts">
 				<h3>用户列表</h3>
 				<form action="admin/adminSelect" method="post">
-					<input type="text" name="userName" id="search"
-						placeholder="搜索 ..." /><br />
+					<input type="text" name="userName" id="search" placeholder="搜索 ..." /><br />
 				</form>
 				<c:forEach items="${userlist}" var="user" varStatus="vst">
 					<ul>
@@ -86,15 +85,25 @@
 					<input type="text" name="adminName" id="search"
 						placeholder="搜索 ..." /><br />
 				</form>
-				<ul>
-					<c:forEach items="${adminlist}" var="admin" varStatus="vst">
-						<li><span class="title"><a href="#">${admin.adminName}</a></span></li>
-						<li><span class="date">${admin.adminPower}</span></li>
-						<li><span class="widget-border"></span></li>
-					</c:forEach>
-
-				</ul>
-
+				<c:choose>
+					<c:when test="${admin.totalPage==0}"></c:when>
+					<c:otherwise>
+						<ul>
+							<c:forEach items="${adminlist}" var="admin" varStatus="vst">
+								<li><span class="title"><a href="#">${admin.adminName}</a></span></li>
+								<li><span class="date">${admin.adminPower}</span></li>
+								<li><span class="widget-border"></span></li>
+							</c:forEach>
+							<c:forEach begin="1" end="${admin.totalPage}" var="number">
+								<a
+									href="admin/adminSelect?currentPage=${number}&adminName=${admin.adminName}">
+									<span class="number"
+									<c:if test="${admin.currentPage==number}"> style="background-color: red"</c:if>>${number}</span>
+								</a>
+							</c:forEach>
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<!--END widget-->
 

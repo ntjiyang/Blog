@@ -28,6 +28,7 @@
     	<if test="adminName!=null">
 			WHERE name LIKE CONCAT(CONCAT('%', #{adminName}) , '%')
 		</if>
+		limit #{start} , #{end}
     </select>
 
 </mapper>
