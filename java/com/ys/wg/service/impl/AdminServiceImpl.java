@@ -30,8 +30,8 @@ public class AdminServiceImpl implements AdminService {
 
 	public List<Admin> selectAdminInforByName(Admin admin) {
 
-		int total = this.selectAdminNumByName(admin);
-		admin.setTotal(total);
+		int admintotal = this.selectAdminNumByName(admin);
+		admin.setAdmintotal(admintotal);
 		admin.count();
 
 		List<Admin> adminlist = adminDao.selectAdminInforByName(admin);

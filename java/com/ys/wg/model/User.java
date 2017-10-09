@@ -13,26 +13,26 @@ public class User {
 	private int fans;
 	private int isDelete;
 
-	private int total;// 总的数据条数
-	private int pageSize = 3;// 每页显示条数
-	private int totalPage;// 总的页数
-	private int currentPage = 1;// 当前页数
-	private int start;// 开始
-	private int end;// 结束
+	private int usertotal;// 总的数据条数
+	private int userpageSize = 3;// 每页显示条数
+	private int usertotalPage;// 总的页数
+	private int usercurrentPage = 1;// 当前页数
+	private int userstart;// 开始
+	private int userend;// 结束
 
 	// 计算起始和结束位置
 	public void count() {
 
-		totalPage = total % pageSize > 0 ? total / pageSize + 1 : total
-				/ pageSize;
-		if (currentPage > totalPage) {
-			currentPage = totalPage;
+		usertotalPage = usertotal % userpageSize > 0 ? usertotal / userpageSize
+				+ 1 : usertotal / userpageSize;
+		if (usercurrentPage > usertotalPage) {
+			usercurrentPage = usertotalPage;
 		}
-		if (currentPage < 1) {
-			currentPage = 1;
+		if (usercurrentPage < 1) {
+			usercurrentPage = 1;
 		}
-		start = (currentPage - 1) * pageSize;
-		end = pageSize;
+		userstart = (usercurrentPage - 1) * userpageSize;
+		userend = userpageSize;
 	}
 
 	public String getUserInformation() {
@@ -115,51 +115,52 @@ public class User {
 		this.isDelete = isDelete;
 	}
 
-	public int getTotal() {
-		return total;
+	public int getUsertotal() {
+		return usertotal;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setUsertotal(int usertotal) {
+		this.usertotal = usertotal;
 	}
 
-	public int getPageSize() {
-		return pageSize;
+	public int getUserpageSize() {
+		return userpageSize;
 	}
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
+	public void setUserpageSize(int userpageSize) {
+		this.userpageSize = userpageSize;
 	}
 
-	public int getTotalPage() {
-		return totalPage;
+	public int getUsertotalPage() {
+		return usertotalPage;
 	}
 
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
+	public void setUsertotalPage(int usertotalPage) {
+		this.usertotalPage = usertotalPage;
 	}
 
-	public int getCurrentPage() {
-		return currentPage;
+	public int getUsercurrentPage() {
+		return usercurrentPage;
 	}
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public void setUsercurrentPage(int usercurrentPage) {
+		this.usercurrentPage = usercurrentPage;
 	}
 
-	public int getStart() {
-		return start;
+	public int getUserstart() {
+		return userstart;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setUserstart(int userstart) {
+		this.userstart = userstart;
 	}
 
-	public int getEnd() {
-		return end;
+	public int getUserend() {
+		return userend;
 	}
 
-	public void setEnd(int end) {
-		this.end = end;
+	public void setUserend(int userend) {
+		this.userend = userend;
 	}
+
 }

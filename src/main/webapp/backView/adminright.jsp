@@ -68,7 +68,7 @@
 					<input type="text" name="userName" id="search" placeholder="搜索 ..." /><br />
 				</form>
 				<c:choose>
-					<c:when test="${user.totalPage==0}"></c:when>
+					<c:when test="${user.usertotalPage==0}"></c:when>
 					<c:otherwise>
 						<ul>
 							<c:forEach items="${userlist}" var="user" varStatus="vst">
@@ -80,11 +80,11 @@
 								</ul>
 								<span class="widget-border"></span>
 							</c:forEach>
-							<c:forEach begin="1" end="${user.totalPage}" var="number">
+							<c:forEach begin="1" end="${user.usertotalPage}" var="number">
 								<a
-									href="admin/adminSelect?currentPage=${number}&userName=${user.userName}">
+									href="admin/adminSelect?usercurrentPage=${number}&userName=${user.userName}">
 									<span class="number"
-									<c:if test="${user.currentPage==number}"> style="background-color: red"</c:if>>${number}</span>
+									<c:if test="${user.usercurrentPage==number}"> style="background-color: red"</c:if>>${number}</span>
 								</a>
 							</c:forEach>
 						</ul>
@@ -100,7 +100,7 @@
 						placeholder="搜索 ..." /><br />
 				</form>
 				<c:choose>
-					<c:when test="${admin.totalPage==0}"></c:when>
+					<c:when test="${admin.admintotalPage==0}"></c:when>
 					<c:otherwise>
 						<ul>
 							<c:forEach items="${adminlist}" var="admin" varStatus="vst">
@@ -108,11 +108,11 @@
 								<li><span class="date">${admin.adminPower}</span></li>
 								<li><span class="widget-border"></span></li>
 							</c:forEach>
-							<c:forEach begin="1" end="${admin.totalPage}" var="number">
+							<c:forEach begin="1" end="${admin.admintotalPage}" var="number">
 								<a
-									href="admin/adminSelect?currentPage=${number}&adminName=${admin.adminName}">
+									href="admin/adminSelect?admincurrentPage=${number}&adminName=${admin.adminName}">
 									<span class="number"
-									<c:if test="${admin.currentPage==number}"> style="background-color: red"</c:if>>${number}</span>
+									<c:if test="${admin.admincurrentPage==number}"> style="background-color: red"</c:if>>${number}</span>
 								</a>
 							</c:forEach>
 						</ul>

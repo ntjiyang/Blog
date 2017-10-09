@@ -1,16 +1,15 @@
 package com.ys.wg.service.impl;
 
-import com.ys.wg.dao.UserDao;
-import com.ys.wg.model.Admin;
-import com.ys.wg.model.User;
-import com.ys.wg.service.UserService;
+import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-
-import java.util.List;
+import com.ys.wg.dao.UserDao;
+import com.ys.wg.model.User;
+import com.ys.wg.service.UserService;
 
 /**
  * Created by Zhangxq on 2016/7/15.
@@ -49,19 +48,19 @@ public class UserServiceImpl implements UserService {
 
 		return userDao.insertUser(user);
 	}
-	
+
 	public int selectUserNumByName(User user) {
 
 		return userDao.selectUserNumByName(user);
 	}
 
 	public List<User> selectUserInforListByName(User user) {
-		int total = this.selectUserNumByName(user);
-		user.setTotal(total);
+		int usertotal = this.selectUserNumByName(user);
+		user.setUsertotal(usertotal);
 		user.count();
 
 		List<User> userlist = userDao.selectUserInforListByName(user);
-		
+
 		return userlist;
 	}
 

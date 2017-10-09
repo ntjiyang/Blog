@@ -14,26 +14,26 @@ public class Blog {
 	private String type; // 类型
 	private int status; // 状态
 
-	private int total;// 总的数据条数
-	private int pageSize = 3;// 每页显示条数
-	private int totalPage;// 总的页数
-	private int currentPage = 1;// 当前页数
-	private int start;// 开始
-	private int end;// 结束
+	private int blogtotal;// 总的数据条数
+	private int blogpageSize = 3;// 每页显示条数
+	private int blogtotalPage;// 总的页数
+	private int blogcurrentPage = 1;// 当前页数
+	private int blogstart;// 开始
+	private int blogend;// 结束
 
 	// 计算起始和结束位置
 	public void count() {
 
-		totalPage = total % pageSize > 0 ? total / pageSize + 1 : total
-				/ pageSize;
-		if (currentPage < 1) {
-			currentPage = 1;
+		blogtotalPage = blogtotal % blogpageSize > 0 ? blogtotal / blogpageSize
+				+ 1 : blogtotal / blogpageSize;
+		if (blogcurrentPage < 1) {
+			blogcurrentPage = 1;
 		}
-		if (currentPage > totalPage) {
-			currentPage = totalPage;
+		if (blogcurrentPage > blogtotalPage) {
+			blogcurrentPage = blogtotalPage;
 		}
-		start = (currentPage - 1) * pageSize;
-		end = pageSize;
+		blogstart = (blogcurrentPage - 1) * blogpageSize;
+		blogend = blogpageSize;
 	}
 
 	public int getId() {
@@ -108,52 +108,52 @@ public class Blog {
 		this.status = status;
 	}
 
-	public int getTotal() {
-		return total;
+	public int getBlogtotal() {
+		return blogtotal;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setBlogtotal(int blogtotal) {
+		this.blogtotal = blogtotal;
 	}
 
-	public int getPageSize() {
-		return pageSize;
+	public int getBlogpageSize() {
+		return blogpageSize;
 	}
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
+	public void setBlogpageSize(int blogpageSize) {
+		this.blogpageSize = blogpageSize;
 	}
 
-	public int getTotalPage() {
-		return totalPage;
+	public int getBlogtotalPage() {
+		return blogtotalPage;
 	}
 
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
+	public void setBlogtotalPage(int blogtotalPage) {
+		this.blogtotalPage = blogtotalPage;
 	}
 
-	public int getCurrentPage() {
-		return currentPage;
+	public int getBlogcurrentPage() {
+		return blogcurrentPage;
 	}
 
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
+	public void setBlogcurrentPage(int blogcurrentPage) {
+		this.blogcurrentPage = blogcurrentPage;
 	}
 
-	public int getStart() {
-		return start;
+	public int getBlogstart() {
+		return blogstart;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setBlogstart(int blogstart) {
+		this.blogstart = blogstart;
 	}
 
-	public int getEnd() {
-		return end;
+	public int getBlogend() {
+		return blogend;
 	}
 
-	public void setEnd(int end) {
-		this.end = end;
+	public void setBlogend(int blogend) {
+		this.blogend = blogend;
 	}
 
 }

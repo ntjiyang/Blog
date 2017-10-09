@@ -59,7 +59,7 @@
 		<if test="userName!=null">
 			WHERE username LIKE CONCAT(CONCAT('%', #{userName}) , '%')
 		</if>
-		limit #{start} , #{end}
+		limit #{userstart} , #{userend}
 	</select>
 
 	<select id="selectUserInforByName" parameterType="com.ys.wg.model.User"
