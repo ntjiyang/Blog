@@ -15,7 +15,7 @@ public class Blog {
 	private int status; // 状态
 
 	private int blogtotal;// 总的数据条数
-	private int blogpageSize = 3;// 每页显示条数
+	private int blogpageSize = 1;// 每页显示条数
 	private int blogtotalPage;// 总的页数
 	private int blogcurrentPage = 1;// 当前页数
 	private int blogstart;// 开始

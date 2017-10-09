@@ -19,15 +19,19 @@
 		INSERT INTO blogs (user_id,title,content,type)VALUES(#{userId},#{blogTitle},#{blogContent},#{type})
 	</insert>
 	
-	<select id="selectBlog" parameterType="int" resultType="int">
-		SELECT COUNT(*) FROM blogs WHERE user_id=#{userId}
-	</select>
-	
-	<select id="blogSelectByUserId" parameterType="int" resultMap="BlogBaseMap">
-		SELECT * FROM blogs WHERE user_id=#{userId} ORDER BY time DESC
-	</select>
 	<select id="blogNew" resultMap="BlogBaseMap">
 		SELECT * FROM blogs ORDER BY time DESC
+	</select>
+	
+	<select id="selectBlogNum" parameterType="com.ys.wg.model.Blog"
+		resultType="int">
+		SELECT count(*) FROM blogs WHERE user_id = #{userId}
+	</select>
+	
+	<select id="blogSelectByUserId" parameterType="com.ys.wg.model.Blog" resultMap="BlogBaseMap">
+	
+		SELECT * FROM blogs WHERE user_id = #{userId} LIMIT #{blogstart},#{blogend}
+	
 	</select>
 	
 	</mapper>

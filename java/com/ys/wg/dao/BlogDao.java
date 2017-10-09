@@ -13,10 +13,10 @@ public interface BlogDao {
 
 	boolean blogInsert(Blog blog);
 
-	List<Blog> blogSelectByUserId(@Param("start")int start, @Param("end")int end, @Param("userId")int userId);
-
-	int selectBlog(int userId);
-
 	List<Blog> blogNew();
+
+	int selectBlogNum(Blog blog);
+
+	List<Blog> blogSelectByUserId(Blog blog);
 
 }

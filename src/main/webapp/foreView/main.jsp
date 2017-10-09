@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,23 +41,36 @@ $(document).ready(function() {
             	<ul class="pageing">
                 <li>
             	<div class="post">
-            	<c:forEach items="${bloglist}" var="bl">
+            	
+     		   <c:choose>
+					<c:when test="${blog.blogtotalPage==0}"></c:when>
+					<c:otherwise>	
+				<ul>
+				<c:forEach items="${bloglist}" var="bl" varStatus="vst">
             		<h1 class="title">${bl.blogTitle}</h1>
                     <span class="facebook"><a href="#"></a></span>
                     <div class="meta">
                     	<ul >
-                        	<li class="admin"><a href="user/userSelectById?id=${bl.userId}" target="_parent">${bl.userId}</a></li>
+                        	<li class="admin"><a href="user/userSelectById?userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
                             <li class="date">${bl.time}</li>
                             <li class="comments"><a href="#">${bl.seeCount}</a></li>
                         </ul>
                     </div><!--end meta-->
-                    
                     <p>${bl.blogContent}</p>
-                     <span class="main-border"></span>
-                    <div class="clear"></div>
-                    
                     </c:forEach>
+					<c:forEach begin="1" end="${blog.blogtotalPage}" var="number">
+								<a
+									href="user/blogSelectByUserId?blogcurrentPage=${number}&title=${blog.blogTitle}">
+									<span class="number"
+									<c:if test="${blog.blogcurrentPage==number}"> style="background-color: red"</c:if>>${number}</span>
+								</a>
+							</c:forEach>
+						</ul>
+					</c:otherwise>
+				</c:choose>
+                   
   				</div><!--END post-->
+  				
                 </li>
                 </ul>
                 <div class="Pagination"></div>

@@ -128,9 +128,15 @@ public class UserController {
 	public String UserSelectById(User user,HttpServletRequest request,Model model){
 		
 		User u = userService.selectUserInfoById(user.getId());
+		String userid = request.getParameter("userid");
+		int id = Integer.parseInt(userid);
 		
 		model.addAttribute("userName",u.getUserName());
 		model.addAttribute("id",u.getId());
+		
+		if(u.getId() == id)
+			return "foreView/userHome";
+			
 		return "foreView/othershome";
 	}
 	
@@ -200,18 +206,17 @@ public class UserController {
 	
 	//显示用户自己的博客
 	@RequestMapping("/blogSelectByUserId")
-	public String blogSelectByUserId(Page page, Blog blog,HttpServletRequest request, Model model){
+	public String blogSelectByUserId(Blog blog,HttpServletRequest request, Model model){
 		
-		if(page == null)
-			page = new Page();
+		System.out.println(blog.getId());
 		
-		
-		List<Blog> blogList = blogService.blogSelectByUserId(page,blog.getUserId());
+		List<Blog> blogList = blogService.blogSelectByUserId(blog);
 		
 		if(blogList.size() == 0)
 			return "foreView/blank";
 		
 		model.addAttribute("bloglist",blogList);
+		model.addAttribute("blog" ,blog);
 		
 		return "foreView/main";	
 	}
