@@ -34,9 +34,9 @@ public class AdminServiceImpl implements AdminService {
 		admin.setTotal(total);
 		admin.count();
 
-		List<Admin> votelist = adminDao.selectAdminInforByName(admin);
+		List<Admin> adminlist = adminDao.selectAdminInforByName(admin);
 		
-		return votelist;
+		return adminlist;
 	}
 
 }

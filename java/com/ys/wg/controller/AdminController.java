@@ -50,11 +50,12 @@ public class AdminController {
 	public String adminSelect(User user, Admin admin, Page page,
 			HttpServletRequest request, Model model) {
 
+		List<User> userlist = userService.selectUserInforByName(user);
 		List<Admin> adminlist = adminService.selectAdminInforByName(admin);
-		List<User> userlist = userService.getAllUser();
 
-		model.addAttribute("adminlist", adminlist);
 		model.addAttribute("userlist", userlist);
+		model.addAttribute("adminlist", adminlist);
+		model.addAttribute("user", user);
 		model.addAttribute("admin", admin);
 
 		return "backView/adminright";

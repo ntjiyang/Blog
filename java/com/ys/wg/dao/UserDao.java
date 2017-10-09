@@ -1,6 +1,8 @@
 package com.ys.wg.dao;
 
+import com.ys.wg.model.Admin;
 import com.ys.wg.model.User;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -24,8 +26,10 @@ public interface UserDao {
 	User selectUserByName(String userName);
 
 	boolean insertUser(User user);
+	
+	int selectUserNumByName(User user);
 
-	List<User> selectUserInforByName(String userName);
+	List<User> selectUserInforByName(User user);
 
 	boolean updateUserInfor(@Param("userName") String userName,@Param("password") String password, 
 			@Param("headImage") String headImage, @Param("userInformation")String userInformation);

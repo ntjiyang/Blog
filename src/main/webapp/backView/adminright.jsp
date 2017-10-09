@@ -67,15 +67,29 @@
 				<form action="admin/adminSelect" method="post">
 					<input type="text" name="userName" id="search" placeholder="搜索 ..." /><br />
 				</form>
-				<c:forEach items="${userlist}" var="user" varStatus="vst">
-					<ul>
-						<li class="thumb"><img src="images/image2.jpg" alt="toons"
-							height="61" width="57" /></li>
-						<li><span class="title"><a href="#">${user.userName}</a></span></li>
-						<li><span class="date">${user.fans}</span></li>
-					</ul>
-					<span class="widget-border"></span>
-				</c:forEach>
+				<c:choose>
+					<c:when test="${user.totalPage==0}"></c:when>
+					<c:otherwise>
+						<ul>
+							<c:forEach items="${userlist}" var="user" varStatus="vst">
+								<ul>
+									<li class="thumb"><img src="images/image2.jpg" alt="toons"
+										height="61" width="57" /></li>
+									<li><span class="title"><a href="#">${user.userName}</a></span></li>
+									<li><span class="date">${user.fans}</span></li>
+								</ul>
+								<span class="widget-border"></span>
+							</c:forEach>
+							<c:forEach begin="1" end="${user.totalPage}" var="number">
+								<a
+									href="admin/adminSelect?currentPage=${number}&userName=${user.userName}">
+									<span class="number"
+									<c:if test="${user.currentPage==number}"> style="background-color: red"</c:if>>${number}</span>
+								</a>
+							</c:forEach>
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<!--END widget-->
 

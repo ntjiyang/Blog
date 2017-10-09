@@ -42,8 +42,19 @@
     	INSERT INTO users (username,password,email,phone) VALUES (#{userName},#{password},#{userEmail},#{userPhone})
     </insert>
     
+    <select id="selectUserNumByName" parameterType="com.ys.wg.model.User" resultType="int">
+        SELECT count(*) FROM users
+        <if test="userName!=null">
+			WHERE username LIKE CONCAT(CONCAT('%', #{userName}) , '%')
+		</if>
+    </select>
+    
     <select id="selectUserInforByName" parameterType="com.ys.wg.model.User" resultMap="UserBaseMap">
-    	SELECT * FROM users WHERE username=#{userName}
+    	SELECT * FROM users
+    	<if test="userName!=null">
+			WHERE username LIKE CONCAT(CONCAT('%', #{userName}) , '%')
+		</if>
+		limit #{start} , #{end}
     </select>
     <select id="selectUserInfo" parameterType="String" resultMap="UserBaseMap">
     	SELECT * FROM users WHERE username=#{userName}
