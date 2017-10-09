@@ -45,42 +45,17 @@ $(document).ready(function() {
                     <span class="facebook"><a href="#"></a></span>
                     <div class="meta">
                     	<ul >
-                        	<li class="admin"><a href="user/userSelect?userName=${bl.userId}&flag=selectuserinfo">${bl.userId}</a></li>
+                        	<li class="admin"><a href="user/userSelectById?id=${bl.userId}" target="_parent">${bl.userId}</a></li>
                             <li class="date">${bl.time}</li>
                             <li class="comments"><a href="#">${bl.seeCount}</a></li>
                         </ul>
                     </div><!--end meta-->
                     
-                    <span class="main-border"></span>
-                    
-                    <img class="post-image" src="images/post-image.jpg" alt="post image" height="214" width="609" />
-                    
                     <p>${bl.blogContent}</p>
-                    <a class="read-more" href="post.html">Read More</a>
+                     <span class="main-border"></span>
                     <div class="clear"></div>
+                    
                     </c:forEach>
-  				</div><!--END post-->
-                </li>
-                <li>
-                <div class="post">
-            		<h1 class="title">BLOG POST NUMBER TWO</h1>
-                	<span class="twitter"><a href="#"></a></span>
-                    <span class="facebook"></span>
-                    <div class="meta">
-                        <ul>
-                        	<li class="admin"><a href="#">Admin</a></li>
-                            <li class="date">November 21, 2012</li>
-                            <li class="category"><a href="#">Computers</a></li>
-                            <li class="comments"><a href="#">0 Comments</a></li>
-                        </ul>
-                    </div><!--end meta-->
-                    
-                    <span class="main-border"></span>
-                    
-                    <img class="post-image" src="images/post-image2.jpg" alt="post image" height="214" width="609" />
-                    
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec urna in velit mollis semper quis vel sapien. Aenean tristique, diam sed sollicitudin convallis, diam 	 sapien fermentum odio, non venenatis turpis dolor vitae nunc. Donec vestibulum erat et nisi semper et dignissim diam molestie. Maecenas luctus consequat arcu eget eleifend. Mauris eget augue turpis, at commodo metus. Integer sagittis tincidunt facilisis. Duis pharetra turpis turpis. Aliquam libero tortor, dictum vitae egestas quis, interdum nec risus. Ut commodo suscipit lectus, in auctor turpis posuere ac. Aliquam orci arcu, hendrerit in mattis et, dignissim luctus leo. Nullam mattis venenatis luctus. Sed sit amet ante purus.</p>
-                    <a class="read-more" href="post.html">Read more</a>
   				</div><!--END post-->
                 </li>
                 </ul>

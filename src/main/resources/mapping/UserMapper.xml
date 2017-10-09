@@ -53,6 +53,9 @@
 		UPDATE users SET password = #{password},head_image = #{headImage},information=#{userInformation}
 		WHERE username=#{userName}
 	</update>
-
+	
+	<select id="selectUserInfoById" parameterType="long" resultMap="UserBaseMap">
+		SELECT * FROM users WHERE id=#{id}
+	</select>
 
 </mapper>

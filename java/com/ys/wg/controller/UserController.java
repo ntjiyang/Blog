@@ -108,15 +108,12 @@ public class UserController {
 		
 		}else if(flag.equals("selectuserinfo")){
 			
-			
 			return "foreView/userinfo";
 			
 		}else if(flag.equals("charge")){
 			
 			User u = userService.selectUserInfo(user.getUserName());
 			
-			System.out.println(u.getUserName());
-			System.out.println(u.getId());
 			model.addAttribute("userName",u.getUserName());
 			model.addAttribute("id",u.getId());
 			return "foreView/othershome";
@@ -126,10 +123,20 @@ public class UserController {
 		}
 	}
 	
+	//根据用户id查询主页
+	@RequestMapping("/userSelectById")
+	public String UserSelectById(User user,HttpServletRequest request,Model model){
+		
+		User u = userService.selectUserInfoById(user.getId());
+		
+		model.addAttribute("userName",u.getUserName());
+		model.addAttribute("id",u.getId());
+		return "foreView/othershome";
+	}
+	
 	//根据用户名，修改个人信息   密码、头像、个人简介
 	@RequestMapping("/userUpdate")
 	public String userUpdate(User user,HttpServletRequest request, Model model){
-		
 		
 		if(userService.updateUserInfor(user.getUserName(),user.getPassword(),user.getHeadImage(),user.getUserInformation())){
 			
@@ -182,11 +189,13 @@ public class UserController {
 	@RequestMapping("/blogInsert")
 	public String blogInsert(Blog blog,HttpServletRequest request, Model model){
 		
-		if(blogService.blogInsert(blog))
-		return "自身";
-	
 		
-		return "自身";
+		
+			if(blogService.blogInsert(blog))
+				return "foreView/main";
+				
+				return "foreView/addblog";
+			
 	}
 	
 	//显示用户自己的博客
@@ -196,12 +205,21 @@ public class UserController {
 		if(page == null)
 			page = new Page();
 		
-		System.out.println(blog.getUserId());
 		
 		List<Blog> blogList = blogService.blogSelectByUserId(page,blog.getUserId());
 		
 		if(blogList.size() == 0)
 			return "foreView/blank";
+		
+		model.addAttribute("bloglist",blogList);
+		
+		return "foreView/main";	
+	}
+	
+	@RequestMapping("/blogNew")
+	public String blogNew(Blog blog,HttpServletRequest request, Model model){
+		
+		List<Blog> blogList = blogService.blogNew();
 		
 		model.addAttribute("bloglist",blogList);
 		

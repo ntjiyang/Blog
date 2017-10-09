@@ -65,5 +65,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectUserInfo(userName);
 	}
 
+	public User selectUserInfoById(Long id) {
+	
+		return userDao.selectUserInfoById(id);
+	}
+
 
 }

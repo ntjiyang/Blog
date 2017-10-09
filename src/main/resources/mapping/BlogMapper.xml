@@ -24,7 +24,10 @@
 	</select>
 	
 	<select id="blogSelectByUserId" parameterType="int" resultMap="BlogBaseMap">
-		SELECT * FROM blogs WHERE user_id=#{userId} ORDER BY id DESC
+		SELECT * FROM blogs WHERE user_id=#{userId} ORDER BY time DESC
+	</select>
+	<select id="blogNew" resultMap="BlogBaseMap">
+		SELECT * FROM blogs ORDER BY time DESC
 	</select>
 	
 	</mapper>

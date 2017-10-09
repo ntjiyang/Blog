@@ -115,7 +115,7 @@ $(document).ready(function() {
            </div><!--END widget-->
         </div><!--END sidebar-widgets-->
 		</div><!--END Side-->
-     <iframe name="main" src="foreView/main.jsp" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
+     <iframe name="main" src="user/blogNew" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
 
       
       <!--END Side--><!--This div keeps the sidebar from floating right when the main content is empty-->

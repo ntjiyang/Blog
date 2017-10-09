@@ -74,9 +74,11 @@ $(document).ready(function() {
     			<tr><td>&nbsp;</td></tr>
             	<tr><td><a href="user/blogSelectByUserId?userId=${userid}" target="main">个人专页</a></td></tr>
        			<tr><td>&nbsp;</td></tr>
-            	 <tr><td><a href="#">个人中心</a></td></tr>
+            	 <tr><td><a href="" target="main">个人中心</a></td></tr>
            		<tr><td>&nbsp;</td></tr>
             	 <tr><td><a href="user/userSelect?userName=${username}&flag=selectuser" target="main">个人资料</a></td></tr>
+ 				<tr><td>&nbsp;</td></tr>
+ 				 <tr><td><a href="foreView/addblog.jsp" target="main">发布博客</a></td></tr>
  				<tr><td>&nbsp;</td></tr>
            		 </table>
            </div><!--END widget-->
@@ -125,7 +127,7 @@ $(document).ready(function() {
         </div><!--END sidebar-widgets-->
 		</div><!--END Side-->
 
-     <iframe name="main" src="foreView/main.jsp" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
+     <iframe name="main" src="user/blogSelectByUserId?userId=${userid}" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
 
       
       <!--END Side--><!--This div keeps the sidebar from floating right when the main content is empty-->

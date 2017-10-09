@@ -11,4 +11,6 @@ public interface BlogService {
 	boolean blogInsert(Blog blog);
 
 	List<Blog> blogSelectByUserId(Page page, int userId);
+
+	List<Blog> blogNew();
 }

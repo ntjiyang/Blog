@@ -28,6 +28,8 @@ public interface UserService {
 	boolean updateUserInfor(String userName,String password, String headImage, String userInformation);
 	//查看个人专页
 	User selectUserInfo(String userName);
+	//根据ID查找个人主页
+	User selectUserInfoById(Long id);
 
 
 }

@@ -40,4 +40,9 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.selectBlog(userId);
 	}
 
+	public List<Blog> blogNew() {
+		
+		return blogDao.blogNew();
+	}
+
 }

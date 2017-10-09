@@ -17,4 +17,6 @@ public interface BlogDao {
 
 	int selectBlog(int userId);
 
+	List<Blog> blogNew();
+
 }
