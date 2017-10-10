@@ -35,12 +35,14 @@
 			pageSize : 5,
 		});
 	});
-	function powercheck() {
-		var pow = "${sessionScope.adminpower}";
-		var newPow = $("#power").val();
-		if (parseInt(newPow) > parseInt(pow)) {
+	function powercheck(Name, Pow) {
+		var itemPow = "${sessionScope.adminpower}";
+		var itemName = "${sessionScope.adminname}";
+		if (parseInt(itemPow) <= parseInt(Pow) && itemName != Name) {
 			alert("权限不够！");
+			return false;
 		}
+		return true;
 	}
 </script>
 <!--[if IE]>
@@ -111,6 +113,7 @@
 						<ul>
 							<c:forEach items="${adminlist}" var="admin" varStatus="vst">
 								<li><span class="title"><a target="main"
+										onclick="return powercheck('${admin.adminName}','${admin.adminPower}')"
 										href="admin/adminDetail?adminId=${admin.adminId}&flag=admin">${admin.adminName}</a></span></li>
 								<li><span class="date">${admin.adminPower}</span></li>
 								<li><span class="widget-border"></span></li>
