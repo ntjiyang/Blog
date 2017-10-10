@@ -28,11 +28,11 @@ public class Comment {
 		this.blogId = blogId;
 	}
 
-	public Date getTime() {
+	public Date getBlogTime() {
 		return blogTime;
 	}
 
-	public void setTime(Date blogTime) {
+	public void setBlogTime(Date blogTime) {
 		this.blogTime = blogTime;
 	}
 

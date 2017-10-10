@@ -26,23 +26,21 @@ $(document).ready(function() {
 		pageSize : 5,
 	});
 });
+
+function check(){
+	 var type = document.getElementById("content").value;
+
+	 
+	 if(content == ''){
+		 alert("请输入内容");
+		 return false;
+	 }
+	 return true;
+}
+
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-	.context{
-	width:600px;
-	height:300px;
-	text-overflow:-o-ellipsis-lastline;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	display:-webkit-box;
-	-webkit-line-clamp:7;
-	-webkit-box-orient: vertical;
-	}
-	
-	
-</style>
  
 </head>
 <body>
@@ -70,15 +68,35 @@ $(document).ready(function() {
                     </div><!--end meta-->
                     <div class="context">
                     <p>${bl.blogContent}</p>
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}"><input type="button" value="查看完整内容"/></a>
-                    <hr>
+                     </div>
+                     
+                     
+                      <hr>
+                      <Br>
+                     
+                     <div align="right">
+                     
+                     	<form action="user/insertComment?blogId=${bl.id}&userId=${userid}&replyUserId=${bl.userId}&id=${bl.id}" name="comments" method="post" onsubmit="return check()">
+                     		<textarea rows="8" cols="85" name="content" id="content"></textarea>
+                     		<input type="submit" value="发表回复"/>
+                     		<input type="reset" value="清空内容"/>
+                     	</form>
+                     	
+              		 </div>
+              </c:forEach>
+                    <c:forEach items="${commentlist}" var="cl">
                     <ul>
-                    	<li>楼层：1 &nbsp;&nbsp;&nbsp; 用户id：</li>
-                    	<li>内容......</li>
-                    	<li>发布于：</li>
+                    	<li>楼层：${cl.num} &nbsp;&nbsp;&nbsp; 用户id：<a href="user/userSelectById?userid=${userid}&id=${cl.userId}" target="_parent">${cl.userId}</a></li>
+                    	<li>&nbsp;</li>
+                    	<li>${cl.content}</li>
+                    	<li>&nbsp;</li>
+                    	<li>发布于：${cl.blogTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回复他</li>
+                    	<li>----------------------------------------------------------------------------------------------------------------------------------------------</li>
                     </ul>
-                    </div>
+                    
                     </c:forEach>
+                   
+                   
 				</ul>
   				</div><!--END post-->
                 </li>

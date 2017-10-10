@@ -10,7 +10,9 @@ public interface BlogService {
 	
 	boolean blogInsert(Blog blog);
 
-	List<Blog> blogSelectByUserId(Blog blog);
+	List<Blog> blogSelectByUserId(Blog blog,Page page);
 
-	List<Blog> blogNew();
+	List<Blog> selectblogByBlogId(Blog blog);
+
+
 }

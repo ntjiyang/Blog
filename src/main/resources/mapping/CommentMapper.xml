@@ -13,10 +13,20 @@
 			<result column="content" property="content" jdbcType="VARCHAR"/>			
 		</resultMap>
 
+		<select id="selectCommentById" parameterType="int" resultType="int">
+			SELECT COUNT(*) FROM comment WHERE blog_id=#{blogId}		
+		</select>
 <!-- 回复 -->
 		<insert id="insertComment" parameterType="com.ys.wg.model.Comment">
-			INSERT INTO comment (blog_id,user_id,reply_user_id,content) 
-			values (#{blogId},#{userId},#{replyUserId},#{content})
+			INSERT INTO comment (blog_id,user_id,num,reply_user_id,content) 
+			values (#{blogId},#{userId},#{num},#{replyUserId},#{content})
 		</insert>
+		
+		
+		<select id="selectCommentByBlogId" parameterType="com.ys.wg.model.Comment" resultMap="CommentBaseMap">
+			
+			SELECT * FROM comment WHERE blog_id = #{blogId}
+			
+		</select>
 
 </mapper>

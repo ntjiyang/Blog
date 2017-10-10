@@ -1,5 +1,7 @@
 package com.ys.wg.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -15,9 +17,23 @@ public class CommentServiceImpl implements CommentService {
 
 	@Resource
 	private CommentDao commentDao;
+	
+	private int selectcommentById(int blogId) {
+		
+		return commentDao.selectCommentById(blogId);
+	}
 
 	public boolean insertComment(Comment comment) {
 		
+		int num = selectcommentById(comment.getBlogId());
+		comment.setNum(num+1);
 		return commentDao.insertComment(comment);
+	}
+
+	
+
+	public List<Comment> selectCommentByBlogId(Comment comment) {
+		
+		return commentDao.selectCommentByBlogId(comment);
 	}
 }

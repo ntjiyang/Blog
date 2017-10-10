@@ -32,21 +32,23 @@ public class BlogServiceImpl implements BlogService {
 		
 	}
 
-	public List<Blog> blogSelectByUserId(Blog blog) {
+	public List<Blog> blogSelectByUserId(Blog blog,Page page) {
 		
 		int num = this.selectBlogNum(blog);
 		
-		blog.setBlogtotal(num);
-		blog.count();
+		page.setTotal(num);
+		page.count();
 		
-		List<Blog> bloglist = blogDao.blogSelectByUserId(blog);
+		if(num==0)
+			return blogDao.blogSelectByUserId(blog.getUserId(), 0, 0);
 		
+		List<Blog> bloglist = blogDao.blogSelectByUserId(blog.getUserId(),page.getStart(),page.getEnd());
 		return bloglist;
 	}
 
-	public List<Blog> blogNew() {
-		
-		return blogDao.blogNew();
+	public List<Blog> selectblogByBlogId(Blog blog) {
+	
+		return blogDao.selectblogByBlogId(blog);
 	}
 
 }
