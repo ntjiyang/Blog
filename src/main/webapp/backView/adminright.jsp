@@ -35,6 +35,13 @@
 			pageSize : 5,
 		});
 	});
+	function powercheck() {
+		var pow = "${sessionScope.adminpower}";
+		var newPow = $("#power").val();
+		if (parseInt(newPow) > parseInt(pow)) {
+			alert("权限不够！");
+		}
+	}
 </script>
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,9 +60,7 @@
 			</div>
 			<!--END header-->
 			<center>
-				<b style="font-size: 20px"><a
-					href="user/userSelect?userName=${username}&flag=selectuser"
-					target="main">${username}</a></b>
+				${sessionScope.adminname}<br>${sessionScope.adminpower}
 			</center>
 			<span class="border"></span>
 		</div>
@@ -75,7 +80,8 @@
 								<ul>
 									<li class="thumb"><img src="images/image2.jpg" alt="toons"
 										height="61" width="57" /></li>
-									<li><span class="title"><a href="#">${user.userName}</a></span></li>
+									<li><span class="title"><a target="main"
+											href="admin/adminDetail?id=${user.id}&flag=user">${user.userName}</a></span></li>
 									<li><span class="date">${user.fans}</span></li>
 								</ul>
 								<span class="widget-border"></span>
@@ -104,7 +110,8 @@
 					<c:otherwise>
 						<ul>
 							<c:forEach items="${adminlist}" var="admin" varStatus="vst">
-								<li><span class="title"><a href="#">${admin.adminName}</a></span></li>
+								<li><span class="title"><a target="main"
+										href="admin/adminDetail?adminId=${admin.adminId}&flag=admin">${admin.adminName}</a></span></li>
 								<li><span class="date">${admin.adminPower}</span></li>
 								<li><span class="widget-border"></span></li>
 							</c:forEach>

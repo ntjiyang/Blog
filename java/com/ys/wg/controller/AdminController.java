@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ys.wg.model.Admin;
+import com.ys.wg.model.Notification;
 import com.ys.wg.model.Page;
 import com.ys.wg.model.User;
 import com.ys.wg.service.AdminService;
@@ -34,8 +36,11 @@ public class AdminController {
 		Admin a = adminService.adminLogin(admin);
 
 		if (a != null) {
+			HttpSession session = request.getSession();
 
-			model.addAttribute("adminname", admin.getAdminName());
+        	session.setAttribute("adminname",a.getAdminName());
+        	session.setAttribute("adminpower", a.getAdminPower());
+
 			return "backView/adminHome";
 		} else {
 			return "backView/adminLogin";
@@ -57,4 +62,23 @@ public class AdminController {
 
 		return "backView/adminright";
 	}
+	
+	// 根据用户名查询个人信息
+		@RequestMapping("/adminDetail")
+		public String adminDetail(User user, Admin admin, Page page,
+				HttpServletRequest request, Model model) {
+			String flag = request.getParameter("flag");
+			
+			if(flag.equals("user")){
+				User u = userService.selectUserInfoById(user.getId());
+				model.addAttribute("u", u);
+			}else if(flag.equals("admin")){
+				Admin a = adminService.selectAdminInforById(admin.getAdminId());
+				model.addAttribute("a", a);
+			}
+			
+			model.addAttribute("flag", flag);
+
+			return "backView/detailinfo";
+		}
 }

@@ -2,7 +2,7 @@ package com.ys.wg.model;
 
 public class Admin {
 
-	private int id; // id
+	private int adminId; // id
 	private String adminName; // 管理员名字
 	private String password; // 密码
 	private String adminEmail; // 邮箱
@@ -34,12 +34,12 @@ public class Admin {
 		adminend = adminpageSize;
 	}
 
-	public int getId() {
-		return id;
+	public int getAdminId() {
+		return adminId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAdminId(int adminId) {
+		this.adminId = adminId;
 	}
 
 	public String getAdminName() {

@@ -39,4 +39,9 @@ public class AdminServiceImpl implements AdminService {
 		return adminlist;
 	}
 
+	public Admin selectAdminInforById(int adminId) {
+
+		return adminDao.selectAdminInforById(adminId);
+	}
+
 }

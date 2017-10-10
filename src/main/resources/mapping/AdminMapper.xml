@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-	<mapper namespace="com.ys.wg.dao.AdminDao">
+<mapper namespace="com.ys.wg.dao.AdminDao">
 
 	<resultMap id="AdminBaseMap" type="com.ys.wg.model.Admin">
-		<id column="id" property="id" jdbcType="INTEGER"/>
-		<result column="name" property="adminName" jdbcType="VARCHAR"/>
-		<result column="password" property="password" jdbcType="VARCHAR"/>
-		<result column="email" property="adminEmail" jdbcType="VARCHAR"/>
-		<result column="phone" property="adminPhone" jdbcType="VARCHAR"/>
-		<result column="power" property="adminPower" jdbcType="INTEGER"/>
-		
+		<id column="id" property="adminId" jdbcType="INTEGER" />
+		<result column="name" property="adminName" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="email" property="adminEmail" jdbcType="VARCHAR" />
+		<result column="phone" property="adminPhone" jdbcType="VARCHAR" />
+		<result column="power" property="adminPower" jdbcType="INTEGER" />
+
 	</resultMap>
 
-	 <select id="adminLogin" parameterType="com.ys.wg.model.Admin" resultMap="AdminBaseMap">
-    	SELECT * FROM admins WHERE name=#{adminName} and password = #{password}
-    </select>
-    
-    <select id="selectAdminNumByName" parameterType="com.ys.wg.model.Admin" resultType="int">
-        SELECT count(*) FROM admins
-        <if test="adminName!=null">
+	<select id="adminLogin" parameterType="com.ys.wg.model.Admin"
+		resultMap="AdminBaseMap">
+		SELECT * FROM admins WHERE name=#{adminName} and password =
+		#{password}
+	</select>
+
+	<select id="selectAdminNumByName" parameterType="com.ys.wg.model.Admin"
+		resultType="int">
+		SELECT count(*) FROM admins
+		<if test="adminName!=null">
 			WHERE name LIKE CONCAT(CONCAT('%', #{adminName}) , '%')
 		</if>
-    </select>
-    
-    <select id="selectAdminInforByName" parameterType="com.ys.wg.model.Admin" resultMap="AdminBaseMap">
-    	SELECT * FROM admins 
-    	<if test="adminName!=null">
+	</select>
+
+	<select id="selectAdminInforByName" parameterType="com.ys.wg.model.Admin"
+		resultMap="AdminBaseMap">
+		SELECT * FROM admins
+		<if test="adminName!=null">
 			WHERE name LIKE CONCAT(CONCAT('%', #{adminName}) , '%')
 		</if>
 		limit #{adminstart} , #{adminend}
-    </select>
+	</select>
+
+	<select id="selectAdminInforById" parameterType="int" resultMap="AdminBaseMap">
+		SELECT * FROM admins WHERE id = #{adminId}
+
+	</select>
 
 </mapper>

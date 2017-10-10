@@ -14,4 +14,7 @@ public interface AdminService {
 
 	// 查询管理员列表
 	List<Admin> selectAdminInforByName(Admin admin);
+
+	// 查询管理员列表
+	Admin selectAdminInforById(int adminId);
 }
