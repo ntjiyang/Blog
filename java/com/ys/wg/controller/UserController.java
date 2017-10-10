@@ -175,13 +175,22 @@ public class UserController {
 	 * */
 	
 	//添加回复
-	@RequestMapping("/updateComment")
+	@RequestMapping("/insertComment")
 	public String insertComment(Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
 		
-		if(commentService.insertComment(comment))
-		return "";
+		if(commentService.insertComment(comment)){
 		
-		return "";
+		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
+		List<Comment> commentlist = commentService.selectCommentByBlogId(comment);
+		
+		model.addAttribute("bloglist",bloglist);
+		model.addAttribute("commentlist",commentlist);
+		
+		return "foreView/concrete";
+		
+		}else{
+			return "foreView/main";
+		}
 	}
 	
 
@@ -195,8 +204,6 @@ public class UserController {
 	@RequestMapping("/blogInsert")
 	public String blogInsert(Blog blog,HttpServletRequest request, Model model){
 		
-		
-		
 			if(blogService.blogInsert(blog))
 				return "foreView/main";
 				
@@ -204,33 +211,48 @@ public class UserController {
 			
 	}
 	
-	//显示用户自己的博客
+	//显示用户博客
 	@RequestMapping("/blogSelectByUserId")
-	public String blogSelectByUserId(Blog blog,HttpServletRequest request, Model model){
+	public String blogSelectByUserId(Page page,Blog blog,HttpServletRequest request, Model model){
 		
-		System.out.println(blog.getId());
+		if(page==null)
+			page = new Page();
 		
-		List<Blog> blogList = blogService.blogSelectByUserId(blog);
+		if(blog.getUserId() == 0){
+			
+			
+			List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
+			model.addAttribute("bloglist",blogList);
+			return "foreView/main";	
+			
+		}else{
 		
+		List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
+		System.out.println(blogList);
 		if(blogList.size() == 0)
 			return "foreView/blank";
 		
 		model.addAttribute("bloglist",blogList);
-		model.addAttribute("blog" ,blog);
 		
 		return "foreView/main";	
+		}
 	}
 	
-	@RequestMapping("/blogNew")
-	public String blogNew(Blog blog,HttpServletRequest request, Model model){
+	/*
+	 * 显示详细博客内容、回复
+	 * */
+	@RequestMapping("/selectblogByBlogId")
+	public String selectblogByBlogId(Blog blog,Comment comment,HttpServletRequest request, Model model){
 		
-		List<Blog> blogList = blogService.blogNew();
+	
+		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
+		List<Comment> commentlist = commentService.selectCommentByBlogId(comment);
 		
-		model.addAttribute("bloglist",blogList);
+		model.addAttribute("bloglist",bloglist);
+		model.addAttribute("commentlist",commentlist);
 		
-		return "foreView/main";
+		return "foreView/concrete";
 		
 	}
-	
 	
 }
