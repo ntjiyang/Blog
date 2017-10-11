@@ -14,5 +14,7 @@ public interface BlogService {
 
 	List<Blog> selectblogByBlogId(Blog blog);
 
+	List<Blog> selectBlogByType(Blog blog);
+
 
 }

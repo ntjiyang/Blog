@@ -20,4 +20,6 @@ public interface BlogDao {
 
 	List<Blog> selectblogByBlogId(Blog blog);
 
+	List<Blog> selectBlogByType(Blog blog);
+
 }

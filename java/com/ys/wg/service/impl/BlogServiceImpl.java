@@ -51,4 +51,9 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.selectblogByBlogId(blog);
 	}
 
+	public List<Blog> selectBlogByType(Blog blog) {
+		
+		return blogDao.selectBlogByType(blog);
+	}
+
 }

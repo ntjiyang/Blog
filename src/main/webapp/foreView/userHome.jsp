@@ -42,7 +42,7 @@ $(document).ready(function() {
        
 
  <ul>
-                    <li><a href="foreView/home.jsp">主页</a></li> 
+                    <li><a href="user/blogSelectByUserId?flag=title">主页</a></li> 
                 <li><a href="foreView/post.jsp">关于</a>
                 	<ul>
                     	<li><a href="foreView/post.jsp" target="main">样本页</a></li>
@@ -72,7 +72,7 @@ $(document).ready(function() {
             
     			<table style="font-size:15px;height:40%;">
     			<tr><td>&nbsp;</td></tr>
-            	<tr><td><a href="user/blogSelectByUserId?userId=${userid}" target="main">个人专页</a></td></tr>
+            	<tr><td><a href="user/blogSelectByUserId?flag=0&userId=${userid}" target="main">个人专页</a></td></tr>
        			<tr><td>&nbsp;</td></tr>
             	 <tr><td><a href="" target="main">个人中心</a></td></tr>
            		<tr><td>&nbsp;</td></tr>
@@ -127,7 +127,7 @@ $(document).ready(function() {
         </div><!--END sidebar-widgets-->
 		</div><!--END Side-->
 
-     <iframe name="main" src="user/blogSelectByUserId?userId=${userid}" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
+     <iframe name="main" src="user/blogSelectByUserId?flag=0&userId=${userid}" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
 
       
       <!--END Side--><!--This div keeps the sidebar from floating right when the main content is empty-->

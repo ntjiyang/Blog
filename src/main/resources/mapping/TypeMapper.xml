@@ -5,11 +5,14 @@
 <mapper namespace="com.ys.wg.dao.TypeDao">
 			
 			<resultMap id="TypeBaseMap" type="com.ys.wg.model.Type">
-			<id column="id" property="id" jdbcType="INTEGER"/>
+			<id column="type" property="id" jdbcType="INTEGER"/>
 			<result column="name" property="typeName" jdbcType="VARCHAR"/>
 			
 			</resultMap>
 		
+		<select id="selectTypeName" parameterType="int" resultMap="TypeBaseMap">
+			SELECT name FROM type WHERE type=#{id}
+		</select>
 		
 
 </mapper>

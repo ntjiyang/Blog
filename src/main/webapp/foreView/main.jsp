@@ -41,25 +41,23 @@ $(document).ready(function() {
 	-webkit-box-orient: vertical;
 	}
 	
-	
 </style>
  
 </head>
 <body>
 
-
-
  <div id="main">
-  
+  			
             <div id="main-content">
             	<ul class="pageing">
                 <li>
+               
             	<div class="post">
-            	
-
+            	 <h1>${typeName}</h1>
+  				
 				<ul>
 				<c:forEach items="${bloglist}" var="bl">
-            		<h1 class="title">${bl.blogTitle}</h1>
+            		<h3 class="title">${bl.blogTitle}</h3>
                     <span class="facebook"><a href="#"></a></span>
                     <div class="meta">
                     	<ul>
@@ -72,11 +70,6 @@ $(document).ready(function() {
                     <p>${bl.blogContent}</p>
                     <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}"><input type="button" value="查看完整内容"/></a>
                     <hr>
-                    <ul>
-                    	<li>楼层：1 &nbsp;&nbsp;&nbsp; 用户id：</li>
-                    	<li>内容......</li>
-                    	<li>发布于：</li>
-                    </ul>
                     </div>
                     </c:forEach>
 				</ul>

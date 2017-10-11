@@ -58,18 +58,17 @@
 												<td width="20%" style="text-indent:10">博客类别：</td>
 												<td>
 												   <select name="type" id="type">
-														<option value=""></option>
-														<option value="1">1</option>
-														<option value="2">2</option>
-														<option value="3">3</option>
-														<option value="4">4</option>
-														<option value="5">5</option>
-														<option value="6">6</option>
-														<option value="7">7</option>
-														<option value="8">8</option>
-														<option value="9">9</option>
-														<option value="10">10</option>
-														<option value="11">11</option>
+														<option value="1">教育</option>
+														<option value="2">文学</option>
+														<option value="3">推理</option>
+														<option value="4">电影</option>
+														<option value="5">时尚</option>
+														<option value="6">科研</option>
+														<option value="7">网络</option>
+														<option value="8">游戏</option>
+														<option value="9">时事</option>
+														<option value="10">历史</option>
+														<option value="11">旅游</option>
 
 												  </select>
 										

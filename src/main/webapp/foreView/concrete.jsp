@@ -28,9 +28,8 @@ $(document).ready(function() {
 });
 
 function check(){
-	 var type = document.getElementById("content").value;
+	 var content = document.getElementById("content").value;
 
-	 
 	 if(content == ''){
 		 alert("请输入内容");
 		 return false;

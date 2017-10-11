@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,7 +38,7 @@ $(document).ready(function() {
        
 
  <ul>
-                <li><a href="foreView/home.jsp">主页</a></li> 
+                <li><a href="user/blogSelectByUserId?flag=title">主页</a></li> 
                 <li><a href="foreView/post.jsp">关于</a>
                 	<ul>
                     	<li><a href="foreView/post.jsp" target="main">样本页</a></li>
@@ -69,11 +70,13 @@ $(document).ready(function() {
            <div id="sidebar-widgets">
            <div class="widget recentposts">
            	<h3>最新博客</h3>
+           	<c:forEach items="${bloglist}" var="bl">
             	<ul>
             		<li class="thumb"><img src="images/image1.jpg" alt="toons" height="61" width="57" /></li>
-               		<li><span class="title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. .</a></span></li>
-                	<li><span class="date">November 21, 2012 - 3 comments</span></li>
+               		<li><span class="title"><a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}" target="main">${bl.blogTitle}</a></span></li>
+                	<li><span class="date">${bl.time}</span></li>
                 </ul>
+                </c:forEach>
             <span class="widget-border"></span>
             
            </div><!--END widget-->
@@ -93,29 +96,44 @@ $(document).ready(function() {
            	<h3>博客类型</h3>
             
             <ul>
-            	<li><a href="#"><span class="category">Movies</span><span class="number">10</span></a></li>
-           
-            	<li><span class="widget-border"></span></li>
-            
-           
-            	<li><a href="#"><span class="category">Games</span><span class="number">4</span></a></li>
-        
-            	<li><span class="widget-border"></span></li>
-            
-           
-            	<li><a href="#"><span class="category">Fashion</span><span class="number">8</span></a></li>
-         
+            	<li><a href="user/selectBlogByType?type=1" target="main"><span class="category">教育</span><span class="number"></span></a></li>
            		<li><span class="widget-border"></span></li>
             
-         
-            	<li><a href="#"><span class="category">Science</span><span class="number">5</span></a></li>
+            	<li><a href="user/selectBlogByType?type=2" target="main"><span class="category">文学</span><span class="number"></span></a></li>
+            	<li><span class="widget-border"></span></li>
+
+            	<li><a href="user/selectBlogByType?type=3" target="main"><span class="category">推力</span><span class="number"></span></a></li>
+           		<li><span class="widget-border"></span></li>
+            
+            	<li><a href="user/selectBlogByType?type=4" target="main"><span class="category">电影</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=5" target="main"><span class="category">时尚</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=6" target="main"><span class="category">科研</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=7" target="main"><span class="category">网络</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=8" target="main"><span class="category">游戏</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=9" target="main"><span class="category">时事</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=10" target="main"><span class="category">历史</span><span class="number"></span></a></li>
+                <li><span class="widget-border"></span></li>
+                
+                <li><a href="user/selectBlogByType?type=11" target="main"><span class="category">旅游</span><span class="number"></span></a></li>
                 <li><span class="widget-border"></span></li>
             </ul>
             
            </div><!--END widget-->
         </div><!--END sidebar-widgets-->
 		</div><!--END Side-->
-     <iframe name="main" src="user/blogSelectByUserId" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
+     <iframe name="main" src="user/blogSelectByUserId?flag=0" style="height:1200px;width:70%;float:right"  scrolling="no"></iframe>
 
       
       <!--END Side--><!--This div keeps the sidebar from floating right when the main content is empty-->

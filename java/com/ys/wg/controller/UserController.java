@@ -5,11 +5,13 @@ import com.ys.wg.model.Blog;
 import com.ys.wg.model.Comment;
 import com.ys.wg.model.Notification;
 import com.ys.wg.model.Page;
+import com.ys.wg.model.Type;
 import com.ys.wg.model.User;
 import com.ys.wg.service.BlogService;
 import com.ys.wg.service.CommentService;
 import com.ys.wg.service.FollowService;
 import com.ys.wg.service.NotificationService;
+import com.ys.wg.service.TypeService;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -47,6 +49,8 @@ public class UserController {
     @Resource
     private FollowService followService;
 
+    @Resource
+    private TypeService typeService;
     
     /*
      * 用户模块
@@ -219,28 +223,37 @@ public class UserController {
 	@RequestMapping("/blogSelectByUserId")
 	public String blogSelectByUserId(Page page,Blog blog,HttpServletRequest request, Model model){
 		
+		String flag = request.getParameter("flag");
+		
+		if(flag.equals("title")){
+			if(blog.getUserId() == 0){
+				List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
+				model.addAttribute("bloglist",blogList);	
+				return "foreView/home";		
+			}
+			
+		}else{
+		
 		if(page==null)
 			page = new Page();
 		
 		if(blog.getUserId() == 0){
-			
-			
 			List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
-			model.addAttribute("bloglist",blogList);
+			model.addAttribute("bloglist",blogList);	
 			return "foreView/main";	
 			
 		}else{
 		
 		List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
-		System.out.println(blogList);
 		if(blogList.size() == 0)
 			return "foreView/blank";
 		
 		model.addAttribute("bloglist",blogList);
-		
 		return "foreView/main";	
 		}
 	}
+		return flag;
+}
 	
 	/*
 	 * 显示详细博客内容、回复
@@ -257,6 +270,20 @@ public class UserController {
 		
 		return "foreView/concrete";
 		
+	}
+	
+	@RequestMapping("/selectBlogByType")
+	public String selectBlogByType(Type type,Blog blog,Comment comment,HttpServletRequest request,Model model){
+		
+		int typeid = Integer.parseInt(blog.getType());
+		
+		Type typeName = typeService.selectTypeName(typeid); 
+		List<Blog> bloglist = blogService.selectBlogByType(blog);
+	
+		model.addAttribute("bloglist",bloglist);
+		model.addAttribute("typeName",typeName.getTypeName());
+		
+		return "foreView/main";
 	}
 	
 }
