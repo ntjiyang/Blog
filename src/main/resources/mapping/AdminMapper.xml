@@ -37,7 +37,10 @@
 
 	<select id="selectAdminInforById" parameterType="int" resultMap="AdminBaseMap">
 		SELECT * FROM admins WHERE id = #{adminId}
-
 	</select>
 
+	<update id="updateAdminPower" parameterType="int">
+		UPDATE admins SET
+		power = #{adminPower} WHERE id = #{adminId}
+	</update>
 </mapper>

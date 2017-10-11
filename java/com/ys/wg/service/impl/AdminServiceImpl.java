@@ -35,13 +35,18 @@ public class AdminServiceImpl implements AdminService {
 		admin.count();
 
 		List<Admin> adminlist = adminDao.selectAdminInforByName(admin);
-		
+
 		return adminlist;
 	}
 
 	public Admin selectAdminInforById(int adminId) {
 
 		return adminDao.selectAdminInforById(adminId);
+	}
+
+	public boolean updateAdminPower(int adminId,int power) {
+
+		return adminDao.updateAdminPower(adminId,power);
 	}
 
 }

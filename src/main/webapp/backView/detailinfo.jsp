@@ -19,18 +19,25 @@ table {
 </style>
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
-	function powercheck() {
+	function powercheck(flag) {
 		var pow = "${sessionScope.adminpower}";
+		var oldPow = "${a.adminPower}";
 		var newPow = $("#power").val();
+		var upId = "${a.adminId}";
 		if (isNaN(newPow)) {
 			alert("请输入数字！");
 			$("#power").val(pow);
 		} else {
 			if (parseInt(newPow) >= parseInt(pow) || parseInt(newPow) < 0) {
 				alert("权限不够！");
-				$("#power").val(pow);
+				$("#power").val(oldPow);
 			}
 		}
+		if (flag == 1) {
+			window.location.href = "admin/adminUpdate?adminPower=" + newPow
+					+ "&adminId=" + upId + "";
+		}
+
 	}
 </script>
 </head>
@@ -42,7 +49,7 @@ table {
 
 					<c:if test="${flag == 'user'}">
 						<tr>
-							<td>头像</td>
+							<td width="50%">头像:</td>
 							<td>${u.headImage}</td>
 						</tr>
 						<tr>
@@ -71,12 +78,13 @@ table {
 							<td>${u.userInformation}</td>
 						</tr>
 						<tr>
-							<td><a class="read-more" href="backView/main.jsp">返回首页</a></td>
+							<td colspan="2"><a class="read-more"
+								href="backView/main.jsp">返回首页</a></td>
 						</tr>
 					</c:if>
 					<c:if test="${ flag == 'admin'}">
 						<tr>
-							<td>用户名：</td>
+							<td width="50%">用户名：</td>
 							<td>${a.adminName}</td>
 						</tr>
 						<tr>
@@ -90,13 +98,13 @@ table {
 
 						<tr>
 							<td>权限：</td>
-							<td><input id="power" type="text" name="adminName"
+							<td><input id="power" type="text" name="adminPower"
 								<c:if test="${sessionScope.adminpower <= a.adminPower}">disabled="disabled"</c:if>
-								value="${a.adminPower}" onchange="powercheck()" /></td>
+								value="${a.adminPower}" onchange="powercheck(0)" /></td>
 						</tr>
 						<tr>
-							<td><a class="read-more" href="backView/main.jsp">确认修改</a><a
-								class="read-more" href="backView/main.jsp">返回首页</a></td>
+							<td><a class="read-more" onclick="powercheck(1)">确认修改</a></td>
+							<td><a class="read-more" href="backView/main.jsp">返回首页</a></td>
 						</tr>
 					</c:if>
 				</table>

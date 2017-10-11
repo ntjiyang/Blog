@@ -17,4 +17,7 @@ public interface AdminService {
 
 	// 查询管理员列表
 	Admin selectAdminInforById(int adminId);
+
+	// 修改权限
+	boolean updateAdminPower(int adminId,int power);
 }

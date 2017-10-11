@@ -38,8 +38,8 @@ public class AdminController {
 		if (a != null) {
 			HttpSession session = request.getSession();
 
-        	session.setAttribute("adminname",a.getAdminName());
-        	session.setAttribute("adminpower", a.getAdminPower());
+			session.setAttribute("adminname", a.getAdminName());
+			session.setAttribute("adminpower", a.getAdminPower());
 
 			return "backView/adminHome";
 		} else {
@@ -49,7 +49,7 @@ public class AdminController {
 
 	// 根据用户名查询个人信息
 	@RequestMapping("/adminSelect")
-	public String adminSelect(User user, Admin admin, Page page,
+	public String adminSelect(User user, Admin admin,
 			HttpServletRequest request, Model model) {
 
 		List<User> userlist = userService.selectUserInforListByName(user);
@@ -62,23 +62,36 @@ public class AdminController {
 
 		return "backView/adminright";
 	}
-	
-	// 根据用户名查询个人信息
-		@RequestMapping("/adminDetail")
-		public String adminDetail(User user, Admin admin, Page page,
-				HttpServletRequest request, Model model) {
-			String flag = request.getParameter("flag");
-			
-			if(flag.equals("user")){
-				User u = userService.selectUserInfoById(user.getId());
-				model.addAttribute("u", u);
-			}else if(flag.equals("admin")){
-				Admin a = adminService.selectAdminInforById(admin.getAdminId());
-				model.addAttribute("a", a);
-			}
-			
-			model.addAttribute("flag", flag);
 
-			return "backView/detailinfo";
+	// 详细信息
+	@RequestMapping("/adminDetail")
+	public String adminDetail(User user, Admin admin,
+			HttpServletRequest request, Model model) {
+		String flag = request.getParameter("flag");
+
+		if (flag.equals("user")) {
+			User u = userService.selectUserInfoById(user.getId());
+			model.addAttribute("u", u);
+		} else if (flag.equals("admin")) {
+			Admin a = adminService.selectAdminInforById(admin.getAdminId());
+			model.addAttribute("a", a);
 		}
+
+		model.addAttribute("flag", flag);
+
+		return "backView/detailinfo";
+	}
+
+	// 修改信息
+	@RequestMapping("/adminUpdate")
+	public String userUpdate(Admin admin, HttpServletRequest request, Model model) {
+
+		if (adminService.updateAdminPower(admin.getAdminId(),admin.getAdminPower())) {
+
+			return "backView/main"; 
+		}
+
+		return "backView/adminHome";
+
+	}
 }
