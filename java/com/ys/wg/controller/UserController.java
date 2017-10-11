@@ -8,6 +8,7 @@ import com.ys.wg.model.Page;
 import com.ys.wg.model.User;
 import com.ys.wg.service.BlogService;
 import com.ys.wg.service.CommentService;
+import com.ys.wg.service.FollowService;
 import com.ys.wg.service.NotificationService;
 import com.ys.wg.service.UserService;
 import org.apache.log4j.Logger;
@@ -42,6 +43,9 @@ public class UserController {
     
     @Resource
     private BlogService blogService;
+    
+    @Resource
+    private FollowService followService;
 
     
     /*
