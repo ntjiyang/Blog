@@ -221,34 +221,40 @@ public class UserController {
 	
 	//显示用户博客
 	@RequestMapping("/blogSelectByUserId")
-	public String blogSelectByUserId(Page page,Blog blog,HttpServletRequest request, Model model){
+	public String blogSelectByUserId( Type type, Page page,Blog blog,HttpServletRequest request, Model model){
 		
 		String flag = request.getParameter("flag");
-		
+	
+		//主页显示blog
 		if(flag.equals("title")){
 			if(blog.getUserId() == 0){
 				List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
-				model.addAttribute("bloglist",blogList);	
+				
+				model.addAttribute("bloglist",blogList);
+
 				return "foreView/home";		
 			}
 			
 		}else{
 		
-		if(page==null)
-			page = new Page();
-		
+		//其他人主页的blog
 		if(blog.getUserId() == 0){
 			List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
-			model.addAttribute("bloglist",blogList);	
+	
+	
+			model.addAttribute("bloglist",blogList);
 			return "foreView/main";	
 			
 		}else{
 		
+		//自己主页的Blog
 		List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
+		
 		if(blogList.size() == 0)
 			return "foreView/blank";
 		
 		model.addAttribute("bloglist",blogList);
+	
 		return "foreView/main";	
 		}
 	}
@@ -273,17 +279,19 @@ public class UserController {
 	}
 	
 	@RequestMapping("/selectBlogByType")
-	public String selectBlogByType(Type type,Blog blog,Comment comment,HttpServletRequest request,Model model){
+	public String selectBlogByType(Page page, Type type,Blog blog,Comment comment,HttpServletRequest request,Model model){
 		
-		int typeid = Integer.parseInt(blog.getType());
 		
-		Type typeName = typeService.selectTypeName(typeid); 
-		List<Blog> bloglist = blogService.selectBlogByType(blog);
+		Type typeName = typeService.selectTypeName(blog.getType()); 
+		List<Blog> bloglist = blogService.selectBlogByType(blog,page);
+		
+		System.out.println("TypeNum"+blog.getType());
 	
 		model.addAttribute("bloglist",bloglist);
 		model.addAttribute("typeName",typeName.getTypeName());
+		model.addAttribute("type",blog.getType());
 		
-		return "foreView/main";
+		return "foreView/typeMain";
 	}
 	
 }

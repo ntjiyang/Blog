@@ -6,4 +6,5 @@ public interface TypeService {
 
 	Type selectTypeName(int typeid);
 
+
 }

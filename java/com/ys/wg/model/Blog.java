@@ -11,7 +11,7 @@ public class Blog {
 	private String blogContent; // 内容
 	private int seeCount; // 浏览数
 	private String support; // 点赞
-	private String type; // 类型
+	private int type; // 类型
 	private int status; // 状态
 
 	private int blogtotal;// 总的数据条数
@@ -92,11 +92,11 @@ public class Blog {
 		this.support = support;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 

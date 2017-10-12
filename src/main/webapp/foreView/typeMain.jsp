@@ -76,14 +76,14 @@ $(document).ready(function() {
 				</ul>
 		<center>
               <c:if test="${page.currentPage != 1 && page.currentPage != 0}">
-                    <a href="user/blogSelectByUserId?flag=0&currentPage=1"><input type="button" value="<<"/></a>
+                    <a href="user/selectBlogByType?type=${type}&currentPage=1"><input type="button" value="<<"/></a>
               </c:if>
-              <a href="user/blogSelectByUserId?flag=0&currentPage=${page.currentPage -1 }"><input type="button" 
+              <a href="user/selectBlogByType?type=${type}&currentPage=${page.currentPage -1 }"><input type="button" 
               <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/></a>
-              <a href="user/blogSelectByUserId?flag=0&currentPage=${page.currentPage +1 }"><input type="button" 
+              <a href="user/selectBlogByType?type=${type}&currentPage=${page.currentPage +1 }"><input type="button" 
               <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/></a>
               <c:if test="${page.currentPage !=page.totalPage }">
-                   <a href="user/blogSelectByUserId?flag=0&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
+                   <a href="user/selectBlogByType?type=${type}&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
               
               </c:if>
         </center>

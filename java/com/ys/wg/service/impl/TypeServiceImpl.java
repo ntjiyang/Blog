@@ -22,4 +22,5 @@ public class TypeServiceImpl implements TypeService {
 		return typeDao.selectTypeName(typeid);
 	}
 
+
 }

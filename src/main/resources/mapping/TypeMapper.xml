@@ -12,7 +12,10 @@
 		
 		<select id="selectTypeName" parameterType="int" resultMap="TypeBaseMap">
 			SELECT name FROM type WHERE type=#{id}
+		
 		</select>
+		
+		
 		
 
 </mapper>

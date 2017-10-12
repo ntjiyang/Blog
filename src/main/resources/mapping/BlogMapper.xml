@@ -46,9 +46,13 @@
 	
 	</select>
 	
-	<select id="selectBlogByType" parameterType="com.ys.wg.model.Blog" resultMap="BlogBaseMap">
+	<select id="selectBlogNumByType" parameterType="com.ys.wg.model.Blog" resultType="int">
+			SELECT COUNT(*) FROM blogs WHERE type = #{type}
+	</select>
 	
-		SELECT * FROM blogs WHERE type = #{type}
+	<select id="selectBlogByType" parameterType="int" resultMap="BlogBaseMap">
+	
+		SELECT * FROM blogs WHERE type = #{type} ORDER BY time DESC LIMIT #{start},#{end}
 		
 	</select>
 	

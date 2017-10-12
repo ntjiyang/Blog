@@ -77,6 +77,8 @@ $(document).ready(function() {
                 	<li><span class="date">${bl.time}</span></li>
                 </ul>
                 </c:forEach>
+   
+                
             <span class="widget-border"></span>
             
            </div><!--END widget-->
@@ -102,7 +104,7 @@ $(document).ready(function() {
             	<li><a href="user/selectBlogByType?type=2" target="main"><span class="category">文学</span><span class="number"></span></a></li>
             	<li><span class="widget-border"></span></li>
 
-            	<li><a href="user/selectBlogByType?type=3" target="main"><span class="category">推力</span><span class="number"></span></a></li>
+            	<li><a href="user/selectBlogByType?type=3" target="main"><span class="category">推理</span><span class="number"></span></a></li>
            		<li><span class="widget-border"></span></li>
             
             	<li><a href="user/selectBlogByType?type=4" target="main"><span class="category">电影</span><span class="number"></span></a></li>

@@ -22,4 +22,10 @@ public interface BlogDao {
 
 	List<Blog> selectBlogByType(Blog blog);
 
+	int selectBlogNumByType(Blog blog);
+
+	List<Blog> selectBlogByType(@Param("type")int type, @Param("start")int start, @Param("end") int end);
+
+
+
 }
