@@ -37,7 +37,7 @@
 		<if test="userId !=0">
 			WHERE user_id = #{userId}  
 		</if>
-			ORDER BY time DESC LIMIT #{start},#{end}
+			ORDER BY id DESC LIMIT #{start},#{end}
 	</select>
 	
 	<select id="selectblogByBlogId" parameterType="com.ys.wg.model.Blog" resultMap="BlogBaseMap"> 
@@ -52,8 +52,12 @@
 	
 	<select id="selectBlogByType" parameterType="int" resultMap="BlogBaseMap">
 	
-		SELECT * FROM blogs WHERE type = #{type} ORDER BY time DESC LIMIT #{start},#{end}
+		SELECT * FROM blogs WHERE type = #{type} ORDER BY id DESC LIMIT #{start},#{end}
 		
 	</select>
+	
+	<update id="updateSeeCount" parameterType="com.ys.wg.model.Blog">
+		UPDATE blogs SET see_count=see_count+1 WHERE id=#{id}
+	</update>
 	
 	</mapper>

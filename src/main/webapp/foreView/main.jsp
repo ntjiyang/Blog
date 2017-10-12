@@ -63,27 +63,27 @@ $(document).ready(function() {
                     	<ul>
                         	<li class="admin"><a href="user/userSelectById?userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
                             <li class="date">${bl.time}</li>
-                            <li class="comments"><a href="#">${bl.seeCount}</a></li>
-                            <li>信息类型：${typeName}</li>
+                            <li class="comments">${bl.seeCount}</li>
+                            <li>${typeName}</li>
                         </ul>
                     </div><!--end meta-->
                     <div class="context">
                     <p>${bl.blogContent}</p>
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}"><input type="button" value="查看完整内容"/></a>
+                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}"><input type="button" value="查看完整内容"/></a>
                     <hr>
                     </div>
                     </c:forEach>
 				</ul>
 		<center>
               <c:if test="${page.currentPage != 1 && page.currentPage != 0}">
-                    <a href="user/blogSelectByUserId?flag=0&currentPage=1"><input type="button" value="<<"/></a>
+                    <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=1"><input type="button" value="<<"/></a>
               </c:if>
-              <a href="user/blogSelectByUserId?flag=0&currentPage=${page.currentPage -1 }"><input type="button" 
+              <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.currentPage -1 }"><input type="button" 
               <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/></a>
-              <a href="user/blogSelectByUserId?flag=0&currentPage=${page.currentPage +1 }"><input type="button" 
+              <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.currentPage +1 }"><input type="button" 
               <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/></a>
               <c:if test="${page.currentPage !=page.totalPage }">
-                   <a href="user/blogSelectByUserId?flag=0&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
+                   <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
               
               </c:if>
         </center>

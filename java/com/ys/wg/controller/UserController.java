@@ -237,24 +237,25 @@ public class UserController {
 			
 		}else{
 		
-		//其他人主页的blog
+		//自己主页的blog
 		if(blog.getUserId() == 0){
 			List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
 	
 	
 			model.addAttribute("bloglist",blogList);
+			model.addAttribute("blogUserId",blog.getUserId());
 			return "foreView/main";	
 			
 		}else{
 		
-		//自己主页的Blog
+		//其他主页的Blog
 		List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
 		
 		if(blogList.size() == 0)
 			return "foreView/blank";
 		
 		model.addAttribute("bloglist",blogList);
-	
+		model.addAttribute("blogUserId",blog.getUserId());
 		return "foreView/main";	
 		}
 	}
@@ -267,7 +268,13 @@ public class UserController {
 	@RequestMapping("/selectblogByBlogId")
 	public String selectblogByBlogId(Blog blog,Comment comment,HttpServletRequest request, Model model){
 		
-	
+		String otherId = request.getParameter("otherId");
+		int otherid = Integer.parseInt(otherId);
+		
+		if(otherid != blog.getUserId())
+			blogService.updateSeeCount(blog);			
+		
+		
 		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
 		List<Comment> commentlist = commentService.selectCommentByBlogId(comment);
 		

@@ -72,4 +72,9 @@ public class BlogServiceImpl implements BlogService {
 		
 	}
 
+	public boolean updateSeeCount(Blog blog){
+		
+		return blogDao.updateSeeCount(blog);
+	}
+
 }

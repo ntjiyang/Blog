@@ -73,7 +73,8 @@ $(document).ready(function() {
            	<c:forEach items="${bloglist}" var="bl">
             	<ul>
             		<li class="thumb"><img src="images/image1.jpg" alt="toons" height="61" width="57" /></li>
-               		<li><span class="title"><a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}" target="main">${bl.blogTitle}</a></span></li>
+               		<li><span class="title"><a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}" target="main">${bl.blogTitle}</a></span></li>
+                	<li>查看次数：${bl.seeCount}</li>
                 	<li><span class="date">${bl.time}</span></li>
                 </ul>
                 </c:forEach>
@@ -85,13 +86,14 @@ $(document).ready(function() {
            
            <div class="widget">
            	<h3>最热博客</h3>
-            
+            <c:forEach items="${bloglist}" var="bl">
             <ul>
-            	<li><span class="title"><a href="#">Nam liber tempor cum soluta nobis eleifend...</a></span></li>
-                <li><span class="date">By <a href="#">Guest</a>, November 15, 2012</span></li>
+            	<li><span class="title"><a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}" target="main">${bl.blogTitle}</a></span></li>
+                <li>查看次数：${bl.seeCount}</li>
+                <li><span class="date">${bl.time}</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
-            
+            </c:forEach>
            </div><!--END widget-->
            
            <div class="widget cats">

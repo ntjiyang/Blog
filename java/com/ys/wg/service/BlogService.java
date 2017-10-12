@@ -16,6 +16,8 @@ public interface BlogService {
 
 	List<Blog> selectBlogByType(Blog blog,Page page);
 
+	boolean updateSeeCount(Blog blog);
+
 
 
 

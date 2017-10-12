@@ -26,6 +26,8 @@ public interface BlogDao {
 
 	List<Blog> selectBlogByType(@Param("type")int type, @Param("start")int start, @Param("end") int end);
 
+	boolean updateSeeCount(Blog blog);
+
 
 
 }
