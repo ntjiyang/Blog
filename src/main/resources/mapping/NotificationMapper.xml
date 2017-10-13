@@ -23,12 +23,12 @@
 
 	<select id="selectNotification" parameterType="int"
 		resultMap="NotificationBaseMap">
-		SELECT * FROM notification WHERE id=#{id} and status=0
+		SELECT * FROM notification WHERE id=#{notificationId} and status=0
 	</select>
 
 	<select id="showNotificationByTitle" parameterType="long"
 		resultMap="NotificationBaseMap">
-		SELECT * FROM notification WHERE user_id=#{userId} and
+		SELECT * FROM notification WHERE user_id=#{notiuserId} and
 		status=0
 	</select>
 
