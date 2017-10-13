@@ -20,4 +20,6 @@ public interface BlogService {
 
 	boolean updateSeeCount(Blog blog);
 
+	List<Blog> blogSelectBySee(Blog blog,Page page);
+
 }

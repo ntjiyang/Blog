@@ -38,7 +38,7 @@ $(document).ready(function() {
        
 
  <ul>
-                <li><a href="user/blogSelectByUserId?flag=title">主页</a></li> 
+                <li><a href="user/blogSelectByUserId?flag=title&userId=${userid}">主页</a></li> 
                 <li><a href="foreView/post.jsp">关于</a>
                 	<ul>
                     	<li><a href="foreView/post.jsp" target="main">样本页</a></li>
@@ -86,11 +86,11 @@ $(document).ready(function() {
            
            <div class="widget">
            	<h3>最热博客</h3>
-            <c:forEach items="${bloglist}" var="bl">
+            <c:forEach items="${blogseelist}" var="bsl">
             <ul>
-            	<li><span class="title"><a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}" target="main">${bl.blogTitle}</a></span></li>
-                <li>查看次数：${bl.seeCount}</li>
-                <li><span class="date">${bl.time}</span></li>
+            	<li><span class="title"><a href="user/selectblogByBlogId?id=${bsl.id}&blogId=${bsl.id}&userId=${userid}&otherId=${bsl.userId}" target="main">${bsl.blogTitle}</a></span></li>
+                <li>查看次数：${bsl.seeCount}</li>
+                <li><span class="date">${bsl.time}</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
             </c:forEach>

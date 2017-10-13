@@ -94,4 +94,12 @@ public class BlogServiceImpl implements BlogService {
 				page.getEnd());
 		return bloglist;
 	}
+
+	public List<Blog> blogSelectBySee(Blog blog,Page page) {
+		int num = this.selectBlogNum(blog);
+		page.setTotal(num);
+		page.count();
+		List<Blog> blogSeeList = blogDao.blogSeeList(page.getStart(),page.getEnd());
+		return blogSeeList;
+	}
 }

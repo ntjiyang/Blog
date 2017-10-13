@@ -34,4 +34,6 @@ public interface BlogDao {
 	List<Blog> selectBlogByCheck(@Param("check") int check,
 			@Param("start") int start, @Param("end") int end);
 
+	List<Blog> blogSeeList(@Param("start") int start,@Param("end") int end);
+
 }

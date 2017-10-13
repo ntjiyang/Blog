@@ -228,14 +228,18 @@ public class UserController {
 	
 	//主页显示blog
 		if(flag.equals("title")){
-			if(blog.getUserId() == 0){
+						
+				List<Blog> blogSeeList = blogService.blogSelectBySee(blog,page);
 				List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
-				HttpSession session = request.getSession();
-				model.addAttribute("bloglist",blogList);
-				session.setAttribute("userid", 0);
 
-				return "foreView/home";		
-			}
+				model.addAttribute("bloglist",blogList);
+				model.addAttribute("blogseelist",blogSeeList);
+				
+				if(blog.getUserId() == 0){
+					HttpSession session = request.getSession();
+					session.setAttribute("userid", 0);
+				}
+				return "foreView/home";			
 			
 		}else{
 		
@@ -261,7 +265,8 @@ public class UserController {
 		return "foreView/main";	
 		}
 	}
-		return flag;
+		
+		
 }
 	
 	/*
@@ -270,9 +275,9 @@ public class UserController {
 	@RequestMapping("/selectblogByBlogId")
 	public String selectblogByBlogId(Blog blog,Comment comment,HttpServletRequest request, Model model){
 		
-		if(blog.getUserId()==0){
+		if(blog.getUserId()==0)
 			return "foreView/error";
-		}
+		
 		
 		String otherId = request.getParameter("otherId");		
 		int otherid = Integer.parseInt(otherId);
