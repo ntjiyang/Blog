@@ -104,7 +104,7 @@ $(document).ready(function() {
             
             <ul>
             	<li><span class="title"><a href="#">${ntfl.notificationTitle}评论了你</a></span></li>
-                <li><span class="date">By <a href="#">${ntfl.userId}</a>${ntfl.notificationTime}</span></li>
+                <li><span class="date">By <a href="#">${ntfl.notiuserId}</a>${ntfl.notificationTime}</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
           </c:forEach>

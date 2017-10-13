@@ -8,10 +8,12 @@ import com.ys.wg.model.Notification;
 
 @Repository
 public interface NotificationDao {
+	
+	boolean addNotification(Notification notification);
 
-	List<Notification> selectNotification(int id);
+	List<Notification> selectNotification(int notificationId);
 
-	List<Notification> showNotificationByTitle(Long userId);
+	List<Notification> showNotificationByTitle(Long notiuserId);
 
 	
 }

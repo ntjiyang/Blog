@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ys.wg.model.Admin;
 import com.ys.wg.model.Notification;
-import com.ys.wg.model.Page;
 import com.ys.wg.model.User;
 import com.ys.wg.service.AdminService;
+import com.ys.wg.service.NotificationService;
 import com.ys.wg.service.UserService;
 
 @Controller
@@ -26,6 +26,9 @@ public class AdminController {
 
 	@Resource
 	private AdminService adminService;
+
+	@Resource
+	private NotificationService notificationService;
 
 	@Resource
 	private UserService userService;
@@ -84,14 +87,40 @@ public class AdminController {
 
 	// 修改信息
 	@RequestMapping("/adminUpdate")
-	public String userUpdate(Admin admin, HttpServletRequest request, Model model) {
+	public String userUpdate(Admin admin, HttpServletRequest request,
+			Model model) {
 
-		if (adminService.updateAdminPower(admin.getAdminId(),admin.getAdminPower())) {
+		if (adminService.updateAdminPower(admin.getAdminId(),
+				admin.getAdminPower())) {
 
-			return "backView/main"; 
+			return "backView/main";
 		}
 
 		return "backView/adminHome";
 
+	}
+
+	// 修改信息
+	@RequestMapping("/addNotification")
+	public String addNotification(User user, Notification notification,
+			HttpServletRequest request, Model model) {
+		String flag = request.getParameter("flag");
+
+		if (flag.equals("skip")) {
+			model.addAttribute("User", user);
+			return "backView/addnotification";
+		} else if (flag.equals("add")) {
+
+			List<User> userlist = userService.selectUserInforByName(user
+					.getUserName());
+			for (User u : userlist) {
+				notification.setNotiuserId(u.getId());
+			}
+
+			if (notificationService.addNotification(notification)) {
+				return "backView/main";
+			}
+		}
+		return "backView/main";
 	}
 }
