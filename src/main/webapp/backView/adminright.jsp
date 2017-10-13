@@ -85,7 +85,7 @@
 									<li><span class="title"><a target="main"
 											href="admin/adminDetail?id=${user.id}&flag=user">${user.userName}</a></span></li>
 									<li><span class="date">${user.fans}</span></li>
-									<li><input onclick="window.top.frames['main'].location.href='backView/addnotification.jsp'"  type="button" value="发送通知"></li>
+									<li><input onclick="window.top.frames['main'].location.href='admin/addNotification?userName=${user.userName}&flag=skip'"  type="button" value="发送通知"></li>
 								</ul>
 								<span class="widget-border"></span>
 							</c:forEach>

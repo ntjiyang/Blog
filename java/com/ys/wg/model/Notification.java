@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Notification {
 
-	private int id; // ͨ通知id
-	private int userId; // 用户id
+	private int notificationId; // ͨ通知id
+	private long notiuserId; // 用户id
 	private Date notificationTime; // 时间
 	private String notificationTitle; // ֪ͨ标题
 	private String notificationContent; // 内容
-	private int status; // 审核状态
-	private int adminId; // 管理员id
+	private int notificationStatus; // 审核状态
+	private int notiadminId; // 管理员id
 
 	private int notitotal;// 总的数据条数
 	private int notipageSize = 3;// 每页显示条数
@@ -34,20 +34,20 @@ public class Notification {
 		notiend = notipageSize;
 	}
 
-	public int getId() {
-		return id;
+	public int getNotificationId() {
+		return notificationId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setNotificationId(int notificationId) {
+		this.notificationId = notificationId;
 	}
 
-	public int getUserId() {
-		return userId;
+	public long getNotiuserId() {
+		return notiuserId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setNotiuserId(long notiuserId) {
+		this.notiuserId = notiuserId;
 	}
 
 	public Date getNotificationTime() {
@@ -74,20 +74,20 @@ public class Notification {
 		this.notificationContent = notificationContent;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getNotificationStatus() {
+		return notificationStatus;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setNotificationStatus(int notificationStatus) {
+		this.notificationStatus = notificationStatus;
 	}
 
-	public int getAdminId() {
-		return adminId;
+	public int getNotiadminId() {
+		return notiadminId;
 	}
 
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
+	public void setNotiadminId(int notiadminId) {
+		this.notiadminId = notiadminId;
 	}
 
 	public int getNotitotal() {

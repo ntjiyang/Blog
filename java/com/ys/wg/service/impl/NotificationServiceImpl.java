@@ -17,6 +17,11 @@ public class NotificationServiceImpl implements NotificationService {
 	
 	@Resource
 	private NotificationDao notificationDao;
+	
+	public boolean addNotification(Notification notification) {
+
+		return notificationDao.addNotification(notification);
+	}
 
 	public List<Notification> selectNotification(int id) {
 		

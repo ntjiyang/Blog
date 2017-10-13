@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ys.wg.dao.NotificationDao">
-		
-		<resultMap id="NotificationBaseMap" type="com.ys.wg.model.Notification">
-		
-			<id column="id" property="id" jdbcType="INTEGER"/>
-			<result column="user_id" property="userId" jdbcType="INTEGER"/>
-			<result column="time" property="notificationTime" jdbcType="TIMESTAMP"/>
-			<result column="title" property="notificationTitle" jdbcType="VARCHAR"/>
-			<result column="content" property="notificationContent" jdbcType="VARCHAR"/>
-			<result column="status" property="status" jdbcType="INTEGER"/>
-			<result column="admin_id" property="adminId" jdbcType="INTEGER"/>
-		
-		</resultMap>
-		
-		<select id="selectNotification" parameterType="int" resultMap="NotificationBaseMap">
-			SELECT * FROM notification WHERE id=#{id} and status=0
-		</select>
-		
-		<select id="showNotificationByTitle" parameterType="long" resultMap="NotificationBaseMap">
-			SELECT * FROM notification WHERE user_id=#{userId} and status=0
-		</select>
-		
+
+	<resultMap id="NotificationBaseMap" type="com.ys.wg.model.Notification">
+
+		<id column="id" property="notificationId" jdbcType="INTEGER" />
+		<result column="user_id" property="notiuserId" jdbcType="INTEGER" />
+		<result column="time" property="notificationTime" jdbcType="TIMESTAMP" />
+		<result column="title" property="notificationTitle" jdbcType="VARCHAR" />
+		<result column="content" property="notificationContent"
+			jdbcType="VARCHAR" />
+		<result column="status" property="notificationStatus" jdbcType="INTEGER" />
+		<result column="admin_id" property="notiadminId" jdbcType="INTEGER" />
+
+	</resultMap>
+
+	<insert id="addNotification" parameterType="com.ys.wg.model.Notification">
+		INSERT INTO
+		notification
+		(user_id,title,content,admin_id)VALUES(#{notiuserId},#{notificationTitle},#{notificationContent},#{notiadminId})
+	</insert>
+
+	<select id="selectNotification" parameterType="int"
+		resultMap="NotificationBaseMap">
+		SELECT * FROM notification WHERE id=#{id} and status=0
+	</select>
+
+	<select id="showNotificationByTitle" parameterType="long"
+		resultMap="NotificationBaseMap">
+		SELECT * FROM notification WHERE user_id=#{userId} and
+		status=0
+	</select>
+
 
 </mapper>

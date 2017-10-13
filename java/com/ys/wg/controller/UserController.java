@@ -169,7 +169,7 @@ public class UserController {
 	@RequestMapping("/selectNotification")
 	public String selectNotification(Notification notification,HttpServletRequest request, Model model){
 		
-		List<Notification> notificationList = notificationService.selectNotification(notification.getId());
+		List<Notification> notificationList = notificationService.selectNotification(notification.getNotiadminId());
 		
 		model.addAttribute("notificationlist", notificationList );
 	
