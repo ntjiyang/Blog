@@ -12,6 +12,7 @@ public class Blog {
 	private int seeCount; // 浏览数
 	private String support; // 点赞
 	private int type; // 类型
+	private int check; // 审核
 	private int status; // 状态
 
 	private int blogtotal;// 总的数据条数
@@ -98,6 +99,14 @@ public class Blog {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
 	}
 
 	public int getStatus() {

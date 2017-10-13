@@ -14,11 +14,10 @@ public interface BlogService {
 
 	List<Blog> selectblogByBlogId(Blog blog);
 
+	List<Blog> selectBlogByCheck(int check,Page page);
+	
 	List<Blog> selectBlogByType(Blog blog,Page page);
 
 	boolean updateSeeCount(Blog blog);
-
-
-
 
 }

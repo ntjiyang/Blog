@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.ys.wg.model.Blog;
 import com.ys.wg.model.Page;
 
-
 @Repository
 public interface BlogDao {
 
@@ -16,7 +15,8 @@ public interface BlogDao {
 
 	int selectBlogNum(Blog blog);
 
-	List<Blog> blogSelectByUserId(@Param("userId")int userId,@Param("start") int start,@Param("end") int end);
+	List<Blog> blogSelectByUserId(@Param("userId") int userId,
+			@Param("start") int start, @Param("end") int end);
 
 	List<Blog> selectblogByBlogId(Blog blog);
 
@@ -24,10 +24,14 @@ public interface BlogDao {
 
 	int selectBlogNumByType(Blog blog);
 
-	List<Blog> selectBlogByType(@Param("type")int type, @Param("start")int start, @Param("end") int end);
+	List<Blog> selectBlogByType(@Param("type") int type,
+			@Param("start") int start, @Param("end") int end);
 
 	boolean updateSeeCount(Blog blog);
 
+	int selectBlogNumByCheck(int check);
 
+	List<Blog> selectBlogByCheck(@Param("check") int check,
+			@Param("start") int start, @Param("end") int end);
 
 }

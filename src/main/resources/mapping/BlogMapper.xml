@@ -11,6 +11,7 @@
 		<result column="see_count" property="seeCount" jdbcType="INTEGER"/>
 		<result column="support" property="support" jdbcType="VARCHAR"/>
 		<result column="type" property="type" jdbcType="INTEGER"/>
+		<result column="check" property="check" jdbcType="INTEGER"/>
 		<result column="status" property="status" jdbcType="INTEGER"/>
 	</resultMap>
 	
@@ -53,6 +54,16 @@
 	<select id="selectBlogByType" parameterType="int" resultMap="BlogBaseMap">
 	
 		SELECT * FROM blogs WHERE type = #{type} ORDER BY id DESC LIMIT #{start},#{end}
+		
+	</select>
+	
+	<select id="selectBlogNumByCheck" parameterType="int" resultType="int">
+			SELECT COUNT(*) FROM blogs WHERE check = #{check}
+	</select>
+	
+	<select id="selectBlogByCheck" parameterType="int" resultMap="BlogBaseMap">
+	
+		SELECT * FROM blogs WHERE check = #{check} ORDER BY id DESC LIMIT #{start},#{end}
 		
 	</select>
 	
