@@ -69,7 +69,7 @@ $(document).ready(function() {
                     </div><!--end meta-->
                     <div class="context">
                     <p>${bl.blogContent}</p>
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}"><input type="button" value="查看完整内容"/></a>
+                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}"><input type="button" value="查看完整内容"/></a>
                     <hr>
                     </div>
                     </c:forEach>

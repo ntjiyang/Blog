@@ -137,6 +137,7 @@ public class UserController {
 		
 		User u = userService.selectUserInfoById(user.getId());
 		String userid = request.getParameter("userid");
+
 		int id = Integer.parseInt(userid);
 		
 		model.addAttribute("userName",u.getUserName());
@@ -169,7 +170,7 @@ public class UserController {
 	@RequestMapping("/selectNotification")
 	public String selectNotification(Notification notification,HttpServletRequest request, Model model){
 		
-		List<Notification> notificationList = notificationService.selectNotification(notification.getId());
+		List<Notification> notificationList = notificationService.selectNotification(notification.getNotiadminId());
 		
 		model.addAttribute("notificationlist", notificationList );
 	
@@ -225,12 +226,13 @@ public class UserController {
 		
 		String flag = request.getParameter("flag");
 	
-		//主页显示blog
+	//主页显示blog
 		if(flag.equals("title")){
 			if(blog.getUserId() == 0){
 				List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
-				
+				HttpSession session = request.getSession();
 				model.addAttribute("bloglist",blogList);
+				session.setAttribute("userid", 0);
 
 				return "foreView/home";		
 			}
@@ -268,7 +270,11 @@ public class UserController {
 	@RequestMapping("/selectblogByBlogId")
 	public String selectblogByBlogId(Blog blog,Comment comment,HttpServletRequest request, Model model){
 		
-		String otherId = request.getParameter("otherId");
+		if(blog.getUserId()==0){
+			return "foreView/error";
+		}
+		
+		String otherId = request.getParameter("otherId");		
 		int otherid = Integer.parseInt(otherId);
 		
 		if(otherid != blog.getUserId())
@@ -280,7 +286,6 @@ public class UserController {
 		
 		model.addAttribute("bloglist",bloglist);
 		model.addAttribute("commentlist",commentlist);
-		
 		return "foreView/concrete";
 		
 	}

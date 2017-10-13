@@ -43,7 +43,7 @@ $(document).ready(function() {
 </style>
  
 </head>
-<body>
+<body style="width:100%;hight:100%">
 
  <div id="main">
   			

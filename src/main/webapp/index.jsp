@@ -52,8 +52,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="submit" value="登 录">
 				</form>
 			</div>
-			<a href="#">忘记密码?</a>
-			
+			<ul>
+			<li><a href="backView/adminLogin.jsp">管理员入口</a></li>
+			<li>&nbsp;</li>
+			<li><a href="user/blogSelectByUserId?flag=title&userId=0">游客入口</a></li>
+			</ul>
 			<div class="clear"></div>
 		</div>
 		<div class="register w3layouts agileits">

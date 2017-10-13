@@ -82,11 +82,11 @@ public class Notification {
 		this.status = status;
 	}
 
-	public int getAdminId() {
+	public int getadminId() {
 		return adminId;
 	}
 
-	public void setAdminId(int adminId) {
+	public void setadminId(int adminId) {
 		this.adminId = adminId;
 	}
 
