@@ -42,16 +42,12 @@
 	<div id="main">
 		<div id="navigation">
 			<ul style="float: left;margin-left: 40px;">
-				<li><a class="active" href="foreView/index.jsp" target="_parent">主页</a></li>
-				<li><a href="foreView/post.jsp" target="_parent">关于</a>
+				<li><a class="active" href="admin/selectBlogByCheck?check=1" target="main">主页</a></li>
+				<li><a href="foreView/post.jsp" target="_parent">博客</a>
 					<ul>
-						<li><a href="foreView/post.jsp" target="_parent">样本页</a></li>
-						<li><a href="foreView/blankPage.jsp" target="_parent">空白页</a></li>
-						<li><a href="foreView/slider.jsp" target="_parent">Nivo Slider</a></li>
+						<li><a href="admin/selectBlogByCheck?check=1" target="main">已审核</a></li>
+						<li><a href="admin/selectBlogByCheck?check=0" target="main">未审核</a></li>
 					</ul></li>
-				<li><a href="foreView/gallery.jsp" target="_parent">Gallery</a></li>
-				<li><a href="" target="_parent">Shortcodes</a></li>
-				<li><a href="" target="_parent">Contact</a></li>
 			</ul>
 		</div>
 		<!--END navigation-->

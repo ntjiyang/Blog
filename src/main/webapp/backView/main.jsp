@@ -69,22 +69,22 @@ $(document).ready(function() {
                     </div><!--end meta-->
                     <div class="context">
                     <p>${bl.blogContent}</p>
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}"><input type="button" value="查看完整内容"/></a>
+                    <input onclick="window.location.href='user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}'" type="button" value="查看完整内容"/>
                     <hr>
                     </div>
                     </c:forEach>
 				</ul>
 		<center>
               <c:if test="${page.currentPage != 1 && page.currentPage != 0}">
-                    <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=1"><input type="button" value="<<"/></a>
+                    <input onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=1'" type="button" value="首页"/>
               </c:if>
-              <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.currentPage -1 }"><input type="button" 
-              <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/></a>
-              <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.currentPage +1 }"><input type="button" 
-              <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/></a>
+              <input onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=${page.currentPage -1 }'" type="button" 
+              <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/>
+       			       第${page.currentPage}页/共${ page.totalPage}页
+              <input onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=${page.currentPage +1 }'" type="button" 
+              <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/>
               <c:if test="${page.currentPage !=page.totalPage }">
-                   <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
-              
+                   <input onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=${page.totalPage}'" type="button" value="尾页"/>              
               </c:if>
         </center>
 				

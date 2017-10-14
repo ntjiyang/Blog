@@ -12,9 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ys.wg.model.Admin;
+import com.ys.wg.model.Blog;
 import com.ys.wg.model.Notification;
+import com.ys.wg.model.Page;
 import com.ys.wg.model.User;
 import com.ys.wg.service.AdminService;
+import com.ys.wg.service.BlogService;
 import com.ys.wg.service.NotificationService;
 import com.ys.wg.service.UserService;
 
@@ -32,6 +35,9 @@ public class AdminController {
 
 	@Resource
 	private UserService userService;
+	
+	@Resource
+	private BlogService blogService;
 
 	@RequestMapping("/adminLogin")
 	public String userLogin(Admin admin, HttpServletRequest request, Model model) {
@@ -100,7 +106,7 @@ public class AdminController {
 
 	}
 
-	// 修改信息
+	// 添加通知
 	@RequestMapping("/addNotification")
 	public String addNotification(User user, Notification notification,
 			HttpServletRequest request, Model model) {
@@ -122,5 +128,18 @@ public class AdminController {
 			}
 		}
 		return "backView/main";
+	}
+
+	// 显示博客
+	@RequestMapping("/selectBlogByCheck")
+	public String blogSelectByUserId(Page page, Blog blog,
+			HttpServletRequest request, Model model) {
+
+			List<Blog> blogList = blogService.selectBlogByCheck(blog.getCheck(), page);
+
+			model.addAttribute("bloglist", blogList);
+
+		return "backView/main";
+
 	}
 }

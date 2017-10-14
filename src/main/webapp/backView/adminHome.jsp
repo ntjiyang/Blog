@@ -44,7 +44,7 @@
 			style="width: 695px; height: 105px; float: left" scrolling="no"></iframe>
 		<iframe name="adminright" src="admin/adminSelect"
 			style="height: 1400px; width: 291px; float: right" scrolling="no"></iframe>
-		<iframe name="main" src="backView/main.jsp"
+		<iframe name="main" src="admin/selectBlogByCheck?check=1"
 			style="height: 1295px; width: 695px; float: left" scrolling="no"></iframe>
 
 
