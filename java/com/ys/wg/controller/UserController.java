@@ -155,7 +155,9 @@ public class UserController {
 		
 		if(userService.updateUserInfor(user.getUserName(),user.getPassword(),user.getHeadImage(),user.getUserInformation())){
 			
-			return "foreView/main";  //跳转到个人中心
+			
+			
+			return "foreView/personalinfo"; 
 		}
 		
 		return "foreView/personalinfo";
@@ -228,17 +230,25 @@ public class UserController {
 	
 	//主页显示blog
 		if(flag.equals("title")){
-						
+			if(blog.getUserId() == 0){	
 				List<Blog> blogSeeList = blogService.blogSelectBySee(blog,page);
 				List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
 
 				model.addAttribute("bloglist",blogList);
 				model.addAttribute("blogseelist",blogSeeList);
 				
-				if(blog.getUserId() == 0){
+				
 					HttpSession session = request.getSession();
 					session.setAttribute("userid", 0);
-				}
+			}else{
+				blog.setUserId(0);
+				List<Blog> blogSeeList = blogService.blogSelectBySee(blog,page);
+				List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
+
+				model.addAttribute("bloglist",blogList);
+				model.addAttribute("blogseelist",blogSeeList);
+				
+			}
 				return "foreView/home";			
 			
 		}else{

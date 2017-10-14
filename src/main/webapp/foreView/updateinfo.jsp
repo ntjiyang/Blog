@@ -53,11 +53,12 @@
 	<textarea id="content" name="userInformation" style=" width:300px; height:100px; resize:none;">${ul.userInformation}</textarea></td>
 </tr>
 
-</c:forEach>
+
 <tr>
 	<td><input type="submit" value="提交"/></td>
-	<td><a href="foreView/main.jsp"><input type="button" value="返回个人中心"/></a></td>
+	<td><a href="user/blogSelectByUserId?flag=0&userId=${ul.id}"><input type="button" value="返回个人中心"/></a></td>
 </tr>
+</c:forEach>
 </table>
 </form>
 

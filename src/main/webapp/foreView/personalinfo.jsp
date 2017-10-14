@@ -56,7 +56,7 @@
 </c:forEach>
 <tr>
 	<td><a href="user/userSelect?userName=${username}&flag=update" target="main"><input type="button" value="修改信息"/></a></td>
-	<td><a href="foreView/main.jsp"><input type="button" value="返回个人中心"/></a></td>
+	<td><a href="user/blogSelectByUserId?flag=0&userId=${userid}"><input type="button" value="返回个人中心"/></a></td>
 </tr>
 </table>
 

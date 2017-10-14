@@ -49,13 +49,13 @@
 	<td>${ul.fans}</td>
 </tr>
 <tr>
-	<td>个人简介</td>
+	<td>个人简介:</td>
 	<td>${ul.userInformation}</td>
 </tr>
 
 </c:forEach>
 <tr>
-	<td><a href="foreView/main.jsp"><input type="button" value="首页"/></a></td>
+	<td><a href="user/blogSelectByUserId?flag=0&userId=${userid}">返回用户专页</a></td>
 </tr>
 </table>
 
