@@ -98,6 +98,17 @@ public class UserController {
 		
 }
 	
+	//用户退出
+	@RequestMapping("/quit")
+	public String quit(HttpServletRequest request ){
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("userid");
+		
+        return "index"; 
+		
+	}
+	
 	//根据用户名查询个人专页
 	@RequestMapping("/userSelect")
 	public String userSelect(User user,HttpServletRequest request, Model model){

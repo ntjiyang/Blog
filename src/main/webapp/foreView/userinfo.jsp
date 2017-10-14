@@ -53,10 +53,11 @@
 	<td>${ul.userInformation}</td>
 </tr>
 
-</c:forEach>
+
 <tr>
-	<td><a href="user/blogSelectByUserId?flag=0&userId=${userid}">返回用户专页</a></td>
+	<td><a href="user/blogSelectByUserId?flag=0&userId=${ul.id}">返回用户专页</a></td>
 </tr>
+</c:forEach>
 </table>
 
 

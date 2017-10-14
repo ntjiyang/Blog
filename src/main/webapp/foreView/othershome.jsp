@@ -41,19 +41,10 @@ $(document).ready(function() {
       <div id="navigation">
        
 
- <ul>
-                    <li><a href="user/blogSelectByUserId?flag=title">主页</a></li> 
-                <li><a href="foreView/post.jsp">关于</a>
-                	<ul>
-                    	<li><a href="foreView/post.jsp" target="main">样本页</a></li>
-                        <li><a href="foreView/blankPage.jsp" target="main">空白页</a></li>
-                        <li><a href="foreView/slider.jsp" target="main">Nivo Slider</a></li>
-                     </ul>
-                </li>
-                <li><a href="foreView/gallery.jsp" target="main">Gallery</a></li>
-                <li><a href="">Shortcodes</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
+ 		<ul>
+                		<li><a href="user/blogSelectByUserId?flag=title&userId=${userid}">主页</a></li>               
+                        <li><a href="user/quit?userid=${userid}">退出</a></li>
+        </ul>
  </div><!--END navigation-->
  </div>
         <div id="side">

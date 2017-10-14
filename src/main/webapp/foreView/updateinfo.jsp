@@ -56,7 +56,7 @@
 
 <tr>
 	<td><input type="submit" value="提交"/></td>
-	<td><a href="user/blogSelectByUserId?flag=0&userId=${ul.id}"><input type="button" value="返回个人中心"/></a></td>
+	<td><a href="user/blogSelectByUserId?flag=0&userId=${userid}"><input type="button" value="返回个人中心"/></a></td>
 </tr>
 </c:forEach>
 </table>
