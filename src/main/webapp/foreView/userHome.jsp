@@ -88,12 +88,12 @@ $(document).ready(function() {
             <span class="widget-border"></span>
            </div><!--END widget-->
            
-           <div class="widget">
+           <div class="widget">  
            	<h3>最新通知</h3>
            	<c:forEach items="${notificationlist}" var="ntfl">
             
             <ul>
-            	<li><span class="title"><a href="#">${ntfl.notificationTitle}评论了你</a></span></li>
+            	<li><span class="title"><a href="#">${ntfl.notificationTitle}</a></span></li>
                 <li><span class="date">By <a href="#">${ntfl.notiuserId}</a>${ntfl.notificationTime}</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
