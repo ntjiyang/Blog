@@ -21,12 +21,12 @@
 	</insert>
 	
 	<select id="blogNew" parameterType="com.ys.wg.model.Page" resultMap="BlogBaseMap">
-		SELECT * FROM blogs WHERE checks = 1 ORDER BY time DESC LIMIT #{start},#{end}
+		SELECT * FROM blogs WHERE checks = 1 AND status = 1 ORDER BY time DESC LIMIT #{start},#{end}
 	</select>
 	
 	<select id="selectBlogNum" parameterType="com.ys.wg.model.Blog"
 		resultType="int">
-		SELECT count(*) FROM blogs WHERE checks = 1
+		SELECT count(*) FROM blogs WHERE checks = 1  AND status = 1
 		<if test="userId !=0">
 			AND user_id = #{userId}
 		</if>
@@ -34,7 +34,7 @@
 	
 	<select id="blogSelectByUserId" parameterType="int" resultMap="BlogBaseMap">
 	
-		SELECT * FROM blogs WHERE checks = 1
+		SELECT * FROM blogs WHERE checks = 1  AND status = 1
 		<if test="userId !=0">
 			AND user_id = #{userId}  
 		</if>
@@ -43,27 +43,27 @@
 	
 	<select id="selectblogByBlogId" parameterType="com.ys.wg.model.Blog" resultMap="BlogBaseMap"> 
 		
-		SELECT * FROM blogs WHERE id=#{id}
+		SELECT * FROM blogs WHERE id=#{id}  AND status = 1
 	
 	</select>
 	
 	<select id="selectBlogNumByType" parameterType="com.ys.wg.model.Blog" resultType="int">
-			SELECT COUNT(*) FROM blogs WHERE type = #{type}  AND  checks = 1
+			SELECT COUNT(*) FROM blogs WHERE type = #{type}  AND  checks = 1  AND status = 1
 	</select>
 	
 	<select id="selectBlogByType" parameterType="int" resultMap="BlogBaseMap">
 	
-		SELECT * FROM blogs WHERE type = #{type} AND  checks = 1 ORDER BY id DESC LIMIT #{start},#{end}
+		SELECT * FROM blogs WHERE type = #{type} AND  checks = 1  AND status = 1 ORDER BY id DESC LIMIT #{start},#{end}
 		
 	</select>
 	
 	<select id="selectBlogNumByCheck" parameterType="int" resultType="int">
-			SELECT COUNT(*) FROM blogs WHERE checks = #{check}
+			SELECT COUNT(*) FROM blogs WHERE checks = #{check}  AND status = 1
 	</select>
 	
 	<select id="selectBlogByCheck" parameterType="int" resultMap="BlogBaseMap">
 	
-		SELECT * FROM blogs WHERE checks = #{check} ORDER BY id DESC LIMIT #{start},#{end}
+		SELECT * FROM blogs WHERE checks = #{check}  AND status = 1 ORDER BY id DESC LIMIT #{start},#{end}
 		
 	</select>
 	
@@ -72,7 +72,15 @@
 	</update>
 	
 	<select id="blogSeeList" parameterType="int" resultMap="BlogBaseMap">
-		SELECT * FROM blogs WHERE checks = 1 ORDER BY see_count DESC LIMIT #{start},#{end}
+		SELECT * FROM blogs WHERE checks = 1  AND status = 1 ORDER BY see_count DESC LIMIT #{start},#{end}
 	</select>
+	
+	<update id="updateCheck" parameterType="int">
+		UPDATE blogs SET checks = 1 WHERE id=#{id}
+	</update>
+	
+	<update id="updateStatus" parameterType="int">
+		UPDATE blogs SET status = 0 WHERE id=#{id}
+	</update>
 	
 	</mapper>

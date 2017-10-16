@@ -35,7 +35,7 @@ public class AdminController {
 
 	@Resource
 	private UserService userService;
-	
+
 	@Resource
 	private BlogService blogService;
 
@@ -135,11 +135,34 @@ public class AdminController {
 	public String blogSelectByUserId(Page page, Blog blog,
 			HttpServletRequest request, Model model) {
 
-			List<Blog> blogList = blogService.selectBlogByCheck(blog.getCheck(), page);
+		List<Blog> blogList = blogService.selectBlogByCheck(blog.getCheck(),
+				page);
 
-			model.addAttribute("bloglist", blogList);
+		model.addAttribute("bloglist", blogList);
 
 		return "backView/main";
+
+	}
+
+	// 修改博客信息
+	@RequestMapping("/blogUpdate")
+	public String blogUpdate(int id, HttpServletRequest request,
+			Model model) {
+		String flag = request.getParameter("flag");
+
+		if (flag.equals("check")) {
+			if (blogService.updateCheck(id)) {
+
+				return "backView/main";
+			}
+		}else if(flag.equals("status")){
+			if (blogService.updateStatus(id)) {
+
+				return "backView/main";
+			}
+		}
+
+		return "backView/adminHome";
 
 	}
 }

@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ys.wg.model.Blog;
-import com.ys.wg.model.Page;
 
 @Repository
 public interface BlogDao {
@@ -34,6 +33,10 @@ public interface BlogDao {
 	List<Blog> selectBlogByCheck(@Param("check") int check,
 			@Param("start") int start, @Param("end") int end);
 
-	List<Blog> blogSeeList(@Param("start") int start,@Param("end") int end);
+	List<Blog> blogSeeList(@Param("start") int start, @Param("end") int end);
+
+	boolean updateCheck(int id);
+
+	boolean updateStatus(int id);
 
 }
