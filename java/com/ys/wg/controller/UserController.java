@@ -3,6 +3,7 @@ package com.ys.wg.controller;
 
 import com.ys.wg.model.Blog;
 import com.ys.wg.model.Comment;
+import com.ys.wg.model.Follow;
 import com.ys.wg.model.Notification;
 import com.ys.wg.model.Page;
 import com.ys.wg.model.Type;
@@ -342,6 +343,37 @@ public class UserController {
 		model.addAttribute("type",blog.getType());
 		
 		return "foreView/typeMain";
+	}
+	
+	/*
+	 * 
+	 * 关注模块
+	 * 
+	 * */
+	
+	@RequestMapping("/selectFollowByUserId")
+	public String selectFollowByUserId(Page page,Follow follow,HttpServletRequest request,Model model){
+		
+		List<Follow> followlist = followService.selectFollowByUserId(follow.getUserId(),page);
+		
+		model.addAttribute("followlist",followlist);
+		
+		return "foreView/followList";
+	}
+	
+	@RequestMapping("/deleteFollow")
+	public String deleteFollow(Follow follow,Model model,Page page){
+		
+		if(followService.deleteFollow(follow.getFollowId(),follow.getUserId())){
+			List<Follow> followlist = followService.selectFollowByUserId(follow.getUserId(),page);
+			
+			model.addAttribute("followlist",followlist);
+			
+			return "foreView/followList";
+		}
+		return "foreView/error";
+		
+		
 	}
 	
 }

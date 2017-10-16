@@ -55,7 +55,7 @@ $(document).ready(function() {
             </div><!--END header-->
          <center>
         
-            <b style="font-size: 20px">${userName}</b>
+            <b style="font-size: 20px">${userName}</b><input type="button" value="关注"/>
              
             </center>   
            <span class="border"></span>
@@ -77,31 +77,6 @@ $(document).ready(function() {
            </div><!--END widget-->
      
            <div id="sidebar-widgets">
-           <div class="widget recentposts">
-           	<h3>关注用户列表</h3>
-            <span class="widget-border"></span>
-            
-            <ul>
-            	<li class="thumb"><img src="images/image2.jpg" alt="toons" height="61" width="57" /></li>
-                <li><span class="title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></span></li>
-                <li><span class="date">November 21, 2012 - 3 comments</span></li>
-            </ul>
-           
- 
-            <span class="widget-border"></span>
-           </div><!--END widget-->
-           
-           <div class="widget">
-           	<h3>最新通知</h3>
-           	<c:forEach items="${notificationlist}" var="ntfl">
-            
-            <ul>
-            	<li><span class="title"><a href="#">${ntfl.notificationTitle}评论了你</a></span></li>
-                <li><span class="date">By <a href="#">${ntfl.userId}</a>${ntfl.notificationTime}</span></li>
-            	<li><span class="widget-border"></span></li>
-            </ul>
-          </c:forEach>
-           </div><!--END widget-->
 
            <div class="widget">
            	<h3>FROM THE GALLERY</h3>

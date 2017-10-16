@@ -85,19 +85,12 @@ $(document).ready(function() {
            </div><!--END widget-->
          
            <div id="sidebar-widgets">
-           <div class="widget recentposts">
-           	<h3>关注用户列表</h3>
-            <span class="widget-border"></span>
-            
-            <ul>
-            	<li class="thumb"><img src="images/image2.jpg" alt="toons" height="61" width="57" /></li>
-                <li><span class="title"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></span></li>
-                <li><span class="date">November 21, 2012 - 3 comments</span></li>
-            </ul>
+           <center>	<span class="widget-border"></span></center>
            
- 
+             <iframe name="follow" src="user/selectFollowByUserId?userId=${userid}" style="height:500px;width:300px;"scrolling="no"></iframe>
+           	
             <span class="widget-border"></span>
-           </div><!--END widget-->
+          
            
            <div class="widget" id="notification">  
            	<h3>最新通知 &nbsp;&nbsp;<a href="user/selectMoreNotification?notificationId=${userid}">[更多..]</a></h3>
