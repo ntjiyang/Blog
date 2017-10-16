@@ -31,9 +31,10 @@ $(document).ready(function() {
 <style type="text/css">
 	.context{
 	width:600px;
-	height:300px;
+	height:150px;
 	text-overflow:-o-ellipsis-lastline;
 	overflow:hidden;
+	white-space:nowrap;
 	text-overflow:ellipsis;
 	display:-webkit-box;
 	-webkit-line-clamp:7;
@@ -58,7 +59,6 @@ $(document).ready(function() {
 				<c:forEach items="${bloglist}" var="bl">
 					
             		<h3 class="title">${bl.blogTitle}</h3>
-                    <span class="facebook"><a href="#"></a></span>
                     <div class="meta">
                     	<ul>
                         	<li class="admin"><a href="user/userSelectById?userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
@@ -69,7 +69,7 @@ $(document).ready(function() {
                     </div><!--end meta-->
                     <div class="context">
                     <p>${bl.blogContent}</p>
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}"><input type="button" value="查看完整内容"/></a>
+                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}">【查看完整内容】</a>
                     <hr>
                     </div>
                     </c:forEach>

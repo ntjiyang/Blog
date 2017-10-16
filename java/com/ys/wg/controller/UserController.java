@@ -175,6 +175,7 @@ public class UserController {
 		
 	}
 	
+	
 	/*
 	 * 通知模块
 	 * */
@@ -183,12 +184,23 @@ public class UserController {
 	@RequestMapping("/selectNotification")
 	public String selectNotification(Notification notification,HttpServletRequest request, Model model){
 		
-		List<Notification> notificationList = notificationService.selectNotification(notification.getNotiadminId());
+	Notification notifi = notificationService.selectNotification(notification.getNotificationId());
 		
-		model.addAttribute("notificationlist", notificationList );
+		model.addAttribute("notifi", notifi );
 	
-		return "";
+		return "foreView/notification";
 	
+	}
+	
+	//点击更多通知
+	@RequestMapping("/selectMoreNotification")
+	public String selectMoreNotification(Notification notification,HttpServletRequest request, Model model){
+		
+		List<Notification> notificationList = notificationService.showNotificatonByTitle(notification.getNotiuserId());
+		model.addAttribute("notificationList",notificationList);
+		
+		return "foreView/notificationList";
+		
 	}
 	
 	/*
@@ -208,7 +220,7 @@ public class UserController {
 		model.addAttribute("bloglist",bloglist);
 		model.addAttribute("commentlist",commentlist);
 		
-		return "foreView/concrete";
+		return "foreView/concrete";			
 		
 		}else{
 			return "foreView/main";

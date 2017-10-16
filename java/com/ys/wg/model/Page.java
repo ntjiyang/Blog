@@ -2,7 +2,7 @@ package com.ys.wg.model;
 
 public class Page {
 	  int total;//总的数据条数
-	  private int pageSize=3;//每页显示条数
+	  private int pageSize=5;//每页显示条数
 	  private int totalPage;//总的页数
 	  private int currentPage=1;//当前页数
 

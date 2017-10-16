@@ -31,6 +31,17 @@ $(document).ready(function() {
  
  <style type="text/css">
  	a{text-decoration:none;}
+ 	#notification{
+ 			width:100px;
+			height:400px;
+			text-overflow:-o-ellipsis-lastline;
+			white-space:nowrap;
+			overflow:hidden;
+			text-overflow:ellipsis;
+			display:-webkit-box;
+			-webkit-line-clamp:7;
+			-webkit-box-orient: vertical;
+ 	}
  
  </style>
 </head>
@@ -88,16 +99,18 @@ $(document).ready(function() {
             <span class="widget-border"></span>
            </div><!--END widget-->
            
-           <div class="widget">  
-           	<h3>最新通知</h3>
+           <div class="widget" id="notification">  
+           	<h3>最新通知 &nbsp;&nbsp;<a href="user/selectMoreNotification?notificationId=${userid}">[更多..]</a></h3>
+           	  
            	<c:forEach items="${notificationlist}" var="ntfl">
             
             <ul>
-            	<li><span class="title"><a href="#">${ntfl.notificationTitle}</a></span></li>
+            	<li><span class="title"><a href="user/selectNotification?notificationId=${ntfl.notificationId}" target="main">${ntfl.notificationTitle}</a></span></li>
                 <li><span class="date">By <a href="#">${ntfl.notiuserId}</a>${ntfl.notificationTime}</span></li>
             	<li><span class="widget-border"></span></li>
             </ul>
           </c:forEach>
+        
            </div><!--END widget-->
 
            <div class="widget">

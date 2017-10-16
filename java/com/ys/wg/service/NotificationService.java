@@ -8,8 +8,10 @@ public interface NotificationService {
 
 	boolean addNotification(Notification notification);
 
-	List<Notification> selectNotification(int id);
+	Notification selectNotification(int id);
 
 	List<Notification> showNotificatonByTitle(Long userId);
+
+	
 
 }

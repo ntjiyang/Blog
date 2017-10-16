@@ -23,7 +23,7 @@ public class NotificationServiceImpl implements NotificationService {
 		return notificationDao.addNotification(notification);
 	}
 
-	public List<Notification> selectNotification(int id) {
+	public Notification selectNotification(int id) {
 		
 		return notificationDao.selectNotification(id);
 	}

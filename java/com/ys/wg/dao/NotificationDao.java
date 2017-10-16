@@ -11,7 +11,7 @@ public interface NotificationDao {
 	
 	boolean addNotification(Notification notification);
 
-	List<Notification> selectNotification(int notificationId);
+	Notification selectNotification(int notificationId);
 
 	List<Notification> showNotificationByTitle(Long notiuserId);
 
