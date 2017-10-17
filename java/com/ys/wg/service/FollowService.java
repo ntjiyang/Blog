@@ -11,4 +11,8 @@ public interface FollowService {
 
 	boolean deleteFollow(int followId,int userId);
 
+	boolean insertFollow(int userId, int followId, String followUserName);
+
+	Follow selectFollow(int userId, int followId);
+
 }

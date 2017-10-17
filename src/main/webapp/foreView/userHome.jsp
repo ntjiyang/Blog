@@ -93,7 +93,7 @@ $(document).ready(function() {
           
            
            <div class="widget" id="notification">  
-           	<h3>最新通知 &nbsp;&nbsp;<a href="user/selectMoreNotification?notificationId=${userid}">[更多..]</a></h3>
+           	<h3>最新通知 &nbsp;&nbsp;<a href="user/selectMoreNotification?NotiuserId=${userid}" target="main">[更多..]</a></h3>
            	  
            	<c:forEach items="${notificationlist}" var="ntfl">
             

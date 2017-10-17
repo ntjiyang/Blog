@@ -62,7 +62,7 @@ $(document).ready(function() {
           
                     <div class="meta">
                     	<ul>
-                        	<li class="admin"><a href="user/userSelectById?userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
+                        	<li class="admin"><a href="user/userSelectById?notiuserId=${userid}&userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
                             <li class="date">${bl.time}</li>
                             <li class="comments">${bl.seeCount}</li>
                             <li>${typeName}</li>

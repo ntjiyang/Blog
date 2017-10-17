@@ -26,11 +26,20 @@
 		SELECT * FROM notification WHERE id=#{notificationId} and status=0
 	</select>
 
-	<select id="showNotificationByTitle" parameterType="long"
+	<select id="showNotificationByTitle" parameterType="com.ys.wg.model.Notification"
 		resultMap="NotificationBaseMap">
 		SELECT * FROM notification WHERE user_id=#{notiuserId} and
-		status=0
+		status=0 ORDER BY time DESC LIMIT #{start},#{end}
 	</select>
+	
+	<select id="selectNotificationNum" parameterType="com.ys.wg.model.Notification" resultType="int">
+		SELECT COUNT(*) FROM notification	WHERE user_id=#{notiuserId} and status=0		
+	</select>
+	
+	<delete id="deleteNotification" parameterType="int">
+		DELETE FROM notification WHERE id=#{notificationId}
+	</delete>
+	
 
 
 </mapper>

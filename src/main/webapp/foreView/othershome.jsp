@@ -25,6 +25,15 @@ $(document).ready(function() {
 		pageSize : 5,
 	});
 });
+
+
+function check(id,fid,fname){
+	window.location.href="user/insertFollow?userId="+id+"&followId="+fid+"&followUserName="+fname;  
+	window.location.href="user/selectFollow?userId="+id+"&followId="+fid+"&followUserName="+fname;
+	  
+}
+
+
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -55,7 +64,8 @@ $(document).ready(function() {
             </div><!--END header-->
          <center>
         
-            <b style="font-size: 20px">${userName}</b><input type="button" value="关注"/>
+            <b style="font-size: 20px">${userName}</b>
+			<a href="user/insertFollow?userId=${userid}&followId=${id}&followUserName=${userName}" target="main"><input type="button" value="关注"/></a>
              
             </center>   
            <span class="border"></span>
@@ -195,11 +205,7 @@ $(document).ready(function() {
             <div class="clear"></div>
         </div><!--END footer-->	
 <script src="js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-         <script type="text/javascript" charset="utf-8">
-  $(document).ready(function(){
-    $("a[rel^='prettyPhoto']").prettyPhoto();
-  });
-</script>
+ 
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>

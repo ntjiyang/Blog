@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ys.wg.dao.NotificationDao;
 import com.ys.wg.model.Notification;
+import com.ys.wg.model.Page;
 import com.ys.wg.service.NotificationService;
 
 @Service
@@ -27,10 +28,31 @@ public class NotificationServiceImpl implements NotificationService {
 		
 		return notificationDao.selectNotification(id);
 	}
-
-	public List<Notification> showNotificatonByTitle(Long userId) {
+	
+	private int selectNotificationNum(long notiuserId) {
 		
-		return notificationDao.showNotificationByTitle(userId);
+		return notificationDao.selectNotificationNum(notiuserId);
 	}
+	
+
+	public List<Notification> showNotificatonByTitle(long notiuserId, Page page) {
+		
+		
+		int num = this.selectNotificationNum(notiuserId);
+		page.setTotal(num);
+		page.count();
+		
+		if(num == 0)
+			return notificationDao.showNotificationByTitle(notiuserId,0,0);
+		
+		return notificationDao.showNotificationByTitle(notiuserId,page.getStart(),page.getEnd());
+	}
+
+	public boolean deleteNotification(int notificationId) {
+	
+		return notificationDao.deleteNotification(notificationId);
+	}
+
+
 
 }

@@ -42,4 +42,14 @@ public class FollowServiceImpl implements FollowService {
 		return followDao.deleteFollow(followId,userId);
 	}
 
+	public boolean insertFollow(int userId, int followId, String followUserName) {
+		
+		return followDao.insertFollow(userId,followId,followUserName);
+	}
+
+	public Follow selectFollow(int userId, int followId) {
+		
+		return followDao.selectFollow(userId, followId);
+	}
+
 }

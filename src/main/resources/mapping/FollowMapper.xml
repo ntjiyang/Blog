@@ -26,6 +26,13 @@
 			DELETE FROM follow WHERE follow_id=#{followId} AND user_id=#{userId}
 		
 		</delete>
+		<select id="selectFollow" parameterType="int" resultMap="FollowBaseMap">
+			SELECT * FROM follow WHERE user_id=#{userId} AND follow_id=#{followId}
+		</select>
+		
+		<insert id="insertFollow" parameterType="com.ys.wg.model.Follow">
+			INSERT INTO follow (user_id,follow_id,follow_username)values(#{userId},#{followId},#{followUserName})
+		</insert>
 		
 		
 	

@@ -16,4 +16,8 @@ public interface FollowDao {
 
 	boolean deleteFollow(@Param ("followId")int followId,@Param("userId")int userId);
 
+	boolean insertFollow(@Param ("userId")int userId, @Param("followId")int followId, @Param("followUserName")String followUserName);
+
+	Follow selectFollow(@Param("userId")int userId, @Param("followId")int followId);
+
 }

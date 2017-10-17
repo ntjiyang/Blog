@@ -60,7 +60,7 @@ public class UserController {
     
     //用户登录
 	@RequestMapping("/userLogin")
-    public String userLogin(User user,HttpServletRequest request, Model model,Notification Notification){
+    public String userLogin(Page page,User user,HttpServletRequest request, Model model,Notification Notification){
 	
         User u = userService.userLogin(user.getUserName(),user.getPassword());
    
@@ -68,7 +68,7 @@ public class UserController {
         	
         	HttpSession session = request.getSession();
             Long userId = u.getId();
-            List<Notification> ntf = notificationService.showNotificatonByTitle(userId);
+            List<Notification> ntf = notificationService.showNotificatonByTitle(userId,page);
         	session.setAttribute("username",u.getUserName());
         	session.setAttribute("userid", u.getId());
         	model.addAttribute("notificationlist", ntf);
@@ -136,6 +136,10 @@ public class UserController {
 			
 			model.addAttribute("userName",u.getUserName());
 			model.addAttribute("id",u.getId());
+			model.addAttribute("u",u);
+			if(user.getId()==u.getId())
+				return "foreView/userHome";
+			
 			return "foreView/othershome";
 			
 		}else{
@@ -149,7 +153,6 @@ public class UserController {
 		
 		User u = userService.selectUserInfoById(user.getId());
 		String userid = request.getParameter("userid");
-
 		int id = Integer.parseInt(userid);
 		
 		model.addAttribute("userName",u.getUserName());
@@ -195,12 +198,26 @@ public class UserController {
 	
 	//点击更多通知
 	@RequestMapping("/selectMoreNotification")
-	public String selectMoreNotification(Notification notification,HttpServletRequest request, Model model){
+	public String selectMoreNotification(Page page,Notification notification,HttpServletRequest request, Model model){
 		
-		List<Notification> notificationList = notificationService.showNotificatonByTitle(notification.getNotiuserId());
+		List<Notification> notificationList = notificationService.showNotificatonByTitle(notification.getNotiuserId(),page);
 		model.addAttribute("notificationList",notificationList);
 		
 		return "foreView/notificationList";
+		
+	}
+	
+	@RequestMapping("/deleteNotification")
+	public String deleteNotification(Page page,Notification notification,Model model){
+		
+		if(notificationService.deleteNotification(notification.getNotificationId())){
+			List<Notification> notificationList = notificationService.showNotificatonByTitle(notification.getNotiuserId(),page);
+			model.addAttribute("notificationList",notificationList);
+		
+			return "foreView/notificationList";
+		}
+		
+		return "foreView/error";
 		
 	}
 	
@@ -376,4 +393,16 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping("/insertFollow")
+	public String insertFollow(Follow follow,HttpServletRequest request){
+		
+		if(followService.selectFollow(follow.getUserId(),follow.getFollowId())==null){
+			followService.insertFollow(follow.getUserId(),follow.getFollowId(),follow.getFollowUserName());
+		
+			return "foreView/blank";
+		}else{
+			
+			return "foreView/error";
+		}
+	}
 }

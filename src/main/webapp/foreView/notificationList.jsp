@@ -13,18 +13,17 @@
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 
 <script type="text/javascript">
-$(document).ready(function() {
-	$('span.category').hover(function(){
-    $(this).next().css('background-color','#e25050');
-    },function(){
-    $(this).next().css('background-color','#393939');
-    });
-	
-		
-	$(".pageing").quickPager({
-		pageSize : 5,
-	});
-});
+function del(){
+	 var msg = "确认删除？";
+	 
+	 if(confirm(msg)==true){
+		 return true;
+	 }else{
+		 return false;
+	 }
+	 
+}
+
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -53,38 +52,40 @@ $(document).ready(function() {
                 <li>
                
             	<div class="post">
-            	 <h1>${typeName}</h1>
-  				
+            	 <h1>通知列表</h1>
+  				<hr>
 				<ul>
-				<c:forEach items="${bloglist}" var="bl">
 					
-            		<h3 class="title">${bl.blogTitle}</h3>
-          
-                    <div class="meta">
-                    	<ul>
-                        	<li class="admin"><a href="user/userSelectById?userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
-                            <li class="date">${bl.time}</li>
-                            <li class="comments">${bl.seeCount}</li>
-                            <li>${typeName}</li>
-                        </ul>
-                    </div><!--end meta-->
-                    <div class="context">
-                    <p>${bl.blogContent}</p>
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}">【查看详情】</a>
-                    <hr>
-                    </div>
-                    </c:forEach>
+					
+					<table style="font-size:16px;width:600px;height:100px">
+						<tr>
+						<td>管理员</td>
+						<td>通知标题</td>
+						<td>接收时间</td>
+						</tr>
+						<c:forEach items="${notificationList}" var="nl">
+						<tr>
+						<td>${nl.notiadminId}</td>
+						<td><a href="user/selectNotification?notificationId=${nl.notificationId}">${nl.notificationTitle}</a></td>
+						<td>${nl.notificationTime}</td>
+						<td><a href="user/deleteNotification?notificationId=${nl.notificationId}&notiuserId=${nl.notiuserId}">
+						<input type="button" value="删除" onclick="javascript:return del();"/></a></td>
+						</tr>
+						</c:forEach>				
+					</table>	
+        
+                   
 				</ul>
 		<center>
               <c:if test="${page.currentPage != 1 && page.currentPage != 0}">
-                    <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=1"><input type="button" value="<<"/></a>
+                    <a href="user/selectMoreNotification?NotiuserId=${userid}&currentPage=1"><input type="button" value="<<"/></a>
               </c:if>
-              <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.currentPage -1 }"><input type="button" 
+              <a href="user/selectMoreNotification?NotiuserId=${userid}&currentPage=${page.currentPage -1 }"><input type="button" 
               <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/></a>
-              <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.currentPage +1 }"><input type="button" 
+              <a href="user/selectMoreNotification?NotiuserId=${userid}&currentPage=${page.currentPage +1 }"><input type="button" 
               <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/></a>
               <c:if test="${page.currentPage !=page.totalPage }">
-                   <a href="user/blogSelectByUserId?userId=${blogUserId}&flag=0&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
+                   <a href="user/selectMoreNotification?NotiuserId=${userid}&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
               
               </c:if>
         </center>

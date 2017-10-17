@@ -13,18 +13,16 @@
 <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 
 <script type="text/javascript">
-$(document).ready(function() {
-	$('span.category').hover(function(){
-    $(this).next().css('background-color','#e25050');
-    },function(){
-    $(this).next().css('background-color','#393939');
-    });
-	
-		
-	$(".pageing").quickPager({
-		pageSize : 5,
-	});
-});
+function del(){
+	 var msg = "确认删除？";
+	 
+	 if(confirm(msg)==true){
+		 return true;
+	 }else{
+		 return false;
+	 }
+	 
+}
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -39,7 +37,9 @@ $(document).ready(function() {
                 <li>
                
             	<div class="post">
-       			<a><input type="button" value="返回通知列表"/></a> &nbsp;&nbsp;&nbsp;&nbsp;<a><input type="button" value="删除"/></a>
+       			<a href="user/selectMoreNotification?NotiuserId=${userid}"><input type="button" value="返回通知列表"/></a> &nbsp;&nbsp;&nbsp;&nbsp;
+       			<a href="user/deleteNotification?notificationId=${notifi.notificationId}&notiuserId=${notifi.notiuserId}">
+				<input type="button" value="删除" onclick="javascript:return del();"/></a>
   				<p>&nbsp;</p>
 				<ul>
 			
