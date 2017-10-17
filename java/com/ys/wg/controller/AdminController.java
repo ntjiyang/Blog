@@ -132,13 +132,13 @@ public class AdminController {
 
 	// 显示博客
 	@RequestMapping("/selectBlogByCheck")
-	public String blogSelectByUserId(Page page, Blog blog,
-			HttpServletRequest request, Model model) {
+	public String selectBlogByCheck(Page page, Blog blog, Model model) {
 
 		List<Blog> blogList = blogService.selectBlogByCheck(blog.getCheck(),
 				page);
 
 		model.addAttribute("bloglist", blogList);
+		model.addAttribute("check", blog.getCheck());
 
 		return "backView/main";
 
@@ -146,23 +146,39 @@ public class AdminController {
 
 	// 修改博客信息
 	@RequestMapping("/blogUpdate")
-	public String blogUpdate(int id, HttpServletRequest request,
+	public String blogUpdate(Blog blog, Page page, HttpServletRequest request,
 			Model model) {
 		String flag = request.getParameter("flag");
 
 		if (flag.equals("check")) {
-			if (blogService.updateCheck(id)) {
+			if (blogService.updateCheck(blog.getId())) {
 
-				return "backView/main";
+				return "redirect:/admin/selectBlogByCheck?check=" + blog.getCheck()
+						+ "&currentPage=" + page.getCurrentPage() + "";
 			}
-		}else if(flag.equals("status")){
-			if (blogService.updateStatus(id)) {
+		} else if (flag.equals("status")) {
+			if (blogService.updateStatus(blog.getId())) {
 
-				return "backView/main";
+				return "redirect:/admin/selectBlogByCheck?check=" + blog.getCheck()
+						+ "&currentPage=" + page.getCurrentPage() + "";
 			}
 		}
 
 		return "backView/adminHome";
 
 	}
+	
+	// 冻结用户
+		@RequestMapping("/userIsDelete")
+		public String userIsDelete(User user, HttpServletRequest request,
+				Model model) {
+
+			if (userService.updateUserIsDelete(user)) {
+
+				return "redirect:/admin/adminDetail?id="+user.getId()+"&flag=user";
+			}
+
+			return "backView/adminHome";
+
+		}
 }

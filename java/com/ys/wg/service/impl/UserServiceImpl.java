@@ -85,4 +85,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.selectUserInfoById(id);
 	}
 
+	public boolean updateUserIsDelete(User user) {
+
+		return userDao.updateUserIsDelete(user);
+	}
+
 }

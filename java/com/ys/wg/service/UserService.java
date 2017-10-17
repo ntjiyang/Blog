@@ -42,5 +42,8 @@ public interface UserService {
 
 	// 根据ID查找个人主页
 	User selectUserInfoById(Long id);
+	
+	// 冻结用户
+	boolean updateUserIsDelete(User user);
 
 }

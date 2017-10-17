@@ -43,7 +43,7 @@
 		<div id="navigation">
 			<ul style="float: left;margin-left: 40px;">
 				<li><a class="active" href="admin/selectBlogByCheck?check=1" target="main">主页</a></li>
-				<li><a href="foreView/post.jsp" target="_parent">博客</a>
+				<li><a href="admin/selectBlogByCheck?check=1" target="_parent">博客</a>
 					<ul>
 						<li><a href="admin/selectBlogByCheck?check=1" target="main">已审核</a></li>
 						<li><a href="admin/selectBlogByCheck?check=0" target="main">未审核</a></li>

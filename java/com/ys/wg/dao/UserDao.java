@@ -37,5 +37,7 @@ public interface UserDao {
 	User selectUserInfo(String userName);
 
 	User selectUserInfoById(Long id);
+	
+	boolean updateUserIsDelete(User user);
 
 }

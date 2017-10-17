@@ -65,10 +65,10 @@
 										<td align="left">
 											<h3 class="title">${bl.blogTitle}</h3>
 										</td>
-										<td align="right"><input
-											onclick="window.location.href='admin/blogUpdate?flag=check&id=${bl.id}'"
-											type="button" value="审核" /> <input
-											onclick="window.location.href='admin/blogUpdate?flag=status&id=${bl.id}'"
+										<td align="right"><c:if test="${check==0}"><input
+											onclick="window.location.href='admin/blogUpdate?flag=check&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
+											type="button" value="审核" /></c:if><input
+											onclick="window.location.href='admin/blogUpdate?flag=status&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
 											type="button" value="删除" /></td>
 									</tr>
 								</table>
@@ -95,21 +95,21 @@
 						<center>
 							<c:if test="${page.currentPage != 1 && page.currentPage != 0}">
 								<input
-									onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=1'"
+									onclick="window.location.href='admin/selectBlogByCheck?check=${check}&currentPage=1'"
 									type="button" value="首页" />
 							</c:if>
 							<input
-								onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=${page.currentPage -1 }'"
+								onclick="window.location.href='admin/selectBlogByCheck?check=${check}&currentPage=${page.currentPage -1 }'"
 								type="button"
 								<c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if>
 								value="上一页" /> 第${page.currentPage}页/共${ page.totalPage}页 <input
-								onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=${page.currentPage +1 }'"
+								onclick="window.location.href='admin/selectBlogByCheck?check=${check}&currentPage=${page.currentPage +1 }'"
 								type="button"
 								<c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if>
 								value="下一页" />
 							<c:if test="${page.currentPage !=page.totalPage }">
 								<input
-									onclick="window.location.href='admin/selectBlogByCheck?check=1&currentPage=${page.totalPage}'"
+									onclick="window.location.href='admin/selectBlogByCheck?check=${check}&currentPage=${page.totalPage}'"
 									type="button" value="尾页" />
 							</c:if>
 						</center>
