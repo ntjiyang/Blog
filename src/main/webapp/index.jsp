@@ -23,6 +23,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- //Meta-Tags -->
 
 	<!-- Style --> <link rel="stylesheet" href="css/loginstyle.css" type="text/css" media="all">
+ <script type="text/javascript">
+  var isOk=true;
+  function checkemail(obj){
+	  var strReg="";
+	  var r;
+	  var strText=obj.value;
+	  strReg  = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+	  r = strText.search(strReg);
+	  if(r == -1){
+		  alert("邮箱格式不正确");
+		  isOk=false;
+	  }else{
+		  isOk=true;
+	  }
+  }
+  
+  function checkphone(obj){
+	  var strReg="";
+	  var r;
+	  var strText=obj.value;
+	  strReg  = /^1\d{10}$/;
+	  r = strText.search(strReg);
+	  if(r == -1){
+		  alert("手机格式不正确");
+		  isOk=false;
+	  }else{
+		  isOk=true;
+	  }
+  }
+  
+ function isCon(Phone,Email){
+	 if(isOk &&  Phone.value.length && Email.value.length){
+
+		 return true;
+	 }else{
+		 alert("请确认正确后再提交！！！");
+		 return false;
+	 }
+ } 	
+  </script>
+
+
 
 
 
@@ -61,11 +103,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="register w3layouts agileits">
 			<h2>注 册</h2>
-			<form action="user/userRegister" method="post">
+			<form action="user/userRegister" method="post" onsubmit="return isCon(userEmail,userPhone)">
 				<input type="text" name="userName" placeholder="用户名" required="">
-				<input type="text" name="userEmail" placeholder="邮箱" required="">
+				<input type="text" name="userEmail" placeholder="邮箱" required="" onchange="checkemail(this)">
 				<input type="password" name="Password" placeholder="密码" required="">
-				<input type="text" name="userPhone" placeholder="手机号码" required="">
+				<input type="text" name="userPhone" placeholder="手机号码" required="" onchange="checkphone(this)">
 			<div class="send-button w3layouts agileits">
 				
 					<input type="submit" value="免费注册">

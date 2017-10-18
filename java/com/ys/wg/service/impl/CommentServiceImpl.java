@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ys.wg.dao.CommentDao;
 import com.ys.wg.model.Comment;
+import com.ys.wg.model.Page;
 import com.ys.wg.service.CommentService;
 
 @Service
@@ -32,8 +33,15 @@ public class CommentServiceImpl implements CommentService {
 
 	
 
-	public List<Comment> selectCommentByBlogId(Comment comment) {
+	public int selectcommentByBlogIdNum(int blogId) {
 		
-		return commentDao.selectCommentByBlogId(comment);
+		return commentDao.selectcommentByBlogIdNum(blogId);
+	}
+
+	public List<Comment> selectCommentByBlogId(Comment comment, Page page) {
+		int num = this.selectcommentByBlogIdNum(comment.getBlogId());
+		page.setTotal(num);
+		page.count();
+		return commentDao.selectCommentByBlogId(comment.getBlogId(),page.getStart(),page.getEnd());
 	}
 }

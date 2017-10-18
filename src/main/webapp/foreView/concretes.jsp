@@ -92,23 +92,11 @@ function check(){
                     	<li>发布于：${cl.blogTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     	<li>----------------------------------------------------------------------------------------------------------------------------------------------</li>
                  	</ul>
-              		</c:forEach> 
+              		</c:forEach>
+                    
+ 
+                   
 				</ul>
-				<center>
-				<c:forEach items="${bloglist}" var="bl">
-              <c:if test="${page.currentPage != 1 && page.currentPage != 0}">
-                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}&currentPage=1"><input type="button" value="<<"/></a>
-              </c:if>
-              <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}&currentPage=${page.currentPage -1 }"><input type="button" 
-              <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/></a>
-              <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}&currentPage=${page.currentPage +1 }"><input type="button" 
-              <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/></a>
-              <c:if test="${page.currentPage !=page.totalPage }">
-                   <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
-              
-              </c:if>
-              </c:forEach>
-        </center>
   				</div><!--END post-->
                 </li>
                 </ul>

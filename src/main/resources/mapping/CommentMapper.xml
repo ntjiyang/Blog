@@ -22,10 +22,14 @@
 			values (#{blogId},#{userId},#{num},#{replyUserId},#{content})
 		</insert>
 		
+		<select id="selectcommentByBlogIdNum" parameterType="int" resultType="int">
+			SELECT COUNT(*) FROM comment WHERE blog_id = #{blogId}
+		</select>
 		
-		<select id="selectCommentByBlogId" parameterType="com.ys.wg.model.Comment" resultMap="CommentBaseMap">
+		
+		<select id="selectCommentByBlogId" resultMap="CommentBaseMap">
 			
-			SELECT * FROM comment WHERE blog_id = #{blogId}
+			SELECT * FROM comment WHERE blog_id = #{blogId} LIMIT #{start},#{end}
 			
 		</select>
 

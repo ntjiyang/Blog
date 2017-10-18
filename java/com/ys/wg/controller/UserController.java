@@ -249,12 +249,12 @@ public class UserController {
 	
 	//添加回复
 	@RequestMapping("/insertComment")
-	public String insertComment(Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
+	public String insertComment(Page page,Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
 		
 		if(commentService.insertComment(comment)){
 		
 		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
-		List<Comment> commentlist = commentService.selectCommentByBlogId(comment);
+		List<Comment> commentlist = commentService.selectCommentByBlogId(comment,page);
 		
 		model.addAttribute("bloglist",bloglist);
 		model.addAttribute("commentlist",commentlist);
@@ -361,7 +361,7 @@ public class UserController {
 	 * 显示详细博客内容、回复
 	 * */
 	@RequestMapping("/selectblogByBlogId")
-	public String selectblogByBlogId(Blog blog,Comment comment,HttpServletRequest request, Model model){
+	public String selectblogByBlogId(Page page, Blog blog,Comment comment,HttpServletRequest request, Model model){
 		
 		if(blog.getUserId()==0)
 			return "foreView/error";
@@ -375,7 +375,7 @@ public class UserController {
 		
 		
 		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
-		List<Comment> commentlist = commentService.selectCommentByBlogId(comment);
+		List<Comment> commentlist = commentService.selectCommentByBlogId(comment,page);
 		
 		model.addAttribute("bloglist",bloglist);
 		model.addAttribute("commentlist",commentlist);
