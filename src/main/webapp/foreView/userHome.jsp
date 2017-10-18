@@ -75,7 +75,7 @@ $(document).ready(function() {
     			<tr><td>&nbsp;</td></tr>
             	<tr><td><a href="user/blogSelectByUserId?flag=0&userId=${userid}" target="main">个人中心</a></td></tr>
        			<tr><td>&nbsp;</td></tr>
-            	 <tr><td><a href="user/userSelect?userName=${username}&flag=selectuser" target="main">个人资料</a></td></tr>
+            	 <tr><td><a href="user/userSelect?userName=${username}&flag=selectuser&Id=${userid}" target="main">个人资料</a></td></tr>
  				<tr><td>&nbsp;</td></tr>
  				 <tr><td><a href="foreView/addblog.jsp" target="main">发布博客</a></td></tr>
  				<tr><td>&nbsp;</td></tr>

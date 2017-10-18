@@ -78,7 +78,7 @@ function check(id,fid,fname){
     			<tr><td>&nbsp;</td></tr>
             	<tr><td><a href="user/blogSelectByUserId?flag=0&userId=${id}" target="main">个人中心</a></td></tr>
        			<tr><td>&nbsp;</td></tr>
-            	 <tr><td><a href="user/userSelect?flag=selectuserinfo&userName=${userName}" target="main">个人资料</a></td></tr>
+            	 <tr><td><a href="user/userSelect?flag=selectuserinfo&userName=${userName}&Id=${id}" target="main">个人资料</a></td></tr>
  				<tr><td>&nbsp;</td></tr>
            		 </table>
           
@@ -103,7 +103,7 @@ function check(id,fid,fname){
         </div><!--END sidebar-widgets-->
 		</div><!--END Side-->
 
-     <iframe name="main" src="user/blogSelectByUserId?flag=0&userId=${id}" style="height:800px;width:70%;float:right"  scrolling="no"></iframe>
+     <iframe name="main" src="user/blogSelectByUserId?flag=0&userId=${id}" style="height:1000px;width:70%;float:right"  scrolling="no"></iframe>
 
       
       <!--END Side--><!--This div keeps the sidebar from floating right when the main content is empty-->

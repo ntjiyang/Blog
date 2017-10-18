@@ -64,7 +64,7 @@
 
 	<select id="selectUserInforByName" parameterType="com.ys.wg.model.User"
 		resultMap="UserBaseMap">
-		SELECT * FROM users WHERE username=#{userName}
+		SELECT * FROM users WHERE username=#{userName} AND is_delete=0
 	</select>
 	<select id="selectUserInfo" parameterType="String" resultMap="UserBaseMap">
 		SELECT * FROM users WHERE username=#{userName}
@@ -78,7 +78,7 @@
 	</update>
 
 	<select id="selectUserInfoById" parameterType="long" resultMap="UserBaseMap">
-		SELECT * FROM users WHERE id=#{id}
+		SELECT * FROM users WHERE id=#{id} AND is_delete=0
 	</select>
 	
 	<update id="updateUserIsDelete" parameterType="com.ys.wg.model.User">

@@ -20,7 +20,7 @@
  <div id="main">
       <div id="navigation">
 
-<table width="200px" height="200px">
+<table width="500px" height="200px">
 
 <c:forEach items="${userlist}" var="ul">
 <tr>
@@ -38,15 +38,6 @@
 <tr>
 	<td>邮箱：</td>
 	<td>${ul.userEmail }</td>
-</tr>
-
-<tr>
-	<td>我关注的人：</td>
-	<td>${ul.follow}</td>
-</tr>
-<tr>
-	<td>关注我的人数：</td>
-	<td>${ul.fans}</td>
 </tr>
 <tr>
 	<td>个人简介:</td>

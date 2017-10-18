@@ -41,14 +41,6 @@
 </tr>
 
 <tr>
-	<td>我关注的人：</td>
-	<td>${ul.follow}</td>
-</tr>
-<tr>
-	<td>关注我的人数：</td>
-	<td>${ul.fans}</td>
-</tr>
-<tr>
 	<td>个人简介</td>
 	<td>${ul.userInformation}</td>
 </tr>

@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<!-- Style --> <link rel="stylesheet" href="css/loginstyle.css" type="text/css" media="all">
  <script type="text/javascript">
+ 
   var isOk=true;
   function checkemail(obj){
 	  var strReg="";
@@ -62,6 +63,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 return false;
 	 }
  } 	
+
+ 
   </script>
 
 
@@ -103,8 +106,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="register w3layouts agileits">
 			<h2>注 册</h2>
+			<b style="color:white">${msg}</b>
 			<form action="user/userRegister" method="post" onsubmit="return isCon(userEmail,userPhone)">
-				<input type="text" name="userName" placeholder="用户名" required="">
+				<input type="text" id="userName" name="userName" placeholder="用户名" required="">
 				<input type="text" name="userEmail" placeholder="邮箱" required="" onchange="checkemail(this)">
 				<input type="password" name="Password" placeholder="密码" required="">
 				<input type="text" name="userPhone" placeholder="手机号码" required="" onchange="checkphone(this)">

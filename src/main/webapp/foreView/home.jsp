@@ -55,7 +55,7 @@ $(document).ready(function() {
             </div><!--END header-->
             <span class="border"></span>
             
-            <form action="user/userSelect?flag=charge" method="post">
+            <form action="user/userSelect?flag=charge&Id=${userid}" method="post">
             	<input type="text" name="userName" id="search" placeholder="Search User..." /><br />
             </form>
             

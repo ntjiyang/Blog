@@ -42,6 +42,10 @@ public class CommentServiceImpl implements CommentService {
 		int num = this.selectcommentByBlogIdNum(comment.getBlogId());
 		page.setTotal(num);
 		page.count();
+		
+		if(num==0)
+			return commentDao.selectCommentByBlogId(comment.getBlogId(), 0, 0);
+		
 		return commentDao.selectCommentByBlogId(comment.getBlogId(),page.getStart(),page.getEnd());
 	}
 }

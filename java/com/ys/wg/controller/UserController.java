@@ -90,10 +90,12 @@ public class UserController {
 		if(userService.selectUserByName(user.getUserName()) != null){
 			
 			model.addAttribute("msg","用户名重复！");
+			
+			return "/index";
 		}else{
 		
 		if(userService.insertUser(user)){
-		
+			model.addAttribute("msg","注册成功！");
 			return "/index";
 		}
 	}
@@ -130,13 +132,12 @@ public class UserController {
 	
 	//根据用户名查询个人专页
 	@RequestMapping("/userSelect")
-	public String userSelect(User user,HttpServletRequest request, Model model){
+	public String userSelect(Page page,Blog blog,User user,HttpServletRequest request, Model model){
 		String flag = request.getParameter("flag");
+		String Id   = request.getParameter("Id");
+		int id = Integer.parseInt(Id);
 	
 		List<User> userlist	 = 	userService.selectUserInforByName(user.getUserName());
-
-		if(userlist.size() == 0)
-			return "foreView/home";
 		
 		model.addAttribute("userlist", userlist);
 		
@@ -144,18 +145,30 @@ public class UserController {
 		
 		return "foreView/personalinfo";	//跳转到个人资料	
 		
-		}else if(flag.equals("selectuserinfo")){
+		}else if(flag.equals("selectuserinfo")){			
+			if(userlist.size() == 0)
+				return "foreView/freeze";
 			
 			return "foreView/userinfo";
 			
 		}else if(flag.equals("charge")){
 			
 			User u = userService.selectUserInfo(user.getUserName());
+				if(u==null){
+					blog.setUserId(0);
+					List<Blog> blogSeeList = blogService.blogSelectBySee(blog,page);
+					List<Blog> blogList = blogService.blogSelectByUserId(blog,page);
+
+					model.addAttribute("bloglist",blogList);
+					model.addAttribute("blogseelist",blogSeeList);
+				
+					return "foreView/home";	
+			}
 			
 			model.addAttribute("userName",u.getUserName());
 			model.addAttribute("id",u.getId());
 			model.addAttribute("u",u);
-			if(user.getId()==u.getId())
+			if(id==u.getId())
 				return "foreView/userHome";
 			
 			return "foreView/othershome";
@@ -291,11 +304,16 @@ public class UserController {
 	
 	//用户(user_id)发布博客
 	@RequestMapping("/blogInsert")
-	public String blogInsert(Blog blog,HttpServletRequest request, Model model){
+	public String blogInsert(Page page,Blog blog,HttpServletRequest request, Model model){
 		
-			if(blogService.blogInsert(blog))
-				return "foreView/main";
+			if(blogService.blogInsert(blog)){
+				List<Blog> bloglist = blogService.blogSelectByUserId(blog, page);
+				if(bloglist.size()==0)
+					return "foreView/addBlogSuccess";
 				
+				model.addAttribute("bloglist",bloglist);
+				return "foreView/main";
+			}
 				return "foreView/addblog";
 			
 	}

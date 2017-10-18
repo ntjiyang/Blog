@@ -40,7 +40,7 @@
             <ul>
             <li class="thumb"><img src="images/image2.jpg" alt="toons" height="61" width="57" /></li>
            	<li><span class="title"><a href="user/blogSelectByUserId?flag=0&userId=${follow.followId}" target="main">${follow.followUserName}</a></span></li>
-            <li><a href="user/userSelect?flag=selectuserinfo&userName=${follow.followUserName}" target="main">用户信息</a></li>
+            <li><a href="user/userSelect?flag=selectuserinfo&userName=${follow.followUserName}&Id=${userid}" target="main">用户信息</a></li>
             <li><a href="user/deleteFollow?followId=${follow.followId}&userId=${follow.userId}" onclick="javascript:return del();"><font color="red">取消关注</font></a></li>
             </ul>
            </c:forEach>
