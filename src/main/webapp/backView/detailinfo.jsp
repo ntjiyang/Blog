@@ -39,6 +39,15 @@ table {
 		}
 
 	}
+
+	function deletecheck(flag) {
+		var pow = "${sessionScope.adminpower}";
+		if (parseInt(pow)<5) {
+			alert("权限不够！");
+		} else {
+			window.location.href="admin/userIsDelete?id="+${u.id}+"&isDelete="+flag+"";
+		}
+	}
 </script>
 </head>
 <body>
@@ -48,13 +57,11 @@ table {
 				<table width="200px" height="200px">
 
 					<c:if test="${flag == 'user'}">
-					<c:if test="${u.isDelete==1}">
-					<tr>
-					<td colspan="2">
-					<font color="red">该用户已被冻结！</font>
-					</td>
-					</tr>
-					</c:if>
+						<c:if test="${u.isDelete==1}">
+							<tr>
+								<td colspan="2"><font color="red">该用户已被冻结！</font></td>
+							</tr>
+						</c:if>
 						<tr>
 							<td width="50%">头像:</td>
 							<td>${u.headImage}</td>
@@ -85,8 +92,14 @@ table {
 							<td>${u.userInformation}</td>
 						</tr>
 						<tr>
-							<c:if test="${u.isDelete==0 }"><td><a class="read-more" onclick="window.location.href='admin/userIsDelete?id=${u.id}&isDelete=1'">冻结用户</a></td></c:if>
-							<c:if test="${u.isDelete==1 }"><td><a class="read-more" onclick="window.location.href='admin/userIsDelete?id=${u.id}&isDelete=0'">用户解冻</a></td></c:if>
+							<c:if test="${u.isDelete==0 }">
+								<td><a class="read-more"
+									onclick="deletecheck(1)">冻结用户</a></td>
+							</c:if>
+							<c:if test="${u.isDelete==1 }">
+								<td><a class="read-more"
+									onclick="deletecheck(0)">用户解冻</a></td>
+							</c:if>
 							<td><a class="read-more"
 								href="admin/selectBlogByCheck?check=1">返回首页</a></td>
 						</tr>
@@ -112,7 +125,9 @@ table {
 								value="${a.adminPower}" onchange="powercheck(0)" /></td>
 						</tr>
 						<tr>
-							<td><c:if test="${sessionScope.adminpower > a.adminPower}"><a class="read-more" onclick="powercheck(1)">确认修改</a></c:if></td>
+							<td><c:if test="${sessionScope.adminpower > a.adminPower}">
+									<a class="read-more" onclick="powercheck(1)">确认修改</a>
+								</c:if></td>
 							<td><a class="read-more"
 								href="admin/selectBlogByCheck?check=1">返回首页</a></td>
 						</tr>

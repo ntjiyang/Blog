@@ -42,7 +42,10 @@ public interface UserService {
 
 	// 根据ID查找个人主页
 	User selectUserInfoById(Long id);
-	
+
+	// 根据ID查找个人信息
+	User selectUserInforById(Long id);
+
 	// 冻结用户
 	boolean updateUserIsDelete(User user);
 

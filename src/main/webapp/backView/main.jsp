@@ -35,8 +35,9 @@
 <style type="text/css">
 .context {
 	width: 600px;
-	height: 300px;
+	height: 100px;
 	text-overflow: -o-ellipsis-lastline;
+	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
@@ -65,9 +66,11 @@
 										<td align="left">
 											<h3 class="title">${bl.blogTitle}</h3>
 										</td>
-										<td align="right"><c:if test="${check==0}"><input
-											onclick="window.location.href='admin/blogUpdate?flag=check&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
-											type="button" value="审核" /></c:if><input
+										<td align="right"><c:if test="${check==0}">
+												<input
+													onclick="window.location.href='admin/blogUpdate?flag=check&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
+													type="button" value="审核" />
+											</c:if><input
 											onclick="window.location.href='admin/blogUpdate?flag=status&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
 											type="button" value="删除" /></td>
 									</tr>

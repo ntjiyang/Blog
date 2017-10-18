@@ -38,6 +38,8 @@ public interface UserDao {
 
 	User selectUserInfoById(Long id);
 	
+	User selectUserInforById(Long id);
+	
 	boolean updateUserIsDelete(User user);
 
 }

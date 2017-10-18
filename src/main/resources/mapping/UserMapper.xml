@@ -81,6 +81,10 @@
 		SELECT * FROM users WHERE id=#{id} AND is_delete=0
 	</select>
 	
+	<select id="selectUserInforById" parameterType="long" resultMap="UserBaseMap">
+		SELECT * FROM users WHERE id=#{id}
+	</select>
+	
 	<update id="updateUserIsDelete" parameterType="com.ys.wg.model.User">
 		UPDATE users SET is_delete = #{isDelete} WHERE id=#{id}
 	</update>

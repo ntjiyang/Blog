@@ -62,7 +62,7 @@
 			</div>
 			<!--END header-->
 			<center>
-				${sessionScope.adminname}<br>${sessionScope.adminpower}
+				欢迎管理员：${sessionScope.adminname}<br>权限：${sessionScope.adminpower}
 			</center>
 			<span class="border"></span>
 		</div>
@@ -83,9 +83,11 @@
 									<li class="thumb"><img src="images/image2.jpg" alt="toons"
 										height="61" width="57" /></li>
 									<li><span class="title"><a target="main"
-											href="admin/adminDetail?id=${user.id}&flag=user">${user.userName}</a></span></li>
+											href="admin/adminDetail?id=${user.id}&flag=user">${user.userName}</a><c:if test="${user.isDelete==1}"><font color="red">(冻结)</font></c:if></span></li>
 									<li><span class="date">${user.fans}</span></li>
-									<li><input onclick="window.top.frames['main'].location.href='admin/addNotification?userName=${user.userName}&flag=skip'"  type="button" value="发送通知"></li>
+									<li><input
+										onclick="window.top.frames['main'].location.href='admin/addNotification?userName=${user.userName}&flag=skip'"
+										type="button" value="发送通知"></li>
 								</ul>
 								<span class="widget-border"></span>
 							</c:forEach>

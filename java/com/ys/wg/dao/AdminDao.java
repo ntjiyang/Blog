@@ -19,5 +19,7 @@ public interface AdminDao {
 	Admin selectAdminInforById(int adminId);
 	
 	boolean updateAdminPower(@Param("adminId") int adminId,@Param("adminPower") int power);
+	
+	boolean insertAdmin(Admin admin);
 
 }

@@ -49,4 +49,9 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.updateAdminPower(adminId,power);
 	}
 
+	public boolean insertAdmin(Admin admin) {
+		
+		return adminDao.insertAdmin(admin);
+	}
+
 }

@@ -43,4 +43,10 @@
 		UPDATE admins SET
 		power = #{adminPower} WHERE id = #{adminId}
 	</update>
+	
+	<insert id="insertAdmin" parameterType="com.ys.wg.model.Admin">
+		INSERT INTO admins (name,password,email,phone,power) VALUES
+		(#{adminName},#{password},#{adminEmail},#{adminPhone},#{adminPower})
+	</insert>
+	
 </mapper>

@@ -90,4 +90,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.updateUserIsDelete(user);
 	}
 
+	public User selectUserInforById(Long id) {
+
+		return userDao.selectUserInforById(id);
+	}
+
 }

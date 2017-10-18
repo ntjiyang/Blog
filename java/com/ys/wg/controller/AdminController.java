@@ -79,7 +79,7 @@ public class AdminController {
 		String flag = request.getParameter("flag");
 
 		if (flag.equals("user")) {
-			User u = userService.selectUserInfoById(user.getId());
+			User u = userService.selectUserInforById(user.getId());
 			model.addAttribute("u", u);
 		} else if (flag.equals("admin")) {
 			Admin a = adminService.selectAdminInforById(admin.getAdminId());
@@ -90,16 +90,31 @@ public class AdminController {
 
 		return "backView/detailinfo";
 	}
+	
+	// 添加管理员
+		@RequestMapping("/adminAdd")
+		public String adminAdd(Admin admin, HttpServletRequest request,
+				Model model) {
+			System.out.println(admin);
+
+			if (adminService.insertAdmin(admin)) {
+
+				return "redirect:/admin/selectBlogByCheck?check=1";
+			}
+
+			return "backView/adminAdd";
+
+		}
 
 	// 修改信息
 	@RequestMapping("/adminUpdate")
-	public String userUpdate(Admin admin, HttpServletRequest request,
+	public String adminUpdate(Admin admin, HttpServletRequest request,
 			Model model) {
 
 		if (adminService.updateAdminPower(admin.getAdminId(),
 				admin.getAdminPower())) {
 
-			return "backView/main";
+			return "redirect:/admin/selectBlogByCheck?check=1";
 		}
 
 		return "backView/adminHome";

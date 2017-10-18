@@ -20,4 +20,7 @@ public interface AdminService {
 
 	// 修改权限
 	boolean updateAdminPower(int adminId,int power);
+	
+	// 添加管理员
+	boolean insertAdmin(Admin admin);
 }

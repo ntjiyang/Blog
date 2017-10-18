@@ -37,7 +37,7 @@
 			<input class="login-btn" id="submit" type="submit" value="登 录">
 			</div>
 			<div class="row tips">
-				<a href="forget.jsp" class="link">忘记密码</a>
+				<a href="index.jsp" class="link">用户登录</a>
 			</div>
 			</form>
 		</div>
