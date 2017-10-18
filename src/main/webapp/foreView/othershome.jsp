@@ -76,10 +76,8 @@ function check(id,fid,fname){
              
     			<table style="font-size:15px;height:40%;">
     			<tr><td>&nbsp;</td></tr>
-            	<tr><td><a href="user/blogSelectByUserId?flag=0&userId=${id}" target="main">个人专页</a></td></tr>
+            	<tr><td><a href="user/blogSelectByUserId?flag=0&userId=${id}" target="main">个人中心</a></td></tr>
        			<tr><td>&nbsp;</td></tr>
-            	 <tr><td><a href="#">个人中心</a></td></tr>
-           		<tr><td>&nbsp;</td></tr>
             	 <tr><td><a href="user/userSelect?flag=selectuserinfo&userName=${userName}" target="main">个人资料</a></td></tr>
  				<tr><td>&nbsp;</td></tr>
            		 </table>

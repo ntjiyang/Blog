@@ -16,6 +16,7 @@
 	</resultMap>
 	
 	
+	
 	<insert id="blogInsert" parameterType="com.ys.wg.model.Blog">
 		INSERT INTO blogs (user_id,title,content,type)VALUES(#{userId},#{blogTitle},#{blogContent},#{type})
 	</insert>
@@ -82,5 +83,13 @@
 	<update id="updateStatus" parameterType="int">
 		UPDATE blogs SET status = 0 WHERE id=#{id}
 	</update>
+	
+	<select id="searchBlogNum" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM blogs WHERE title LIKE CONCAT(CONCAT('%', #{blogTitle}), '%') AND checks = 1 AND status = 1
+	</select>
+	<select id="searchBlogByTitle" resultMap="BlogBaseMap">
+		SELECT * FROM blogs WHERE title LIKE CONCAT(CONCAT('%', #{blogTitle}), '%') 
+		AND checks=1 AND status=1 ORDER BY time DESC LIMIT #{start},#{end}
+	</select>
 	
 	</mapper>

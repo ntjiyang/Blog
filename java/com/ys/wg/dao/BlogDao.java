@@ -39,4 +39,8 @@ public interface BlogDao {
 
 	boolean updateStatus(int id);
 
+	int searchBlogNum(String blogTitle);
+
+	List<Blog> searchBlogByTitle(@Param("blogTitle")String blogTitle, @Param("start")int start, @Param("end")int end);
+
 }

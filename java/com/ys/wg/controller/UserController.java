@@ -58,6 +58,9 @@ public class UserController {
      * 
      * */
     
+    
+    
+    
     //用户登录
 	@RequestMapping("/userLogin")
     public String userLogin(Page page,User user,HttpServletRequest request, Model model,Notification Notification){
@@ -110,6 +113,21 @@ public class UserController {
 		
 	}
 	
+	//返回个人中心
+	@RequestMapping("/returnMyPage")
+	public String returnMyPage(Page page,User user,HttpServletRequest request, Model model,Notification Notification){
+		
+		User u = userService.selectUserInfoById(user.getId());
+		List<Notification> ntf = notificationService.showNotificatonByTitle(u.getId(),page);
+		 
+		 model.addAttribute("userName",u.getUserName());
+		 model.addAttribute("id",u.getId());
+		 model.addAttribute("notificationlist", ntf);
+		
+		return "foreView/userHome";
+		
+	}
+	
 	//根据用户名查询个人专页
 	@RequestMapping("/userSelect")
 	public String userSelect(User user,HttpServletRequest request, Model model){
@@ -149,7 +167,7 @@ public class UserController {
 	
 	//根据用户id查询主页
 	@RequestMapping("/userSelectById")
-	public String UserSelectById(User user,HttpServletRequest request,Model model){
+	public String UserSelectById(Page page, User user,HttpServletRequest request,Model model,Notification notification){
 		
 		User u = userService.selectUserInfoById(user.getId());
 		String userid = request.getParameter("userid");
@@ -158,9 +176,12 @@ public class UserController {
 		model.addAttribute("userName",u.getUserName());
 		model.addAttribute("id",u.getId());
 		
-		if(u.getId() == id)
+		
+		if(u.getId() == id){
+			 List<Notification> ntf = notificationService.showNotificatonByTitle(id,page);
+			 model.addAttribute("notificationlist",ntf);
 			return "foreView/userHome";
-			
+		}
 		return "foreView/othershome";
 	}
 	
@@ -251,6 +272,22 @@ public class UserController {
 	 * 
 	 * 
 	 * */
+	
+	//标题搜索blog
+	@RequestMapping("/searchBlogByTitle")
+	public String blogInsert(Blog blog,Model model,Page page){
+		
+		List<Blog> bloglist = blogService.searchBlogByTitle(blog.getBlogTitle(),page);
+		
+			if(bloglist.size()==0)
+				return "foreView/searchError";
+		
+			model.addAttribute("bloglist",bloglist);
+			model.addAttribute("blogTitle",blog.getBlogTitle());
+			return "foreView/searchBlog";
+		}
+	
+	
 	
 	//用户(user_id)发布博客
 	@RequestMapping("/blogInsert")
@@ -399,10 +436,10 @@ public class UserController {
 		if(followService.selectFollow(follow.getUserId(),follow.getFollowId())==null){
 			followService.insertFollow(follow.getUserId(),follow.getFollowId(),follow.getFollowUserName());
 		
-			return "foreView/blank";
+			return "foreView/followSuccess";
 		}else{
 			
-			return "foreView/error";
+			return "foreView/followerror";
 		}
 	}
 }

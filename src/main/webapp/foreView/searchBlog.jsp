@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,77 +25,69 @@ $(document).ready(function() {
 		pageSize : 5,
 	});
 });
-
-function check(){
-	 var content = document.getElementById("content").value;
-
-	 if(content == ''){
-		 alert("请输入内容");
-		 return false;
-	 }
-	 return true;
-}
-
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+	.context{
+	width:600px;
+	height:100px;
+	text-overflow:-o-ellipsis-lastline;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display:-webkit-box;
+	-webkit-line-clamp:7;
+	-webkit-box-orient: vertical;
+	}
+	
+</style>
  
 </head>
-<body>
-
-
+<body style="width:100%;hight:100%">
 
  <div id="main">
-  
+  			
             <div id="main-content">
             	<ul class="pageing">
                 <li>
+               
             	<div class="post">
-            	
-
+  				
 				<ul>
 				<c:forEach items="${bloglist}" var="bl">
-            		<h1 class="title">${bl.blogTitle}</h1>
-                    <span class="facebook"><a href="#"></a></span>
+					
+            		<h3 class="title">${bl.blogTitle}</h3>
+          
                     <div class="meta">
                     	<ul>
-                        	<li class="admin"><a href="user/userSelectById?userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
+                        	<li class="admin"><a href="user/userSelectById?notiuserId=${userid}&userid=${userid}&id=${bl.userId}" target="_parent">${bl.userId}</a></li>
                             <li class="date">${bl.time}</li>
-                            <li class="comments"><a href="#">${bl.seeCount}</a></li>
+                            <li class="comments">${bl.seeCount}</li>
+                            <li>${typeName}</li>
                         </ul>
                     </div><!--end meta-->
                     <div class="context">
                     <p>${bl.blogContent}</p>
-                     </div>
-                     
-                     
-                      <hr>
-                      <Br>
-                     
-                     <div align="right">
-                     
-                     	<form action="user/insertComment?blogId=${bl.id}&userId=${userid}&replyUserId=${bl.userId}&id=${bl.id}" name="comments" method="post" onsubmit="return check()">
-                     		<textarea rows="8" cols="85" name="content" id="content"></textarea>
-                     		<input type="submit" value="发表回复"/>
-                     		<input type="reset" value="清空内容"/>
-                     	</form>
-                     	
-              		 </div>
-              </c:forEach>
-                    <c:forEach items="${commentlist}" var="cl">
-                    <ul>
-                    	<li>楼层：${cl.num} &nbsp;&nbsp;&nbsp; 用户id：<a href="user/userSelectById?userid=${userid}&id=${cl.userId}" target="_parent">${cl.userId}</a></li>
-                    	<li>&nbsp;</li>
-                    	<li>${cl.content}</li>
-                    	<li>&nbsp;</li>
-                    	<li>发布于：${cl.blogTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                    	<li>----------------------------------------------------------------------------------------------------------------------------------------------</li>
-                    </ul>
-              		</c:forEach>
-                    
- 
-                   
+                    <a href="user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}">【查看详情】</a>
+                    <hr>
+                    </div>
+                    </c:forEach>
 				</ul>
+		<center>
+              <c:if test="${page.currentPage != 1 && page.currentPage != 0}">
+                    <a href="user/searchBlogByTitle?blogTitle=${blogTitle}&currentPage=1"><input type="button" value="<<"/></a>
+              </c:if>
+              <a href="user/searchBlogByTitle?blogTitle=${blogTitle}&currentPage=${page.currentPage -1 }"><input type="button" 
+              <c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if> value="上一页"/></a>
+              <a href="user/searchBlogByTitle?blogTitle=${blogTitle}&currentPage=${page.currentPage +1 }"><input type="button" 
+              <c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if> value="下一页"/></a>
+              <c:if test="${page.currentPage !=page.totalPage }">
+                   <a href="user/searchBlogByTitle?blogTitle=${blogTitle}&currentPage=${page.totalPage}"><input type="button" value=">>"/></a>
+              
+              </c:if>
+        </center>
+				
   				</div><!--END post-->
                 </li>
                 </ul>

@@ -38,8 +38,12 @@ $(document).ready(function() {
        
 
 					<ul>
-                		<li><a href="user/blogSelectByUserId?flag=title&userId=${userid}">主页</a></li>               
-
+                		<li><a href="user/blogSelectByUserId?flag=title&userId=${userid}">主页</a></li>   
+                		<li><a href="user/returnMyPage?Id=${userid}">返回个人中心</a></li>
+                		<li><form action="user/searchBlogByTitle" target="main" method="post">
+                				<input type="text" name="blogTitle"  placeholder="Search Blog..."/>
+                				<input type="submit" value="搜索"/>
+                			</form></li>            
                      </ul>
  </div><!--END navigation-->
  </div>
@@ -52,7 +56,7 @@ $(document).ready(function() {
             <span class="border"></span>
             
             <form action="user/userSelect?flag=charge" method="post">
-            	<input type="text" name="userName" id="search" placeholder="Search ..." /><br />
+            	<input type="text" name="userName" id="search" placeholder="Search User..." /><br />
             </form>
             
            <span class="border"></span>

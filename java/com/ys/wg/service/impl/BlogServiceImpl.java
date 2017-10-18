@@ -113,4 +113,20 @@ public class BlogServiceImpl implements BlogService {
 
 		return blogDao.updateStatus(id);
 	}
+	
+	public int searchBlogNum(String blogTitle){
+		
+		return blogDao.searchBlogNum(blogTitle);
+	}
+
+	public List<Blog> searchBlogByTitle(String blogTitle,Page page) {
+		int num = this.searchBlogNum(blogTitle);
+		page.setTotal(num);
+		page.count();
+		
+		if(num == 0)
+			return blogDao.searchBlogByTitle(blogTitle, 0, 0);
+		
+		return blogDao.searchBlogByTitle(blogTitle,page.getStart(),page.getEnd());
+	}
 }

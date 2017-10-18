@@ -26,4 +26,6 @@ public interface BlogService {
 
 	List<Blog> blogSelectBySee(Blog blog,Page page);
 
+	List<Blog> searchBlogByTitle(String blogTitle, Page page);
+
 }
