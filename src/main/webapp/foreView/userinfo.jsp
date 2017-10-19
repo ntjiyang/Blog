@@ -20,13 +20,15 @@
  <div id="main">
       <div id="navigation">
 
-<table width="500px" height="200px">
+<table width="200px" height="200px">
 
 <c:forEach items="${userlist}" var="ul">
 <tr>
-	<td>头像</td>
-	<td>${ul.headImage}</td>
-</tr>
+	<th>	
+		<center>
+           <span id="logo"><img src="images/big2.jpg" alt="period" height="80px" width="80px" /></span>
+   		</center>
+    </th>
 <tr>
 	<td>用户名：</td>
 <td>${ul.userName}</td>

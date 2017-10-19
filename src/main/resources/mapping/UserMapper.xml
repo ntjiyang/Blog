@@ -72,8 +72,7 @@
 
 	<update id="updateUserInfor" parameterType="String">
 		UPDATE users
-		SET password = #{password},head_image =
-		#{headImage},information=#{userInformation}
+		SET password = #{password},information=#{userInformation}
 		WHERE username=#{userName}
 	</update>
 

@@ -61,7 +61,9 @@ $(document).ready(function() {
     	<div id="sidebar-header">
     	
         	<div id="header">
-            	<a href="index-2.html"><span id="logo">头像<img src="images/period.png" alt="period" height="8" width="9" /></span></a>
+        	<center>
+            	<span id="logo"><img src="images/big2.jpg" alt="period" height="80px" width="80px" /></span></a>
+            </center>
             </div><!--END header-->
          <center>
             <b style="font-size: 20px">${username}</b>

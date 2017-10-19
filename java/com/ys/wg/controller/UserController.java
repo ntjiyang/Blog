@@ -187,8 +187,11 @@ public class UserController {
 		
 		User u = userService.selectUserInfoById(user.getId());
 		
+		if(u==null)
+			return "foreView/freeze";
 		String userid = request.getParameter("userid");
 		int id = Integer.parseInt(userid);
+		
 		if(id == 0)
 			return "foreView/error";
 		
@@ -209,8 +212,8 @@ public class UserController {
 	public String userUpdate(User user,HttpServletRequest request, Model model){
 		
 		if(userService.updateUserInfor(user.getUserName(),user.getPassword(),user.getHeadImage(),user.getUserInformation())){
-			
-			
+			List<User> userlist	 = 	userService.selectUserInforByName(user.getUserName());
+			model.addAttribute("userlist", userlist);
 			
 			return "foreView/personalinfo"; 
 		}

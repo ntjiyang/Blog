@@ -24,8 +24,11 @@
 
 <c:forEach items="${userlist}" var="ul">
 <tr>
-	<td>头像</td>
-	<td>${ul.headImage}</td>
+	<th>	
+		
+           <span id="logo"><img src="images/big2.jpg" alt="period" height="80px" width="80px" /></span>
+   	
+    </th>
 </tr>
 <tr>
 	<td>用户名：</td>
@@ -47,7 +50,7 @@
 
 </c:forEach>
 <tr>
-	<td><a href="user/userSelect?userName=${username}&flag=update" target="main"><input type="button" value="修改信息"/></a></td>
+	<td><a href="user/userSelect?userName=${username}&flag=update&Id=${userid}" target="main"><input type="button" value="修改信息"/></a></td>
 	<td><a href="user/blogSelectByUserId?flag=0&userId=${userid}"><input type="button" value="返回个人中心"/></a></td>
 </tr>
 </table>
