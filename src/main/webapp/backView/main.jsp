@@ -80,8 +80,13 @@
 				<li>
 
 					<div class="post">
-						<h1>${typeName}</h1>
-
+						<c:choose>
+						<c:when test="${ page.totalPage==0}">
+						<center><br><br><br><br><br>
+						<h3>再怎么看也没有了╮(￣▽￣)╭</h3>
+						</center>
+						</c:when>
+						<c:otherwise>
 						<ul>
 							<c:forEach items="${bloglist}" var="bl">
 
@@ -140,7 +145,8 @@
 									type="button" value="尾页" />
 							</c:if>
 						</center>
-
+						</c:otherwise>
+						</c:choose>
 					</div> <!--END post-->
 				</li>
 			</ul>
