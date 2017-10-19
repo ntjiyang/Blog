@@ -20,32 +20,36 @@ table {
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 	function powercheck(flag) {
+
 		var pow = "${sessionScope.adminpower}";
 		var oldPow = "${a.adminPower}";
 		var newPow = $("#power").val();
 		var upId = "${a.adminId}";
 		if (isNaN(newPow)) {
 			alert("请输入数字！");
-			$("#power").val(pow);
+			$("#power").val(oldPow);
 		} else {
 			if (parseInt(newPow) >= parseInt(pow) || parseInt(newPow) <= 0) {
 				alert("权限不够！");
 				$("#power").val(oldPow);
-			}
-		}
-		if (flag == 1) {
-			window.location.href = "admin/adminUpdate?adminPower=" + newPow
-					+ "&adminId=" + upId + "";
+			}else if (flag == 1) {
+				window.location.href = "admin/adminUpdate?adminPower=" + newPow
+				+ "&adminId=" + upId + "";
+	}
 		}
 
 	}
 
 	function deletecheck(flag) {
 		var pow = "${sessionScope.adminpower}";
-		if (parseInt(pow)<5) {
+		if (parseInt(pow) < 5) {
 			alert("权限不够！");
 		} else {
-			window.location.href="admin/userIsDelete?id="+${u.id}+"&isDelete="+flag+"";
+			window.location.href = "admin/userIsDelete?id=" + $
+			{
+				u.id
+			}
+			+"&isDelete=" + flag + "";
 		}
 	}
 </script>
@@ -93,12 +97,10 @@ table {
 						</tr>
 						<tr>
 							<c:if test="${u.isDelete==0 }">
-								<td><a class="read-more"
-									onclick="deletecheck(1)">冻结用户</a></td>
+								<td><a class="read-more" onclick="deletecheck(1)">冻结用户</a></td>
 							</c:if>
 							<c:if test="${u.isDelete==1 }">
-								<td><a class="read-more"
-									onclick="deletecheck(0)">用户解冻</a></td>
+								<td><a class="read-more" onclick="deletecheck(0)">用户解冻</a></td>
 							</c:if>
 							<td><a class="read-more"
 								href="admin/selectBlogByCheck?check=1">返回首页</a></td>
@@ -122,12 +124,10 @@ table {
 							<td>权限：</td>
 							<td><input size="5" id="power" type="text" name="adminPower"
 								<c:if test="${sessionScope.adminpower <= a.adminPower}">disabled="disabled"</c:if>
-								value="${a.adminPower}" onchange="powercheck(0)" /></td>
+								value="${a.adminPower}" onchange="powercheck(0)"/></td>
 						</tr>
 						<tr>
-							<td><c:if test="${sessionScope.adminpower > a.adminPower}">
-									<a class="read-more" onclick="powercheck(1)">确认修改</a>
-								</c:if></td>
+							<td><a class="read-more" onclick="powercheck(1)">确认修改</a></td>
 							<td><a class="read-more"
 								href="admin/selectBlogByCheck?check=1">返回首页</a></td>
 						</tr>
