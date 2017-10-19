@@ -40,7 +40,7 @@ public class AdminController {
 
 	@Resource
 	private BlogService blogService;
-	
+
 	@Resource
 	private CommentService commentService;
 
@@ -150,7 +150,7 @@ public class AdminController {
 			}
 
 			if (notificationService.addNotification(notification)) {
-				return "backView/main";
+				return "redirect:/admin/selectBlogByCheck?check=1";
 			}
 		}
 		return "backView/main";
@@ -169,19 +169,21 @@ public class AdminController {
 		return "backView/main";
 
 	}
-	
+
 	// 显示详细博客内容、回复
 
 	@RequestMapping("/selectBlogInfoByBlogId")
-	public String selectBlogInfoByBlogId(Page page, Blog blog,Comment comment,HttpServletRequest request, Model model){
+	public String selectBlogInfoByBlogId(Page page, Blog blog, Comment comment,
+			HttpServletRequest request, Model model) {
 
 		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
-		List<Comment> commentlist = commentService.selectCommentByBlogId(comment,page);
-		
-		model.addAttribute("bloglist",bloglist);
-		model.addAttribute("commentlist",commentlist);
+		List<Comment> commentlist = commentService.selectCommentByBlogId(
+				comment, page);
+
+		model.addAttribute("bloglist", bloglist);
+		model.addAttribute("commentlist", commentlist);
 		return "backView/blogInfo";
-		
+
 	}
 
 	// 修改博客信息
@@ -206,6 +208,23 @@ public class AdminController {
 			}
 		}
 
+		return "backView/adminHome";
+
+	}
+
+	// 删除回复
+	@RequestMapping("/commentDelete")
+	public String commentDelete(Page page, HttpServletRequest request,
+			Model model) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		int blogid = Integer.parseInt(request.getParameter("blogid"));
+		System.out.println();
+			if (commentService.deleteComment(id)) {
+
+				return "redirect:/admin/selectBlogInfoByBlogId?id="
+						+ blogid + "&blogId="+blogid+"&currentPage="
+						+ page.getCurrentPage() + "";
+			}
 		return "backView/adminHome";
 
 	}

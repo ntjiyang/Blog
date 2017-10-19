@@ -17,5 +17,7 @@ public interface CommentDao {
 	int selectcommentByBlogIdNum(int blogId);
 
 	List<Comment> selectCommentByBlogId(@Param("blogId")int blogId,@Param("start") int start, @Param("end")int end);
+	
+	boolean deleteComment(int commentId);
 
 }

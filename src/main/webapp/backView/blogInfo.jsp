@@ -30,6 +30,21 @@
 			pageSize : 5,
 		});
 	});
+	
+	function del(blogid,commentid){
+		  if(confirm("是否确认删除？")){
+			  deletecheck(blogid,commentid);
+		  }
+	}
+	
+	function deletecheck(blogid,commentid) {
+		var pow = "${sessionScope.adminpower}";
+		if (parseInt(pow) < 4) {
+			alert("权限不够！");
+		} else {
+			window.location.href="admin/commentDelete?id="+commentid+"&blogid="+blogid+"&currentPage="+${page.currentPage}+"";
+		}
+	}
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -64,53 +79,56 @@
 								<div class="context">
 									<p>${bl.blogContent}</p>
 								</div>
-
-
 								<hr>
 								<Br>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${page.totalPage==0}">
+									<font color="grey">还没有评论，快抢沙发！</font>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${commentlist}" var="cl">
+										<ul>
+											<li>楼层：${cl.num} &nbsp;&nbsp;&nbsp; 用户id：<a
+												href="user/userSelectById?userid=${userid}&id=${cl.userId}"
+												target="_parent">${cl.userId}</a><span style="float: right;"><input
+													onclick="del('${cl.blogId}','${cl.id}')" type="button" value="删除" /></span></li>
+											<li>&nbsp;</li>
+											<li>${cl.content}</li>
+											<li>&nbsp;</li>
+											<li>发布于：${cl.blogTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+										</ul>
+										<hr style="border: 1px dotted;">
+									</c:forEach>
+									<center>
+										<c:forEach items="${bloglist}" var="bl">
+											<c:if
+												test="${page.currentPage != 1 && page.currentPage != 0}">
+												<input
+													onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=1'"
+													type="button" value="首页" />
+											</c:if>
+											<input
+												onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=${page.currentPage -1 }'"
+												type="button"
+												<c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if>
+												value="上一页" />
+								第${page.currentPage}页/共${ page.totalPage}页<input
+												onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=${page.currentPage +1 }'"
+												type="button"
+												<c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if>
+												value="下一页" />
 
-							</c:forEach>
-							<c:forEach items="${commentlist}" var="cl">
-								<ul>
-									<li>楼层：${cl.num} &nbsp;&nbsp;&nbsp; 用户id：<a
-										href="user/userSelectById?userid=${userid}&id=${cl.userId}"
-										target="_parent">${cl.userId}</a></li>
-									<li>&nbsp;</li>
-									<li>${cl.content}</li>
-									<li>&nbsp;</li>
-									<li>发布于：${cl.blogTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-									<li>----------------------------------------------------------------------------------------------------------------------------------------------</li>
-								</ul>
-							</c:forEach>
+											<c:if test="${page.currentPage !=page.totalPage }">
+												<input
+													onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=${page.totalPage}'"
+													type="button" value="尾页" />
+											</c:if>
+										</c:forEach>
+									</center>
+								</c:otherwise>
+							</c:choose>
 						</ul>
-						<center>
-							<c:forEach items="${bloglist}" var="bl">
-								<c:if test="${page.currentPage != 1 && page.currentPage != 0}">
-									<input
-										onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=1'"
-										type="button" value="首页" />
-									</a>
-								</c:if>
-								<input
-									onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=${page.currentPage -1 }'"
-									type="button"
-									<c:if test="${page.currentPage==1 || page.currentPage==0}"> disabled="disabled" </c:if>
-									value="上一页" />
-								</a>第${page.currentPage}页/共${ page.totalPage}页<input
-									onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=${page.currentPage +1 }'"
-									type="button"
-									<c:if test="${page.currentPage==page.totalPage}"> disabled="disabled" </c:if>
-									value="下一页" />
-								</a>
-								<c:if test="${page.currentPage !=page.totalPage }">
-									<input
-										onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}&currentPage=${page.totalPage}'"
-										type="button" value="尾页" />
-									</a>
-
-								</c:if>
-							</c:forEach>
-						</center>
 					</div> <!--END post-->
 				</li>
 			</ul>

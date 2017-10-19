@@ -48,4 +48,9 @@ public class CommentServiceImpl implements CommentService {
 		
 		return commentDao.selectCommentByBlogId(comment.getBlogId(),page.getStart(),page.getEnd());
 	}
+
+	public boolean deleteComment(int commentId) {
+		
+		return commentDao.deleteComment(commentId);
+	}
 }

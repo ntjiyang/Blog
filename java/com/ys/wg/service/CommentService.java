@@ -10,4 +10,6 @@ public interface CommentService {
 	boolean insertComment(Comment comment);
 
 	List<Comment> selectCommentByBlogId(Comment comment, Page page);
+	
+	boolean deleteComment(int commentId);
 }

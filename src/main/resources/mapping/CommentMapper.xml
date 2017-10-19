@@ -32,5 +32,9 @@
 			SELECT * FROM comment WHERE blog_id = #{blogId} LIMIT #{start},#{end}
 			
 		</select>
+		
+		<delete id="deleteComment" parameterType="int">
+		DELETE FROM comment WHERE id=#{id}
+	</delete>
 
 </mapper>

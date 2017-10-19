@@ -28,7 +28,7 @@ table {
 			alert("请输入数字！");
 			$("#power").val(pow);
 		} else {
-			if (parseInt(newPow) >= parseInt(pow) || parseInt(newPow) < 0) {
+			if (parseInt(newPow) >= parseInt(pow) || parseInt(newPow) <= 0) {
 				alert("权限不够！");
 				$("#power").val(oldPow);
 			}
