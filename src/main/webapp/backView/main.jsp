@@ -29,6 +29,30 @@
 			pageSize : 5,
 		});
 	});
+
+	function del(blogid){
+		  if(confirm("是否确认删除？")){
+			  deletecheck(blogid);
+		  }
+	}
+	
+	function deletecheck(blogid) {
+		var pow = "${sessionScope.adminpower}";
+		if (parseInt(pow) < 4) {
+			alert("权限不够！");
+		} else {
+			window.location.href="admin/blogUpdate?flag=status&id="+blogid+"&check="+${check}+"&currentPage="+${page.currentPage}+"";
+		}
+	}
+	
+	function check(blogid) {
+		var pow = "${sessionScope.adminpower}";
+		if (parseInt(pow) < 3) {
+			alert("权限不够！");
+		} else {
+			window.location.href="admin/blogUpdate?flag=check&id="+blogid+"&check="+${check}+"&currentPage="+${page.currentPage}+"";
+		}
+	}
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -68,10 +92,10 @@
 										</td>
 										<td align="right"><c:if test="${check==0}">
 												<input
-													onclick="window.location.href='admin/blogUpdate?flag=check&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
+													onclick="check(${bl.id})"
 													type="button" value="审核" />
 											</c:if><input
-											onclick="window.location.href='admin/blogUpdate?flag=status&id=${bl.id}&check=${check}&currentPage=${page.currentPage}'"
+											onclick="del(${bl.id})"
 											type="button" value="删除" /></td>
 									</tr>
 								</table>
@@ -89,7 +113,7 @@
 								<div class="context">
 									<p>${bl.blogContent}</p>
 									<input
-										onclick="window.location.href='user/selectblogByBlogId?id=${bl.id}&blogId=${bl.id}&userId=${userid}&otherId=${bl.userId}'"
+										onclick="window.location.href='admin/selectBlogInfoByBlogId?id=${bl.id}&blogId=${bl.id}'"
 										type="button" value="查看完整内容" />
 									<hr>
 								</div>

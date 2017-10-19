@@ -22,6 +22,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		var adminname = "${sessionScope.adminname}";
+
+		if (adminname == null || adminname == "") {
+			alert("您还未登录！");
+			window.location.href = "backView/adminLogin.jsp";
+		}
+
 		$('span.category').hover(function() {
 			$(this).next().css('background-color', '#e25050');
 		}, function() {

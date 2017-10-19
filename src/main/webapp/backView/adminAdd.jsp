@@ -37,7 +37,30 @@ table {
 			window.location.href = "admin/adminUpdate?adminPower=" + newPow
 					+ "&adminId=" + upId + "";
 		}
-
+	}
+	
+	function check(){
+		var flag = true;
+		if($("#adminName").val()==null||$("#adminName").val()==""){
+			flag = false;
+		}
+		if($("#password").val()==null||$("#password").val()==""){
+			flag = false;
+		}
+		if($("#adminPhone").val()==null||$("#adminPhone").val()==""){
+			flag = false;
+		}
+		if($("#adminEmail").val()==null||$("#adminEmail").val()==""){
+			flag = false;
+		}
+		if($("#adminPower").val()==null||$("#adminPower").val()==""){
+			flag = false;
+		}
+		if(flag == false){
+			alert("请将信息填写完整！");
+		return false;
+		}
+		return true;
 	}
 </script>
 </head>
@@ -45,7 +68,7 @@ table {
 	<div id="main">
 		<div id="main-content">
 			<div class="post">
-				<form action="admin/adminAdd" target="main" method="post">
+				<form action="admin/adminAdd" target="main" method="post" onsubmit="return check()">
 					<table width="200px" height="200px">
 						<tr>
 							<td width="50%">用户名：</td>

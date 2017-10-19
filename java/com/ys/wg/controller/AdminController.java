@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ys.wg.model.Admin;
 import com.ys.wg.model.Blog;
+import com.ys.wg.model.Comment;
 import com.ys.wg.model.Notification;
 import com.ys.wg.model.Page;
 import com.ys.wg.model.User;
 import com.ys.wg.service.AdminService;
 import com.ys.wg.service.BlogService;
+import com.ys.wg.service.CommentService;
 import com.ys.wg.service.NotificationService;
 import com.ys.wg.service.UserService;
 
@@ -38,6 +40,9 @@ public class AdminController {
 
 	@Resource
 	private BlogService blogService;
+	
+	@Resource
+	private CommentService commentService;
 
 	@RequestMapping("/adminLogin")
 	public String userLogin(Admin admin, HttpServletRequest request, Model model) {
@@ -54,6 +59,13 @@ public class AdminController {
 		} else {
 			return "backView/adminLogin";
 		}
+	}
+
+	@RequestMapping("/adminLogout")
+	public String adminLogout(HttpServletRequest request) {
+
+		request.getSession().invalidate();
+		return "backView/adminLogin";
 	}
 
 	// 根据用户名查询个人信息
@@ -90,21 +102,20 @@ public class AdminController {
 
 		return "backView/detailinfo";
 	}
-	
+
 	// 添加管理员
-		@RequestMapping("/adminAdd")
-		public String adminAdd(Admin admin, HttpServletRequest request,
-				Model model) {
-			System.out.println(admin);
+	@RequestMapping("/adminAdd")
+	public String adminAdd(Admin admin, HttpServletRequest request, Model model) {
+		System.out.println(admin);
 
-			if (adminService.insertAdmin(admin)) {
+		if (adminService.insertAdmin(admin)) {
 
-				return "redirect:/admin/selectBlogByCheck?check=1";
-			}
-
-			return "backView/adminAdd";
-
+			return "redirect:/admin/selectBlogByCheck?check=1";
 		}
+
+		return "backView/adminAdd";
+
+	}
 
 	// 修改信息
 	@RequestMapping("/adminUpdate")
@@ -158,6 +169,20 @@ public class AdminController {
 		return "backView/main";
 
 	}
+	
+	// 显示详细博客内容、回复
+
+	@RequestMapping("/selectBlogInfoByBlogId")
+	public String selectBlogInfoByBlogId(Page page, Blog blog,Comment comment,HttpServletRequest request, Model model){
+
+		List<Blog> bloglist = blogService.selectblogByBlogId(blog);
+		List<Comment> commentlist = commentService.selectCommentByBlogId(comment,page);
+		
+		model.addAttribute("bloglist",bloglist);
+		model.addAttribute("commentlist",commentlist);
+		return "backView/blogInfo";
+		
+	}
 
 	// 修改博客信息
 	@RequestMapping("/blogUpdate")
@@ -168,32 +193,35 @@ public class AdminController {
 		if (flag.equals("check")) {
 			if (blogService.updateCheck(blog.getId())) {
 
-				return "redirect:/admin/selectBlogByCheck?check=" + blog.getCheck()
-						+ "&currentPage=" + page.getCurrentPage() + "";
+				return "redirect:/admin/selectBlogByCheck?check="
+						+ blog.getCheck() + "&currentPage="
+						+ page.getCurrentPage() + "";
 			}
 		} else if (flag.equals("status")) {
 			if (blogService.updateStatus(blog.getId())) {
 
-				return "redirect:/admin/selectBlogByCheck?check=" + blog.getCheck()
-						+ "&currentPage=" + page.getCurrentPage() + "";
+				return "redirect:/admin/selectBlogByCheck?check="
+						+ blog.getCheck() + "&currentPage="
+						+ page.getCurrentPage() + "";
 			}
 		}
 
 		return "backView/adminHome";
 
 	}
-	
+
 	// 冻结用户
-		@RequestMapping("/userIsDelete")
-		public String userIsDelete(User user, HttpServletRequest request,
-				Model model) {
+	@RequestMapping("/userIsDelete")
+	public String userIsDelete(User user, HttpServletRequest request,
+			Model model) {
 
-			if (userService.updateUserIsDelete(user)) {
+		if (userService.updateUserIsDelete(user)) {
 
-				return "redirect:/admin/adminDetail?id="+user.getId()+"&flag=user";
-			}
-
-			return "backView/adminHome";
-
+			return "redirect:/admin/adminDetail?id=" + user.getId()
+					+ "&flag=user";
 		}
+
+		return "backView/adminHome";
+
+	}
 }

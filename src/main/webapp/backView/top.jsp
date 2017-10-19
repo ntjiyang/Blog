@@ -33,6 +33,15 @@
 			pageSize : 5,
 		});
 	});
+	
+	function check() {
+		var pow = "${sessionScope.adminpower}";
+		if (parseInt(pow) < 2) {
+			alert("权限不够！");
+		} else {
+			window.top.frames['main'].location.href="backView/adminAdd.jsp";
+		}
+	}
 </script>
 
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -48,7 +57,8 @@
 						<li><a href="admin/selectBlogByCheck?check=1" target="main">已审核</a></li>
 						<li><a href="admin/selectBlogByCheck?check=0" target="main">未审核</a></li>
 					</ul></li>
-					<li><a href="backView/adminAdd.jsp" target="main">添加管理员</a></li>
+					<li><a onclick="check()">添加管理员</a></li>
+					<li><a href="admin/adminLogout" target="_parent">退出</a></li>
 			</ul>
 		</div>
 		<!--END navigation-->
