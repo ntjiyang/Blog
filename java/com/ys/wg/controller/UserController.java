@@ -120,6 +120,9 @@ public class UserController {
 	public String returnMyPage(Page page,User user,HttpServletRequest request, Model model,Notification Notification){
 		
 		User u = userService.selectUserInfoById(user.getId());
+		if(u==null)
+			return "foreView/error";
+		
 		List<Notification> ntf = notificationService.showNotificatonByTitle(u.getId(),page);
 		 
 		 model.addAttribute("userName",u.getUserName());
@@ -183,8 +186,11 @@ public class UserController {
 	public String UserSelectById(Page page, User user,HttpServletRequest request,Model model,Notification notification){
 		
 		User u = userService.selectUserInfoById(user.getId());
+		
 		String userid = request.getParameter("userid");
 		int id = Integer.parseInt(userid);
+		if(id == 0)
+			return "foreView/error";
 		
 		model.addAttribute("userName",u.getUserName());
 		model.addAttribute("id",u.getId());
@@ -263,6 +269,9 @@ public class UserController {
 	//添加回复
 	@RequestMapping("/insertComment")
 	public String insertComment(Page page,Comment comment, Blog blog,HttpServletRequest request, Model model, User user){
+		
+		if(blog.getUserId()==0)
+			return "foreView/travalerror";
 		
 		if(commentService.insertComment(comment)){
 		
@@ -380,10 +389,6 @@ public class UserController {
 	 * */
 	@RequestMapping("/selectblogByBlogId")
 	public String selectblogByBlogId(Page page, Blog blog,Comment comment,HttpServletRequest request, Model model){
-		
-		if(blog.getUserId()==0)
-			return "foreView/error";
-		
 		
 		String otherId = request.getParameter("otherId");		
 		int otherid = Integer.parseInt(otherId);

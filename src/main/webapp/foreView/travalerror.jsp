@@ -11,10 +11,11 @@
 
 </head>
 <body>
- 	<center>
- 			<h1>你需要登录后</h1>
- 			<a href="index.jsp" target="_parent">返回登录界面</a>
- 			<a href="user/blogSelectByUserId?flag=title&userId=${userid}">返回主页</a>
- 	</center>
+
+<center>
+		<h1>登陆后才允许回复</h1>
+		<b><a href="index.jsp" target="_parent">返回登录注册界面</a></b>
+		<b><a href="user/blogSelectByUserId?flag=title&userId=${userid}" target="_parent">返回主页</a></b>
+</center>
 </body>
 </html>
