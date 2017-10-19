@@ -34,7 +34,7 @@ public interface UserService {
 	List<User> selectUserInforByName(String userName);
 
 	// 修改个人信息
-	boolean updateUserInfor(String userName, String password, String headImage,
+	boolean updateUserInfor(String userName, String password,
 			String userInformation);
 
 	// 查看个人专页

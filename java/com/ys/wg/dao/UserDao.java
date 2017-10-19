@@ -32,7 +32,7 @@ public interface UserDao {
 	List<User> selectUserInforByName(String userName);
 
 	boolean updateUserInfor(@Param("userName") String userName,@Param("password") String password, 
-			@Param("headImage") String headImage, @Param("userInformation")String userInformation);
+			 @Param("userInformation")String userInformation);
 
 	User selectUserInfo(String userName);
 

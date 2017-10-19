@@ -69,9 +69,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean updateUserInfor(String userName, String password,
-			String headImage, String userInformation) {
+			String userInformation) {
 
-		return userDao.updateUserInfor(userName, password, headImage,
+		return userDao.updateUserInfor(userName, password,
 				userInformation);
 	}
 

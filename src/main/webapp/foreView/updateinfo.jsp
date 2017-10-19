@@ -27,8 +27,11 @@
 
 <c:forEach items="${userlist}" var="ul">
 <tr>
-	<td>头像</td>
-	<td><input type="text" name="headImage" value="${ul.headImage}"/></td>
+	<th>	
+		
+           <span id="logo"><img src="images/big2.jpg" alt="period" height="80px" width="80px" /></span>
+   	
+    </th>
 </tr>
 <tr>
 	<td>用户名：</td>

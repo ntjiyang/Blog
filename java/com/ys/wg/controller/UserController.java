@@ -78,6 +78,7 @@ public class UserController {
         	
         	return "foreView/userHome";
         }else{
+        	  model.addAttribute("message","帐号或密码错误！");
         	  return "/index"; 
         	  
         }
@@ -211,7 +212,7 @@ public class UserController {
 	@RequestMapping("/userUpdate")
 	public String userUpdate(User user,HttpServletRequest request, Model model){
 		
-		if(userService.updateUserInfor(user.getUserName(),user.getPassword(),user.getHeadImage(),user.getUserInformation())){
+		if(userService.updateUserInfor(user.getUserName(),user.getPassword(),user.getUserInformation())){
 			List<User> userlist	 = 	userService.selectUserInforByName(user.getUserName());
 			model.addAttribute("userlist", userlist);
 			
