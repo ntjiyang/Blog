@@ -109,8 +109,7 @@ public class UserController {
 	@RequestMapping("/quit")
 	public String quit(HttpServletRequest request ){
 		
-		HttpSession session = request.getSession();
-		session.removeAttribute("userid");
+		request.getSession().invalidate();
 		
         return "index"; 
 		

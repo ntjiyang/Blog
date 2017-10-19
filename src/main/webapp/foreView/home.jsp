@@ -14,6 +14,16 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	var userId = "${sessionScope.userid}";
+
+	if (userId == null || userId == "") {
+		alert("您还未登录！");
+		window.location.href = "index.jsp";
+	}
+	
+	
+	
 	$('span.category').hover(function(){
     $(this).next().css('background-color','#e25050');
     },function(){
